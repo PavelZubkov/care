@@ -14,15 +14,26 @@ namespace $ {
 			return obj
 		}
 
+		@ $mol_mem
 		person() {
 			const obj = new $care_app_person_service
 			obj.domain = $mol_const(this)
 			return obj
 		}
 
+		@ $mol_mem
 		user() {
 			return this.sign().token() ? this.person().item(this.sign().token()) : null
 		}
+
+		@ $mol_mem
+		org() {
+			const obj = new $care_app_org_service
+			obj.domain = $mol_const(this)
+			return obj
+		}
+
+
 
 	}
 

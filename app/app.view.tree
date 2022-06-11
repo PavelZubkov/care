@@ -3,6 +3,7 @@ $care_app $mol_book2
 		person => person
 		user => user
 		sign => sign
+		org => org
 	pages /
 		<= Sign_up_page $care_app_sign_up
 		<= Sign_in_page $care_app_sign_in
@@ -13,3 +14,7 @@ $care_app $mol_book2
 					hint @ \Sign out
 					click? <=> sign_out? null
 					sub / <= Sign_out_icon $mol_icon_logout_variant
+		<= Org_list_page $care_app_org_list
+			user <= user
+		<= Org_add_page $care_app_org_add
+			org <= org

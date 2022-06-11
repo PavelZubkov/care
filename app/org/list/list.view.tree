@@ -1,0 +1,20 @@
+$care_app_org_list $mol_page
+	user $care_app_person
+	title @ \Organizations
+	tools /
+		<= Org_add $mol_link
+			hint @ \Create organization
+			arg * org \
+			sub / <= Org_add_icon $mol_icon_plus
+		<= Close_page $mol_link
+			hint @ \Close page
+			arg * orgs null
+			sub / <= Close_page_icon $mol_icon_cross
+	body /
+		<= List $mol_list
+			rows <= rows /
+	Row* $mol_link
+		arg * org <= org_id* \
+		title <= org_name* \
+	List_empty $mol_view
+		sub / <= list_empty_text @ \You are not subscribed to any organization

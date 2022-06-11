@@ -63,6 +63,11 @@ namespace $ {
 			return String( this.state().sub('password').value(next) ?? '' )
 		}
 
+		org_list(next?: $care_app_org[]) {
+			const ids = this.state().sub('org_list').list( next && next.map(obj => obj.id()) )
+			return ids.map( id => this.domain().org().item( String(id) ) )
+		}
+
 	}
 
 }

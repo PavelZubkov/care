@@ -1,0 +1,27 @@
+$care_app_org_add $mol_page
+	org $care_app_org_service
+	title @ \Creating an organization
+	error *
+		required @ \*
+	body /
+		<= Form $mol_form
+			form_fields /
+				<= Name_field $mol_form_field
+					name @ \Name
+					bid <= name_bid \
+					control <= Name_control $mol_textarea
+						value? <=> name? \
+				<= Description_field $mol_form_field
+					name @ \Description
+					bid <= description_bid \
+					control <= Description_control $mol_textarea
+						value? <=> description? \
+				<= Image_field $mol_form_field
+					name @ \Image
+					control <= Image_control $care_attach
+						items? <=> images? /
+			buttons /
+				<= Submit $mol_button_major
+					enabled <= submit_enabled true
+					click? <=> submit? null
+					title @ \Create
