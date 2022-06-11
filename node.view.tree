@@ -8,6 +8,11 @@ $mol_scroll $mol_view
 		^
 		scroll?event <=> event_scroll?event null
 
+$mol_book2 $mol_scroll
+	sub <= pages /$mol_view
+	minimal_width 0
+	Placeholder $mol_view
+
 $mol_page $mol_view
 	dom_name \article
 	sub /
@@ -28,6 +33,306 @@ $mol_page $mol_view
 			dom_name \footer
 			sub <= foot /$mol_view
 
-$care_app $mol_page
-	title @ \Забота
-	body / \hello
+$mol_hotkey $mol_plugin
+	event *
+		^
+		keydown?event <=> keydown?event null
+	key *
+	mod_ctrl false
+	mod_alt false
+	mod_shift false
+
+$mol_string $mol_view
+	dom_name \input
+	enabled true
+	minimal_height 40
+	autocomplete false
+	selection?val /number
+	auto /
+		<= selection_watcher null
+	field *
+		^
+		disabled <= disabled false
+		value <= value_changed?val <=> value?val \
+		placeholder <= hint_visible <= hint \
+		spellcheck <= spellcheck false
+		autocomplete <= autocomplete_native \
+		selectionEnd <= selection_end 0
+		selectionStart <= selection_start 0
+	attr *
+		^
+		maxlength <= length_max Infinity
+		type <= type?val \text
+	event *
+		^
+		input?event <=> event_change?event null
+		keydown?event <=> event_key_press?event null
+	plugins /
+		<= Submit $mol_hotkey
+			key * enter?event <=> submit?event null
+
+$mol_list $mol_view
+	render_visible_only true
+	render_over 0
+	sub <= rows /$mol_view
+	Empty $mol_view
+	Gap_before $mol_view style * paddingTop <= gap_before 0
+	Gap_after $mol_view style * paddingTop <= gap_after 0
+	view_window /
+		0
+		0
+
+$mol_labeler $mol_list
+	rows /
+		<= Label $mol_view
+			minimal_height 40
+			sub <= label /$mol_view_content
+				<= title
+		<= Content $mol_view
+			minimal_height 24
+			sub <= content /
+
+$mol_form_field $mol_labeler
+	bids /string
+	label /
+		<= name \
+		<= Bid $mol_view
+			sub / <= bid \
+	content /
+		<= control null
+
+$mol_svg $mol_view
+	dom_name \svg
+	dom_name_space \http://www.w3.org/2000/svg
+	font_size 16
+	font_family \
+	style_size *
+
+$mol_svg_root $mol_svg
+	dom_name \svg
+	attr *
+		^
+		viewBox <= view_box \0 0 100 100
+		preserveAspectRatio <= aspect \xMidYMid
+
+$mol_svg_path $mol_svg
+	dom_name \path
+	attr *
+		^
+		d <= geometry \
+
+
+$mol_icon $mol_svg_root
+	view_box \0 0 24 24
+	minimal_width 16
+	minimal_height 16
+	sub /
+		<= Path $mol_svg_path
+			geometry <= path \
+
+$mol_icon_eye $mol_icon path \M12,9C10.34,9 9,10.34 9,12C9,13.66 10.34,15 12,15C13.66,15 15,13.66 15,12C15,10.34 13.66,9 12,9M12,17C9.24,17 7,14.76 7,12C7,9.24 9.24,7 12,7C14.76,7 17,9.24 17,12C17,14.76 14.76,17 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z
+
+$mol_speck $mol_view
+	attr *
+		^
+		mol_theme \$mol_theme_accent
+	style *
+		^
+		minHeight \1em
+	sub /
+		<= value null
+
+$mol_button $mol_view
+	enabled true
+	click?event null
+	event_click?event null
+	event *
+		^
+		click?event <=> event_activate?event null
+		keydown?event <=> event_key_press?event null 
+	attr *
+		^
+		disabled <= disabled false
+		role \button
+		tabindex <= tab_index 0
+		title <= hint \
+	sub /$mol_view_content
+		<= title
+	Speck $mol_speck
+		value <= error \
+
+$mol_button_typed $mol_button
+	minimal_height 40
+	minimal_width 40
+
+$mol_button_minor $mol_button_typed
+
+$mol_check $mol_button_minor
+	attr *
+		^
+		mol_check_checked <= checked?val false
+		aria-checked <= checked?val false
+		role \checkbox
+	sub /$mol_view_content
+		<= Icon null
+		<= label /
+			<= Title $mol_view
+				sub /
+					<= title \
+
+$mol_check_icon $mol_check
+
+$mol_password $mol_view
+	type?val \password
+	sub <= content /
+		<= Pass $mol_string
+			type <= type
+			hint <= hint \
+			value?val <=> value?val \
+			submit?event <=> submit?event null
+			enabled <= enabled true
+		<= Show $mol_check_icon
+			checked?val <=> checked?val true
+			Icon <= Show_icon $mol_icon_eye
+
+$mol_button_major $mol_button_typed
+	attr *
+		^
+		mol_theme \$mol_theme_accent
+
+$mol_link $mol_view
+	dom_name \a
+	attr *
+		^
+		href <= uri \
+		title <= hint \
+		target <= target \_self
+		download <= file_name \
+		mol_link_current <= current false
+	sub /$mol_view_content
+		<= title
+	arg *
+	event *
+		^
+		click?event <=> click?event <=> event_click?event null
+
+$mol_row $mol_view
+
+$mol_form $mol_list
+	submit_blocked false
+	event *
+		^
+		keydown?event <=> keydown?event null
+	submit?event null
+	rows /
+		<= Body $mol_list
+			sub <= body <= form_fields /$mol_form_field
+		<= Foot $mol_row
+			sub <= foot <= buttons /$mol_view
+
+$care_app_sign_up $mol_page
+	domain $care_app_domain
+		person => person
+		sign => sign
+	title @ \Sign up
+	error *
+		required @ \*
+		phone_taken @ \Phone taken
+		password_short @ \Minimum 8 characters
+		password_not_match @ \Passwords do not match
+	body /
+		<= Form $mol_form
+			form_fields /
+				<= Name_field $mol_form_field
+					name @ \Name
+					bid <= name_bid \
+					control <= Name_control $mol_string
+						hint @ \Thomas
+						value? <=> name? \
+				<= Name_sur_field $mol_form_field
+					name @ \Surname
+					bid <= name_sur_bid \
+					control <= Name_sur_control $mol_string
+						hint @ \Anderson
+						value? <=> name_sur? \
+				<= Phone_field $mol_form_field
+					name @ \Phone
+					bid <= phone_bid \
+					control <= Phone_control $mol_string
+						hint @ \+7 (999)
+						value? <=> phone? \
+				<= Password_field $mol_form_field
+					name @ \Password
+					bid <= password_bid \
+					control <= Password_control $mol_password
+						hint @ \****
+						value? <=> password? \
+				<= Password_confirm_field $mol_form_field
+					name @ \Password confirm
+					bid <= password_confirm_bid \
+					control <= Password_confirm_control $mol_password
+						hint @ \****
+						value? <=> password_confirm? \
+			buttons /
+				<= Submit $mol_button_major
+					title <= submit_label @ \Sign up
+					click? <=> submit? null
+					enabled <= submit_enabled true
+				<= Sign_in_link $mol_link
+					arg * sign \in
+					sub / <= sign_in_link_label @ \Have account?
+
+$care_app_sign_in $mol_page
+	domain $care_app_domain
+		person => person
+		sign => sign
+	title @ \Sign in
+	error *
+		required @ \*
+		wrong @ \Wrong phone or password
+	body /
+		<= Form $mol_form
+			form_fields /
+				<= Phone_field $mol_form_field
+					name @ \Phone
+					bid <= phone_bid \
+					control <= Phone_control $mol_string
+						hint @ \+7 (999)
+						value? <=> phone? \
+				<= Password_field $mol_form_field
+					name @ \Password
+					bid <= password_bid \
+					control <= Password_control $mol_password
+						hint @ \****
+						value? <=> password? \
+			buttons /
+				<= Submit $mol_button_major
+					title <= submit_label @ \Sign in
+					click? <=> submit? null
+					enabled <= submit_enabled true
+				<= Sign_up_link $mol_link
+					arg * sign \up
+					sub / <= sign_in_link_label @ \Need account?
+
+$mol_icon_logout $mol_icon path \M16,17V14H9V10H16V7L21,12L16,17M14,2C15.1,2 16,2.9 16,4V6H14V4H5V20H14V18H16V20C16,21.1 15.1,22 14,22H5C3.9,22 3,21.1 3,20V4C3,2.9 3.9,2 5,2H14Z
+
+$mol_icon_logout_variant $mol_icon path \M14.08,15.59L16.67,13H7V11H16.67L14.08,8.41L15.5,7L20.5,12L15.5,17L14.08,15.59M19,3C20.1,3 21,3.9 21,5V9.67L19,7.67V5H5V19H19V16.33L21,14.33V19C21,20.1 20.1,21 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3H19Z
+
+$care_app_nav $mol_page
+	body / \123
+
+$care_app $mol_book2
+	domain $care_app_domain
+		person => person
+		user => user
+		sign => sign
+	pages /
+		<= Sign_up_page $care_app_sign_up
+		<= Sign_in_page $care_app_sign_in
+		<= Nav_page $care_app_nav
+			title @ \Care
+			tools /
+				<= Sign_out $mol_button_minor
+					hint @ \Sign out
+					click? <=> sign_out? null
+					sub / <= Sign_out_icon $mol_icon_logout_variant
