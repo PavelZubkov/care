@@ -1,3 +1,15 @@
-$care_app $mol_page
-	title @ \Забота
-	body / \hello
+$care_app $mol_book2
+	domain $care_app_domain
+		person => person
+		user => user
+		sign => sign
+	pages /
+		<= Sign_up_page $care_app_sign_up
+		<= Sign_in_page $care_app_sign_in
+		<= Nav_page $care_app_nav
+			title @ \Care
+			tools /
+				<= Sign_out $mol_button_minor
+					hint @ \Sign out
+					click? <=> sign_out? null
+					sub / <= Sign_out_icon $mol_icon_logout_variant

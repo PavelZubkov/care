@@ -1,0 +1,31 @@
+$care_app_sign_in $mol_page
+	domain $care_app_domain
+		person => person
+		sign => sign
+	title @ \Sign in
+	error *
+		required @ \*
+		wrong @ \Wrong phone or password
+	body /
+		<= Form $mol_form
+			form_fields /
+				<= Phone_field $mol_form_field
+					name @ \Phone
+					bid <= phone_bid \
+					control <= Phone_control $mol_string
+						hint @ \+7 (999)
+						value? <=> phone? \
+				<= Password_field $mol_form_field
+					name @ \Password
+					bid <= password_bid \
+					control <= Password_control $mol_password
+						hint @ \****
+						value? <=> password? \
+			buttons /
+				<= Submit $mol_button_major
+					title <= submit_label @ \Sign in
+					click? <=> submit? null
+					enabled <= submit_enabled true
+				<= Sign_up_link $mol_link
+					arg * sign \up
+					sub / <= sign_in_link_label @ \Need account?

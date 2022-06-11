@@ -1,0 +1,51 @@
+$care_app_sign_up $mol_page
+	domain $care_app_domain
+		person => person
+		sign => sign
+	title @ \Sign up
+	error *
+		required @ \*
+		phone_taken @ \Phone taken
+		password_short @ \Minimum 8 characters
+		password_not_match @ \Passwords do not match
+	body /
+		<= Form $mol_form
+			form_fields /
+				<= Name_field $mol_form_field
+					name @ \Name
+					bid <= name_bid \
+					control <= Name_control $mol_string
+						hint @ \Thomas
+						value? <=> name? \
+				<= Name_sur_field $mol_form_field
+					name @ \Surname
+					bid <= name_sur_bid \
+					control <= Name_sur_control $mol_string
+						hint @ \Anderson
+						value? <=> name_sur? \
+				<= Phone_field $mol_form_field
+					name @ \Phone
+					bid <= phone_bid \
+					control <= Phone_control $mol_string
+						hint @ \+7 (999)
+						value? <=> phone? \
+				<= Password_field $mol_form_field
+					name @ \Password
+					bid <= password_bid \
+					control <= Password_control $mol_password
+						hint @ \****
+						value? <=> password? \
+				<= Password_confirm_field $mol_form_field
+					name @ \Password confirm
+					bid <= password_confirm_bid \
+					control <= Password_confirm_control $mol_password
+						hint @ \****
+						value? <=> password_confirm? \
+			buttons /
+				<= Submit $mol_button_major
+					title <= submit_label @ \Sign up
+					click? <=> submit? null
+					enabled <= submit_enabled true
+				<= Sign_in_link $mol_link
+					arg * sign \in
+					sub / <= sign_in_link_label @ \Have account?
