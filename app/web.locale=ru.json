@@ -26,5 +26,16 @@
 	"$care_app_sign_up_error_required": "*",
 	"$care_app_sign_up_sign_in_link_label": "Есть учетная запись",
 	"$care_app_sign_up_submit_label": "Зарегистрироваться",
-	"$care_app_sign_up_title": "Регистрация"
+	"$care_app_sign_up_title": "Регистрация",
+	"$care_app_nav_org_list_label": "Организации",
+	"$care_app_org_add_Description_field_name": "Описание",
+	"$care_app_org_add_Image_field_name": "Изображение",
+	"$care_app_org_add_Name_field_name": "Название",
+	"$care_app_org_add_Submit_title": "Создать",
+	"$care_app_org_add_error_required": "*",
+	"$care_app_org_add_title": "Создание организации",
+	"$care_app_org_list_Close_page_hint": "Закрыть страницу",
+	"$care_app_org_list_Org_add_hint": "Создать организацию",
+	"$care_app_org_list_list_empty_text": "Вы не подписаны ни на одну организацию",
+	"$care_app_org_list_title": "Организации"
 }
