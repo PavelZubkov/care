@@ -2623,6 +2623,7 @@ declare namespace $ {
         response_status(key: $care_app_job): "wait" | "decline" | "apply";
         response_message(key: $care_app_job): string;
         about(next?: string): string;
+        images(next?: string[]): string[];
         contact_telegram(next?: string): string;
         contact_mail(next?: string): string;
         contact_website(next?: string): string;
@@ -2634,6 +2635,7 @@ declare namespace $ {
         company_tasks(id: string, next?: string): string;
         company_date_start(id: string, next?: $mol_time_moment): $mol_time_moment;
         company_date_end(id: string, next?: $mol_time_moment): $mol_time_moment | null;
+        company_working_now(id: string, next?: boolean): boolean;
         education_list(next?: string[]): string[];
         education_level(id: string, next?: string): string;
         education_institution(id: string, next?: string): string;
@@ -4302,12 +4304,14 @@ declare namespace $.$$ {
 declare namespace $ {
     class $care_app_person_edit extends $mol_page {
         domain(): $care_app_domain;
+        about(next?: any): string;
         company_name(id: any, next?: any): string;
         company_position(id: any, next?: any): string;
         company_industry(id: any, next?: any): string;
         company_tasks(id: any, next?: any): string;
         company_date_start(id: any, next?: any): $mol_time_moment;
         company_date_end(id: any, next?: any): $mol_time_moment | null;
+        company_working_now(id: any, next?: any): boolean;
         education_level(id: any, next?: any): string;
         education_institution(id: any, next?: any): string;
         education_department(id: any, next?: any): string;
@@ -4321,7 +4325,9 @@ declare namespace $ {
             website: string;
         };
         body(): readonly any[];
-        about(next?: any): string;
+        images(next?: any): readonly any[];
+        Images_control(): $$.$care_attach;
+        Images_field(): $$.$mol_form_field;
         About_control(): $$.$mol_textarea;
         About_field(): $$.$mol_form_field;
         contact_label(id: any): string;
@@ -4339,7 +4345,6 @@ declare namespace $ {
         Company_date_start_label(id: any): $$.$mol_paragraph;
         Company_date_start(id: any): $$.$mol_date;
         Company_date_start_bar(id: any): $mol_bar;
-        company_working_now(id: any, next?: any): boolean;
         Company_working_now(id: any): $mol_check_box;
         company_date_end_moment(id: any, next?: any): $mol_time_moment;
         Company_date_end(id: any): $$.$mol_date;
@@ -4355,6 +4360,7 @@ declare namespace $ {
         Company_action(id: any): $mol_bar;
         Company_row(id: any): $$.$mol_list;
         company_list(): readonly any[];
+        Company_list(): $$.$mol_list;
         Company_field(): $$.$mol_form_field;
         education_level_dict(): {
             level0: string;
@@ -4380,6 +4386,7 @@ declare namespace $ {
         Education_action(id: any): $mol_bar;
         Education_row(id: any): $$.$mol_list;
         education_list(): readonly any[];
+        Education_list(): $$.$mol_list;
         Education_field(): $$.$mol_form_field;
         skill_add_name(next?: any): string;
         Skill_add_name(): $$.$mol_string;
@@ -4403,6 +4410,7 @@ declare namespace $ {
 
 declare namespace $.$$ {
     class $care_app_person_edit extends $.$care_app_person_edit {
+        images(next?: string[]): string[];
         contact_rows(): $mol_bar[];
         contact_label(id: string): any;
         contact_value(id: string, next?: string): any;
@@ -4410,6 +4418,7 @@ declare namespace $.$$ {
         company_delete(id: string): void;
         company_list(): $mol_list[] | $mol_button_minor[];
         date_end_content(id: string): ($mol_date | $mol_check_box)[];
+        company_date_end_moment(id: string, next?: $mol_time_moment): $mol_time_moment;
         education_add(id: string): void;
         education_delete(id: string): void;
         education_list(): $mol_list[] | $mol_button_minor[];

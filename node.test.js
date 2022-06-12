@@ -8868,6 +8868,10 @@ var $;
         about(next) {
             return String(this.state().sub('about').value(next) ?? '');
         }
+        images(next) {
+            const array = this.state().sub('images').list(next);
+            return array.map(base64 => String(base64));
+        }
         contact_telegram(next) {
             return String(this.state().sub('contact_telegram').value(next) ?? '');
         }
@@ -8903,6 +8907,9 @@ var $;
         company_date_end(id, next) {
             const str = this.state().sub('company').sub(id).sub('date_end').value(next && next.toString()) ?? '';
             return str ? new $mol_time_moment(String(str)) : null;
+        }
+        company_working_now(id, next) {
+            return Boolean(this.state().sub('company').sub(id).sub('working_now').value(next) ?? false);
         }
         education_list(next) {
             const array = this.state().sub('education_list').list(next);
@@ -15646,6 +15653,9 @@ var $;
         domain() {
             return this.person().domain();
         }
+        about(next) {
+            return this.person().about(next);
+        }
         company_name(id, next) {
             return this.person().company_name(id, next);
         }
@@ -15663,6 +15673,9 @@ var $;
         }
         company_date_end(id, next) {
             return this.person().company_date_end(id, next);
+        }
+        company_working_now(id, next) {
+            return this.person().company_working_now(id, next);
         }
         education_level(id, next) {
             return this.person().education_level(id, next);
@@ -15698,10 +15711,21 @@ var $;
                 this.Form()
             ];
         }
-        about(next) {
+        images(next) {
             if (next !== undefined)
                 return next;
-            return "";
+            return [];
+        }
+        Images_control() {
+            const obj = new this.$.$care_attach();
+            obj.items = (next) => this.images(next);
+            return obj;
+        }
+        Images_field() {
+            const obj = new this.$.$mol_form_field();
+            obj.name = () => "Аватар";
+            obj.control = () => this.Images_control();
+            return obj;
         }
         About_control() {
             const obj = new this.$.$mol_textarea();
@@ -15802,11 +15826,6 @@ var $;
             ];
             return obj;
         }
-        company_working_now(id, next) {
-            if (next !== undefined)
-                return next;
-            return true;
-        }
         Company_working_now(id) {
             const obj = new this.$.$mol_check_box();
             obj.title = () => "Работаю тут";
@@ -15902,10 +15921,17 @@ var $;
                 this.Company_row("0")
             ];
         }
+        Company_list() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => this.company_list();
+            return obj;
+        }
         Company_field() {
             const obj = new this.$.$mol_form_field();
             obj.name = () => "Опыт работы";
-            obj.content = () => this.company_list();
+            obj.content = () => [
+                this.Company_list()
+            ];
             return obj;
         }
         education_level_dict() {
@@ -16008,10 +16034,17 @@ var $;
                 this.Education_row("0")
             ];
         }
+        Education_list() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => this.education_list();
+            return obj;
+        }
         Education_field() {
             const obj = new this.$.$mol_form_field();
             obj.name = () => "Образование";
-            obj.content = () => this.education_list();
+            obj.content = () => [
+                this.Education_list()
+            ];
             return obj;
         }
         skill_add_name(next) {
@@ -16114,6 +16147,7 @@ var $;
         Form() {
             const obj = new this.$.$mol_form();
             obj.form_fields = () => [
+                this.Images_field(),
                 this.About_field(),
                 this.Contact_field(),
                 this.Company_field(),
@@ -16128,7 +16162,13 @@ var $;
     ], $care_app_person_edit.prototype, "person", null);
     __decorate([
         $mol_mem
-    ], $care_app_person_edit.prototype, "about", null);
+    ], $care_app_person_edit.prototype, "images", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Images_control", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Images_field", null);
     __decorate([
         $mol_mem
     ], $care_app_person_edit.prototype, "About_control", null);
@@ -16176,9 +16216,6 @@ var $;
     ], $care_app_person_edit.prototype, "Company_date_start_bar", null);
     __decorate([
         $mol_mem_key
-    ], $care_app_person_edit.prototype, "company_working_now", null);
-    __decorate([
-        $mol_mem_key
     ], $care_app_person_edit.prototype, "Company_working_now", null);
     __decorate([
         $mol_mem_key
@@ -16216,6 +16253,9 @@ var $;
     __decorate([
         $mol_mem_key
     ], $care_app_person_edit.prototype, "Company_row", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Company_list", null);
     __decorate([
         $mol_mem
     ], $care_app_person_edit.prototype, "Company_field", null);
@@ -16258,6 +16298,9 @@ var $;
     __decorate([
         $mol_mem_key
     ], $care_app_person_edit.prototype, "Education_row", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Education_list", null);
     __decorate([
         $mol_mem
     ], $care_app_person_edit.prototype, "Education_field", null);
@@ -16316,6 +16359,9 @@ var $;
     var $$;
     (function ($$) {
         class $care_app_person_edit extends $.$care_app_person_edit {
+            images(next) {
+                return this.person().images(next && next.slice(-1));
+            }
             contact_rows() {
                 return Object.keys(this.contact_dict()).map(id => this.Contact_row(id));
             }
@@ -16332,7 +16378,7 @@ var $;
                     next.push($mol_guid());
                 }
                 else {
-                    next.splice(index, 0, $mol_guid());
+                    next.splice(index + 1, 0, $mol_guid());
                 }
                 this.person().company_list(next);
             }
@@ -16353,6 +16399,12 @@ var $;
                     ...!this.company_working_now(id) ? [this.Company_date_end(id)] : [],
                 ];
             }
+            company_date_end_moment(id, next) {
+                if (!this.company_working_now(id)) {
+                    return this.person().company_date_end(id, next) ?? new $mol_time_moment;
+                }
+                return next ?? new $mol_time_moment;
+            }
             education_add(id) {
                 const next = this.person().education_list().slice();
                 const index = next.indexOf(id);
@@ -16360,7 +16412,7 @@ var $;
                     next.push($mol_guid());
                 }
                 else {
-                    next.splice(index, 0, $mol_guid());
+                    next.splice(index + 1, 0, $mol_guid());
                 }
                 this.person().education_list(next);
             }
