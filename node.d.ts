@@ -2397,6 +2397,18 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_icon_briefcase extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_briefcase_outline extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
     class $care_app_nav extends $mol_page {
         body(): readonly any[];
         Org_list_icon(): $mol_icon_office_building;
@@ -2405,6 +2417,9 @@ declare namespace $ {
         Job_search_icon(): $mol_icon_magnify;
         job_search_label(): string;
         Job_search(): $$.$mol_link;
+        Person_activity_icon(): $mol_icon_briefcase_outline;
+        Person_activity_label(): string;
+        Person_activity(): $$.$mol_link;
     }
 }
 
@@ -2563,6 +2578,9 @@ declare namespace $ {
         pay(next?: string): string;
         urgented(next?: boolean): boolean;
         project(next?: $care_app_project): $care_app_project;
+        response_list(next?: $care_app_person[]): $care_app_person[];
+        response_status(key: $care_app_person, next?: 'wait' | 'decline' | 'apply'): "wait" | "decline" | "apply";
+        response_message(key: $care_app_person, next?: string): string;
     }
 }
 
@@ -2625,6 +2643,9 @@ declare namespace $ {
         phone(next?: string): string;
         password(next?: string): string;
         org_list(next?: $care_app_org[]): $care_app_org[];
+        response_list(next?: $care_app_job[]): $care_app_job[];
+        response_status(key: $care_app_job): "wait" | "decline" | "apply";
+        response_message(key: $care_app_job): string;
     }
 }
 
@@ -3960,6 +3981,25 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    class $mol_deck extends $mol_list {
+        items(): readonly $mol_view[];
+        rows(): readonly $mol_view[];
+        current(val?: any): string;
+        switch_options(): {};
+        Switch(): $$.$mol_switch;
+        Content(): $mol_view;
+    }
+}
+
+declare namespace $.$$ {
+    class $mol_deck extends $.$mol_deck {
+        current(next?: string): string;
+        switch_options(): Record<string, string>;
+        Content(): any;
+    }
+}
+
+declare namespace $ {
     class $care_app_job_page extends $mol_page {
         name(): string;
         functions(): string;
@@ -4005,8 +4045,22 @@ declare namespace $ {
         };
         add_page(): $$.$care_app_job_add;
         body(): readonly any[];
+        Response_list(): $$.$mol_list;
+        Job(): $$.$mol_list;
         Close_page_icon(): $mol_icon_cross;
         Close_page(): $$.$mol_link;
+        tabs(): readonly any[];
+        Tabs(): $$.$mol_deck;
+        person_id(id: any): string;
+        person_full_name(id: any): string;
+        Person(id: any): $$.$mol_link;
+        person_message(id: any): string;
+        Message(id: any): $$.$mol_paragraph;
+        person_response_status(id: any, next?: any): string;
+        Status(id: any): $$.$mol_switch;
+        response_list_rows(id: any): readonly any[];
+        Response_list_row(id: any): $$.$mol_list;
+        response_rows(): readonly any[];
         Name_field(): $mol_labeler;
         project_id(): string;
         project_name(): string;
@@ -4025,6 +4079,16 @@ declare namespace $ {
         Work_shedule_field(): $mol_labeler;
         pay_string(): string;
         Pay_field(): $mol_labeler;
+        response_text(next?: any): string;
+        response_text_enabled(): boolean;
+        Response_text(): $$.$mol_textarea;
+        response_submit(next?: any): any;
+        Response_submit(): $mol_button_major;
+        response_wait(): string;
+        response_apply(): string;
+        response_decline(): string;
+        response_content(): readonly any[];
+        Response_field(): $mol_labeler;
     }
 }
 
@@ -4033,6 +4097,9 @@ declare namespace $.$$ {
 
 declare namespace $.$$ {
     class $care_app_job_page extends $.$care_app_job_page {
+        domain(): $care_app_domain;
+        person(): $care_app_person_service;
+        user(): $care_app_person;
         experience_string(): any;
         format_string(): any;
         duration_string(): any;
@@ -4040,6 +4107,16 @@ declare namespace $.$$ {
         pay_string(): any;
         project_id(): string;
         project_name(): string;
+        user_responsed(): boolean;
+        user_responsed_status(): "wait" | "decline" | "apply";
+        user_responsed_message(): string;
+        response_content(): (string | $mol_button_major | $mol_textarea)[];
+        response_submit(): void;
+        person_id(id: string): string;
+        person_full_name(id: string): string;
+        person_message(id: string): string;
+        person_response_status(id: string, next?: ReturnType<$care_app_job['response_status']>): "wait" | "decline" | "apply";
+        response_rows(): $mol_list[];
     }
 }
 
@@ -4167,7 +4244,43 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    class $care_app_person_activity extends $mol_page {
+        person(): $care_app_person;
+        title(): string;
+        msg(): {
+            wait: string;
+            apply: string;
+            decline: string;
+        };
+        body(): readonly any[];
+        job_id(id: any): string;
+        job_name(id: any): string;
+        Job_link(id: any): $$.$mol_link;
+        response_status(id: any): string;
+        Response_status(id: any): $$.$mol_paragraph;
+        Response_list_row(id: any): $$.$mol_list;
+        response_list_rows(): readonly any[];
+        Response_list(): $$.$mol_list;
+        Tabs(): $$.$mol_deck;
+    }
+}
+
+declare namespace $.$$ {
+    class $care_app_person_activity extends $.$care_app_person_activity {
+        domain(): $care_app_domain;
+        job(): $care_app_job_service;
+        response_list_rows(): $mol_list[];
+        job_id(id: string): string;
+        job_name(id: string): string;
+        response_status(id: string): string;
+    }
+}
+
+declare namespace $ {
     class $care_app extends $mol_book2 {
+        attr(): {
+            mol_theme: string;
+        };
         person(): $care_app_person_service;
         sign(): $care_app_sign;
         org(): $care_app_org_service;
@@ -4193,6 +4306,7 @@ declare namespace $ {
         Job_page(): $$.$care_app_job_page;
         Job_add_page(): $$.$care_app_job_add;
         Job_search_page(): $$.$care_app_job_search;
+        Person_activity_page(): $$.$care_app_person_activity;
     }
 }
 
@@ -4208,7 +4322,7 @@ declare namespace $.$$ {
         org_opened(): $care_app_org;
         project_opened(): $care_app_project;
         job_opened(): $care_app_job;
-        pages(): ($care_app_sign_up | $care_app_sign_in)[] | ($care_app_org_list | $care_app_org_page | $care_app_org_add | $care_app_project_add | $care_app_project_page | $care_app_job_add | $care_app_job_page | $care_app_job_search | $care_app_nav)[];
+        pages(): ($care_app_sign_up | $care_app_sign_in)[] | ($care_app_org_list | $care_app_org_page | $care_app_org_add | $care_app_project_add | $care_app_project_page | $care_app_job_add | $care_app_job_page | $care_app_job_search | $care_app_person_activity | $care_app_nav)[];
         sign_out(): void;
     }
 }

@@ -186,6 +186,8 @@
     "$mol_icon_office_building",
     "$mol_icon_office",
     "$mol_icon_magnify",
+    "$mol_icon_briefcase_outline",
+    "$mol_icon_briefcase",
     "$care_app_org_list",
     "$mol_icon_plus",
     "$mol_icon_cross",
@@ -237,10 +239,12 @@
     "$mol_try",
     "$care_app_job_page",
     "$care_app_job_add",
+    "$mol_deck",
     "$care_app_job_search",
     "$mol_search",
     "$mol_nav",
-    "$mol_fiber"
+    "$mol_fiber",
+    "$care_app_person_activity"
   ],
   "dependencies": {
     "jsdom": "*",

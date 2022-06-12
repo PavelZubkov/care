@@ -7773,11 +7773,36 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    class $mol_icon_briefcase extends $mol_icon {
+        path() {
+            return "M10,2H14C15.1,2 16,2.9 16,4V6H20C21.1,6 22,6.9 22,8V19C22,20.1 21.1,21 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z";
+        }
+    }
+    $.$mol_icon_briefcase = $mol_icon_briefcase;
+})($ || ($ = {}));
+//mol/icon/briefcase/-view.tree/briefcase.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_briefcase_outline extends $mol_icon {
+        path() {
+            return "M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z";
+        }
+    }
+    $.$mol_icon_briefcase_outline = $mol_icon_briefcase_outline;
+})($ || ($ = {}));
+//mol/icon/briefcase/outline/-view.tree/outline.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
     class $care_app_nav extends $mol_page {
         body() {
             return [
                 this.Org_list(),
-                this.Job_search()
+                this.Job_search(),
+                this.Person_activity()
             ];
         }
         Org_list_icon() {
@@ -7816,6 +7841,24 @@ var $;
             ];
             return obj;
         }
+        Person_activity_icon() {
+            const obj = new this.$.$mol_icon_briefcase_outline();
+            return obj;
+        }
+        Person_activity_label() {
+            return "Деятельность";
+        }
+        Person_activity() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                person_activity: ""
+            });
+            obj.sub = () => [
+                this.Person_activity_icon(),
+                this.Person_activity_label()
+            ];
+            return obj;
+        }
     }
     __decorate([
         $mol_mem
@@ -7829,6 +7872,12 @@ var $;
     __decorate([
         $mol_mem
     ], $care_app_nav.prototype, "Job_search", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_activity_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_activity", null);
     $.$care_app_nav = $care_app_nav;
 })($ || ($ = {}));
 //care/app/nav/-view.tree/nav.view.tree.ts
@@ -8496,6 +8545,17 @@ var $;
             const id = String(this.state().sub('project').value(next && next.id()));
             return this.domain().project().item(id);
         }
+        response_list(next) {
+            const ids = this.state().sub('response_list').list(next && next.map(obj => obj.id()));
+            return ids.map(id => this.domain().person().item(String(id)));
+        }
+        response_status(key, next) {
+            const status = this.state().sub('response_status').sub(key.id()).value(next) ?? 'wait';
+            return status;
+        }
+        response_message(key, next) {
+            return String(this.state().sub('response_message').sub(key.id()).value(next) ?? '');
+        }
     }
     $.$care_app_job = $care_app_job;
 })($ || ($ = {}));
@@ -8687,6 +8747,16 @@ var $;
         org_list(next) {
             const ids = this.state().sub('org_list').list(next && next.map(obj => obj.id()));
             return ids.map(id => this.domain().org().item(String(id)));
+        }
+        response_list(next) {
+            const ids = this.state().sub('response_list').list(next && next.map(obj => obj.id()));
+            return ids.map(id => this.domain().job().item(String(id)));
+        }
+        response_status(key) {
+            return this.domain().job().item(key.id()).response_status(this);
+        }
+        response_message(key) {
+            return this.domain().job().item(key.id()).response_message(this);
         }
     }
     $.$care_app_person = $care_app_person;
@@ -13905,6 +13975,79 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    class $mol_deck extends $mol_list {
+        items() {
+            return [];
+        }
+        rows() {
+            return [
+                this.Switch(),
+                this.Content()
+            ];
+        }
+        current(val) {
+            if (val !== undefined)
+                return val;
+            return "0";
+        }
+        switch_options() {
+            return {};
+        }
+        Switch() {
+            const obj = new this.$.$mol_switch();
+            obj.value = (val) => this.current(val);
+            obj.options = () => this.switch_options();
+            return obj;
+        }
+        Content() {
+            const obj = new this.$.$mol_view();
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $mol_deck.prototype, "current", null);
+    __decorate([
+        $mol_mem
+    ], $mol_deck.prototype, "Switch", null);
+    __decorate([
+        $mol_mem
+    ], $mol_deck.prototype, "Content", null);
+    $.$mol_deck = $mol_deck;
+})($ || ($ = {}));
+//mol/deck/-view.tree/deck.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_deck extends $.$mol_deck {
+            current(next) {
+                return $mol_state_session.value(`${this}.current()`, next) || '0';
+            }
+            switch_options() {
+                let options = {};
+                this.items().forEach((item, index) => {
+                    options[String(index)] = item.title();
+                });
+                return options;
+            }
+            Content() {
+                return this.items()[this.current()];
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_deck.prototype, "Content", null);
+        $$.$mol_deck = $mol_deck;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//mol/deck/deck.view.ts
+;
+"use strict";
+var $;
+(function ($) {
     class $care_app_job_page extends $mol_page {
         name() {
             return this.job().name();
@@ -13966,6 +14109,19 @@ var $;
         }
         body() {
             return [
+                this.Tabs()
+            ];
+        }
+        Response_list() {
+            const obj = new this.$.$mol_list();
+            obj.title = () => "Отклики";
+            obj.rows = () => this.response_rows();
+            return obj;
+        }
+        Job() {
+            const obj = new this.$.$mol_list();
+            obj.title = () => "Информация";
+            obj.rows = () => [
                 this.Name_field(),
                 this.Project_field(),
                 this.Functions_field(),
@@ -13975,8 +14131,10 @@ var $;
                 this.Format_field(),
                 this.Duration_field(),
                 this.Work_shedule_field(),
-                this.Pay_field()
+                this.Pay_field(),
+                this.Response_field()
             ];
+            return obj;
         }
         Close_page_icon() {
             const obj = new this.$.$mol_icon_cross();
@@ -13991,6 +14149,71 @@ var $;
                 this.Close_page_icon()
             ];
             return obj;
+        }
+        tabs() {
+            return [
+                this.Job(),
+                this.Response_list()
+            ];
+        }
+        Tabs() {
+            const obj = new this.$.$mol_deck();
+            obj.items = () => this.tabs();
+            return obj;
+        }
+        person_id(id) {
+            return "";
+        }
+        person_full_name(id) {
+            return "";
+        }
+        Person(id) {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                person: this.person_id(id)
+            });
+            obj.title = () => this.person_full_name(id);
+            return obj;
+        }
+        person_message(id) {
+            return "";
+        }
+        Message(id) {
+            const obj = new this.$.$mol_paragraph();
+            obj.title = () => this.person_message(id);
+            return obj;
+        }
+        person_response_status(id, next) {
+            if (next !== undefined)
+                return next;
+            return "";
+        }
+        Status(id) {
+            const obj = new this.$.$mol_switch();
+            obj.value = (next) => this.person_response_status(id, next);
+            obj.options = () => ({
+                wait: "На рассмотрении",
+                apply: "Принят",
+                decline: "Отклонено"
+            });
+            return obj;
+        }
+        response_list_rows(id) {
+            return [
+                this.Person(id),
+                this.Message(id),
+                this.Status(id)
+            ];
+        }
+        Response_list_row(id) {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => this.response_list_rows(id);
+            return obj;
+        }
+        response_rows() {
+            return [
+                this.Response_list_row("0")
+            ];
         }
         Name_field() {
             const obj = new this.$.$mol_labeler();
@@ -14101,6 +14324,56 @@ var $;
             ];
             return obj;
         }
+        response_text(next) {
+            if (next !== undefined)
+                return next;
+            return "";
+        }
+        response_text_enabled() {
+            return true;
+        }
+        Response_text() {
+            const obj = new this.$.$mol_textarea();
+            obj.hint = () => "Сопроводительное сообщение";
+            obj.value = (next) => this.response_text(next);
+            obj.enabled = () => this.response_text_enabled();
+            return obj;
+        }
+        response_submit(next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        Response_submit() {
+            const obj = new this.$.$mol_button_major();
+            obj.click = (next) => this.response_submit(next);
+            obj.title = () => "Отправить";
+            return obj;
+        }
+        response_wait() {
+            return "На рассмотрении";
+        }
+        response_apply() {
+            return "Вы приняты";
+        }
+        response_decline() {
+            return "Вас не приняли";
+        }
+        response_content() {
+            return [
+                this.Response_text(),
+                this.Response_submit(),
+                this.response_wait(),
+                this.response_apply(),
+                this.response_decline()
+            ];
+        }
+        Response_field() {
+            const obj = new this.$.$mol_labeler();
+            obj.title = () => "Отклик на вакансию";
+            obj.content = () => this.response_content();
+            return obj;
+        }
     }
     __decorate([
         $mol_mem
@@ -14110,10 +14383,34 @@ var $;
     ], $care_app_job_page.prototype, "add_page", null);
     __decorate([
         $mol_mem
+    ], $care_app_job_page.prototype, "Response_list", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_page.prototype, "Job", null);
+    __decorate([
+        $mol_mem
     ], $care_app_job_page.prototype, "Close_page_icon", null);
     __decorate([
         $mol_mem
     ], $care_app_job_page.prototype, "Close_page", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_page.prototype, "Tabs", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_job_page.prototype, "Person", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_job_page.prototype, "Message", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_job_page.prototype, "person_response_status", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_job_page.prototype, "Status", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_job_page.prototype, "Response_list_row", null);
     __decorate([
         $mol_mem
     ], $care_app_job_page.prototype, "Name_field", null);
@@ -14147,6 +14444,21 @@ var $;
     __decorate([
         $mol_mem
     ], $care_app_job_page.prototype, "Pay_field", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_page.prototype, "response_text", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_page.prototype, "Response_text", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_page.prototype, "response_submit", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_page.prototype, "Response_submit", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_page.prototype, "Response_field", null);
     $.$care_app_job_page = $care_app_job_page;
 })($ || ($ = {}));
 //care/app/job/page/-view.tree/page.view.tree.ts
@@ -14175,6 +14487,13 @@ var $;
                     whiteSpace: 'pre',
                 },
             },
+            Response_field: {
+                Content: {
+                    flex: {
+                        direction: 'column',
+                    },
+                },
+            },
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -14186,6 +14505,15 @@ var $;
     var $$;
     (function ($$) {
         class $care_app_job_page extends $.$care_app_job_page {
+            domain() {
+                return this.job().domain();
+            }
+            person() {
+                return this.domain().person();
+            }
+            user() {
+                return this.domain().user();
+            }
             experience_string() {
                 return this.experience_dict()[this.experience()];
             }
@@ -14206,6 +14534,50 @@ var $;
             }
             project_name() {
                 return this.job().project().name();
+            }
+            user_responsed() {
+                return this.user().response_list().includes(this.job());
+            }
+            user_responsed_status() {
+                return this.user().response_status(this.job());
+            }
+            user_responsed_message() {
+                return this.user().response_message(this.job());
+            }
+            response_content() {
+                return [
+                    ...this.user_responsed() ? [
+                        ...this.user_responsed_status() === 'wait' ? [this.response_wait()] : [],
+                        ...this.user_responsed_status() === 'apply' ? [this.response_apply()] : [],
+                        ...this.user_responsed_status() === 'decline' ? [this.response_decline()] : [],
+                    ] : [
+                        this.Response_text(),
+                        this.Response_submit(),
+                    ],
+                ];
+            }
+            response_submit() {
+                this.job().response_list([...this.job().response_list(), this.user()]);
+                this.user().response_list([...this.user().response_list(), this.job()]);
+                this.job().response_status(this.user(), 'wait');
+                this.job().response_message(this.user(), this.response_text());
+            }
+            person_id(id) {
+                return id;
+            }
+            person_full_name(id) {
+                const person = this.person().item(id);
+                return `${person.name()} ${person.name_sur()}`;
+            }
+            person_message(id) {
+                return this.person().item(id).response_message(this.job());
+            }
+            person_response_status(id, next) {
+                const person = this.person().item(id);
+                return this.job().response_status(person, next);
+            }
+            response_rows() {
+                return this.job().response_list().map(obj => this.Response_list_row(obj.id()));
             }
         }
         $$.$care_app_job_page = $care_app_job_page;
@@ -14878,7 +15250,137 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    class $care_app_person_activity extends $mol_page {
+        person() {
+            const obj = new this.$.$care_app_person();
+            return obj;
+        }
+        title() {
+            return "Деятельность";
+        }
+        msg() {
+            return {
+                wait: "На рассмотрении",
+                apply: "Принята",
+                decline: "Отклонена"
+            };
+        }
+        body() {
+            return [
+                this.Tabs()
+            ];
+        }
+        job_id(id) {
+            return "";
+        }
+        job_name(id) {
+            return "";
+        }
+        Job_link(id) {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                job: this.job_id(id)
+            });
+            obj.title = () => this.job_name(id);
+            return obj;
+        }
+        response_status(id) {
+            return "";
+        }
+        Response_status(id) {
+            const obj = new this.$.$mol_paragraph();
+            obj.title = () => this.response_status(id);
+            return obj;
+        }
+        Response_list_row(id) {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => [
+                this.Job_link(id),
+                this.Response_status(id)
+            ];
+            return obj;
+        }
+        response_list_rows() {
+            return [
+                this.Response_list_row("0")
+            ];
+        }
+        Response_list() {
+            const obj = new this.$.$mol_list();
+            obj.title = () => "Заявки";
+            obj.rows = () => this.response_list_rows();
+            return obj;
+        }
+        Tabs() {
+            const obj = new this.$.$mol_deck();
+            obj.items = () => [
+                this.Response_list()
+            ];
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $care_app_person_activity.prototype, "person", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_activity.prototype, "Job_link", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_activity.prototype, "Response_status", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_activity.prototype, "Response_list_row", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_activity.prototype, "Response_list", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_activity.prototype, "Tabs", null);
+    $.$care_app_person_activity = $care_app_person_activity;
+})($ || ($ = {}));
+//care/app/person/activity/-view.tree/activity.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $care_app_person_activity extends $.$care_app_person_activity {
+            domain() {
+                return this.person().domain();
+            }
+            job() {
+                return this.domain().job();
+            }
+            response_list_rows() {
+                return this.person().response_list().map(obj => this.Response_list_row(obj.id()));
+            }
+            job_id(id) {
+                return id;
+            }
+            job_name(id) {
+                return this.job().item(id).name();
+            }
+            response_status(id) {
+                const key = this.person().response_status(this.job().item(id));
+                return this.msg()[key];
+            }
+        }
+        $$.$care_app_person_activity = $care_app_person_activity;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/person/activity/activity.view.ts
+;
+"use strict";
+var $;
+(function ($) {
     class $care_app extends $mol_book2 {
+        attr() {
+            return {
+                mol_theme: "$mol_theme_light"
+            };
+        }
         person() {
             return this.domain().person();
         }
@@ -14910,7 +15412,8 @@ var $;
                 this.Project_add_page(),
                 this.Job_page(),
                 this.Job_add_page(),
-                this.Job_search_page()
+                this.Job_search_page(),
+                this.Person_activity_page()
             ];
         }
         Sign_up_page() {
@@ -15005,6 +15508,11 @@ var $;
             obj.job_service = () => this.job_service();
             return obj;
         }
+        Person_activity_page() {
+            const obj = new this.$.$care_app_person_activity();
+            obj.person = () => this.user();
+            return obj;
+        }
     }
     __decorate([
         $mol_mem
@@ -15063,6 +15571,9 @@ var $;
     __decorate([
         $mol_mem
     ], $care_app.prototype, "Job_search_page", null);
+    __decorate([
+        $mol_mem
+    ], $care_app.prototype, "Person_activity_page", null);
     $.$care_app = $care_app;
 })($ || ($ = {}));
 //care/app/-view.tree/app.view.tree.ts
@@ -15128,6 +15639,12 @@ var $;
                     shrink: 0,
                 },
             },
+            Person_activity_page: {
+                flex: {
+                    basis: rem(22),
+                    shrink: 0,
+                },
+            },
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -15170,8 +15687,9 @@ var $;
                     ...this.arg().project === '' && this.arg().org ? [this.Project_add_page()] : [],
                     ...this.arg().project ? [this.Project_page()] : [],
                     ...this.arg().project && this.arg().job === '' ? [this.Job_add_page()] : [],
-                    ...this.arg().job ? [this.Job_page()] : [],
                     ...this.arg().job_search === '' ? [this.Job_search_page()] : [],
+                    ...this.arg().job ? [this.Job_page()] : [],
+                    ...this.arg().person_activity === '' ? [this.Person_activity_page()] : [],
                 ];
             }
             sign_out() {
