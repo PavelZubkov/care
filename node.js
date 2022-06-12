@@ -7737,6 +7737,70 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    class $mol_icon_account extends $mol_icon {
+        path() {
+            return "M12,4C14.21,4 16,5.79 16,8C16,10.21 14.21,12 12,12C9.79,12 8,10.21 8,8C8,5.79 9.79,4 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z";
+        }
+    }
+    $.$mol_icon_account = $mol_icon_account;
+})($ || ($ = {}));
+//mol/icon/account/-view.tree/account.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_pencil extends $mol_icon {
+        path() {
+            return "M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z";
+        }
+    }
+    $.$mol_icon_pencil = $mol_icon_pencil;
+})($ || ($ = {}));
+//mol/icon/pencil/-view.tree/pencil.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_bar extends $mol_view {
+    }
+    $.$mol_bar = $mol_bar;
+})($ || ($ = {}));
+//mol/bar/-view.tree/bar.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/bar/bar.view.css", "[mol_bar] {\n\tdisplay: flex;\n\t/* box-shadow: inset 0 0 0 1px var(--mol_theme_line); */\n\tborder-radius: var(--mol_gap_round);\n}\n");
+})($ || ($ = {}));
+//mol/bar/-css/bar.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_briefcase extends $mol_icon {
+        path() {
+            return "M10,2H14C15.1,2 16,2.9 16,4V6H20C21.1,6 22,6.9 22,8V19C22,20.1 21.1,21 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z";
+        }
+    }
+    $.$mol_icon_briefcase = $mol_icon_briefcase;
+})($ || ($ = {}));
+//mol/icon/briefcase/-view.tree/briefcase.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_briefcase_outline extends $mol_icon {
+        path() {
+            return "M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z";
+        }
+    }
+    $.$mol_icon_briefcase_outline = $mol_icon_briefcase_outline;
+})($ || ($ = {}));
+//mol/icon/briefcase/outline/-view.tree/outline.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
     class $mol_icon_office extends $mol_icon {
         path() {
             return "M3,18L7,16.75V7L14,5V19.5L3.5,18.25L14,22L20,20.75V3.5L13.95,2L3,5.75V18Z";
@@ -7773,37 +7837,72 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    class $mol_icon_briefcase extends $mol_icon {
-        path() {
-            return "M10,2H14C15.1,2 16,2.9 16,4V6H20C21.1,6 22,6.9 22,8V19C22,20.1 21.1,21 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z";
-        }
-    }
-    $.$mol_icon_briefcase = $mol_icon_briefcase;
-})($ || ($ = {}));
-//mol/icon/briefcase/-view.tree/briefcase.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_icon_briefcase_outline extends $mol_icon {
-        path() {
-            return "M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z";
-        }
-    }
-    $.$mol_icon_briefcase_outline = $mol_icon_briefcase_outline;
-})($ || ($ = {}));
-//mol/icon/briefcase/outline/-view.tree/outline.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
     class $care_app_nav extends $mol_page {
         body() {
             return [
+                this.Person(),
+                this.Person_activity(),
                 this.Org_list(),
-                this.Job_search(),
-                this.Person_activity()
+                this.Job_search()
             ];
+        }
+        Person_icon() {
+            const obj = new this.$.$mol_icon_account();
+            return obj;
+        }
+        person_label() {
+            return "Моя страница";
+        }
+        Person_link() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                person: ""
+            });
+            obj.sub = () => [
+                this.Person_icon(),
+                this.person_label()
+            ];
+            return obj;
+        }
+        Person_edit_icon() {
+            const obj = new this.$.$mol_icon_pencil();
+            return obj;
+        }
+        Person_edit_link() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                person_edit: ""
+            });
+            obj.sub = () => [
+                this.Person_edit_icon()
+            ];
+            return obj;
+        }
+        Person() {
+            const obj = new this.$.$mol_bar();
+            obj.sub = () => [
+                this.Person_link(),
+                this.Person_edit_link()
+            ];
+            return obj;
+        }
+        Person_activity_icon() {
+            const obj = new this.$.$mol_icon_briefcase_outline();
+            return obj;
+        }
+        person_activity_label() {
+            return "Деятельность";
+        }
+        Person_activity() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                person_activity: ""
+            });
+            obj.sub = () => [
+                this.Person_activity_icon(),
+                this.person_activity_label()
+            ];
+            return obj;
         }
         Org_list_icon() {
             const obj = new this.$.$mol_icon_office_building();
@@ -7841,25 +7940,28 @@ var $;
             ];
             return obj;
         }
-        Person_activity_icon() {
-            const obj = new this.$.$mol_icon_briefcase_outline();
-            return obj;
-        }
-        Person_activity_label() {
-            return "Деятельность";
-        }
-        Person_activity() {
-            const obj = new this.$.$mol_link();
-            obj.arg = () => ({
-                person_activity: ""
-            });
-            obj.sub = () => [
-                this.Person_activity_icon(),
-                this.Person_activity_label()
-            ];
-            return obj;
-        }
     }
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_link", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_edit_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_edit_link", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_activity_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_activity", null);
     __decorate([
         $mol_mem
     ], $care_app_nav.prototype, "Org_list_icon", null);
@@ -7872,15 +7974,28 @@ var $;
     __decorate([
         $mol_mem
     ], $care_app_nav.prototype, "Job_search", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person_activity_icon", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person_activity", null);
     $.$care_app_nav = $care_app_nav;
 })($ || ($ = {}));
 //care/app/nav/-view.tree/nav.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($.$care_app_nav, {
+            Person: {
+                justifyContent: 'space-between',
+            },
+            Person_link: {
+                flex: {
+                    grow: 1,
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/nav/nav.view.css.ts
 ;
 "use strict";
 var $;
@@ -8757,6 +8872,68 @@ var $;
         }
         response_message(key) {
             return this.domain().job().item(key.id()).response_message(this);
+        }
+        about(next) {
+            return String(this.state().sub('about').value(next) ?? '');
+        }
+        contact_telegram(next) {
+            return String(this.state().sub('contact_telegram').value(next) ?? '');
+        }
+        contact_mail(next) {
+            return String(this.state().sub('contact_mail').value(next) ?? '');
+        }
+        contact_website(next) {
+            return String(this.state().sub('contact_website').value(next) ?? '');
+        }
+        company_list(next) {
+            const array = this.state().sub('company_list').list(next);
+            return array.map(String);
+        }
+        company_name(id, next) {
+            return String(this.state().sub('company').sub(id).sub('name').value(next) ?? '');
+        }
+        company_website(id, next) {
+            return String(this.state().sub('company').sub(id).sub('website').value(next) ?? '');
+        }
+        company_position(id, next) {
+            return String(this.state().sub('company').sub(id).sub('position').value(next) ?? '');
+        }
+        company_industry(id, next) {
+            return String(this.state().sub('company').sub(id).sub('industry').value(next) ?? '');
+        }
+        company_tasks(id, next) {
+            return String(this.state().sub('company').sub(id).sub('tasks').value(next) ?? '');
+        }
+        company_date_start(id, next) {
+            const str = this.state().sub('company').sub(id).sub('date_start').value(next && next.toString()) ?? '';
+            return new $mol_time_moment(str ? String(str) : undefined);
+        }
+        company_date_end(id, next) {
+            const str = this.state().sub('company').sub(id).sub('date_end').value(next && next.toString()) ?? '';
+            return str ? new $mol_time_moment(String(str)) : null;
+        }
+        education_list(next) {
+            const array = this.state().sub('education_list').list(next);
+            return array.map(String);
+        }
+        education_level(id, next) {
+            return String(this.state().sub('education').sub(id).sub('level').value(next) ?? '');
+        }
+        education_institution(id, next) {
+            return String(this.state().sub('education').sub(id).sub('institution').value(next) ?? '');
+        }
+        education_department(id, next) {
+            return String(this.state().sub('education').sub(id).sub('department').value(next) ?? '');
+        }
+        education_specialty(id, next) {
+            return String(this.state().sub('education').sub(id).sub('specialty').value(next) ?? '');
+        }
+        education_year_end(id, next) {
+            return Number(this.state().sub('education').sub(id).sub('year_end').value(next) ?? 2022);
+        }
+        skill_list(next) {
+            const array = this.state().sub('skill_list').list(next);
+            return array.map(key => String(key));
         }
     }
     $.$care_app_person = $care_app_person;
@@ -15250,6 +15427,993 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    class $mol_icon_tick extends $mol_icon {
+        path() {
+            return "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z";
+        }
+    }
+    $.$mol_icon_tick = $mol_icon_tick;
+})($ || ($ = {}));
+//mol/icon/tick/-view.tree/tick.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_check_box extends $mol_check {
+        Icon() {
+            const obj = new this.$.$mol_icon_tick();
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $mol_check_box.prototype, "Icon", null);
+    $.$mol_check_box = $mol_check_box;
+})($ || ($ = {}));
+//mol/check/box/-view.tree/box.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/box/box.view.css", "[mol_check_box_icon] {\n\tborder-radius: var(--mol_gap_round);\n\tbox-shadow: 0 0 0 1px var(--mol_theme_line);\n\tcolor: var(--mol_theme_shade);\n}\n\n[mol_check]:not([mol_check_checked]) > [mol_check_box_icon] {\n\tfill: transparent;\n}\n\n[mol_check]:not([disabled]) > [mol_check_box_icon] {\n\tbackground: var(--mol_theme_field);\n\tcolor: var(--mol_theme_text);\n}\n\n[mol_check_box_title] {\n\tmargin-left: .5rem;\n}\n");
+})($ || ($ = {}));
+//mol/check/box/-css/box.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_delete extends $mol_icon {
+        path() {
+            return "M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19C6,20.1 6.9,21 8,21H16C17.1,21 18,20.1 18,19V7H6V19Z";
+        }
+    }
+    $.$mol_icon_delete = $mol_icon_delete;
+})($ || ($ = {}));
+//mol/icon/delete/-view.tree/delete.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_minus extends $mol_icon {
+        path() {
+            return "M19,13H5V11H19V13Z";
+        }
+    }
+    $.$mol_icon_minus = $mol_icon_minus;
+})($ || ($ = {}));
+//mol/icon/minus/-view.tree/minus.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_number extends $mol_view {
+        precision_view() {
+            return this.precision();
+        }
+        precision_change() {
+            return this.precision();
+        }
+        value(val) {
+            if (val !== undefined)
+                return val;
+            return NaN;
+        }
+        sub() {
+            return [
+                this.String(),
+                this.Dec(),
+                this.Inc()
+            ];
+        }
+        precision() {
+            return 1;
+        }
+        value_string(val) {
+            if (val !== undefined)
+                return val;
+            return "";
+        }
+        hint() {
+            return " ";
+        }
+        enabled() {
+            return true;
+        }
+        string_enabled() {
+            return this.enabled();
+        }
+        String() {
+            const obj = new this.$.$mol_string();
+            obj.type = () => "tel";
+            obj.value = (val) => this.value_string(val);
+            obj.hint = () => this.hint();
+            obj.enabled = () => this.string_enabled();
+            return obj;
+        }
+        event_dec(val) {
+            if (val !== undefined)
+                return val;
+            return null;
+        }
+        dec_enabled() {
+            return this.enabled();
+        }
+        dec_icon() {
+            const obj = new this.$.$mol_icon_minus();
+            return obj;
+        }
+        Dec() {
+            const obj = new this.$.$mol_button_minor();
+            obj.event_click = (val) => this.event_dec(val);
+            obj.enabled = () => this.dec_enabled();
+            obj.sub = () => [
+                this.dec_icon()
+            ];
+            return obj;
+        }
+        event_inc(val) {
+            if (val !== undefined)
+                return val;
+            return null;
+        }
+        inc_enabled() {
+            return this.enabled();
+        }
+        inc_icon() {
+            const obj = new this.$.$mol_icon_plus();
+            return obj;
+        }
+        Inc() {
+            const obj = new this.$.$mol_button_minor();
+            obj.event_click = (val) => this.event_inc(val);
+            obj.enabled = () => this.inc_enabled();
+            obj.sub = () => [
+                this.inc_icon()
+            ];
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $mol_number.prototype, "value", null);
+    __decorate([
+        $mol_mem
+    ], $mol_number.prototype, "value_string", null);
+    __decorate([
+        $mol_mem
+    ], $mol_number.prototype, "String", null);
+    __decorate([
+        $mol_mem
+    ], $mol_number.prototype, "event_dec", null);
+    __decorate([
+        $mol_mem
+    ], $mol_number.prototype, "dec_icon", null);
+    __decorate([
+        $mol_mem
+    ], $mol_number.prototype, "Dec", null);
+    __decorate([
+        $mol_mem
+    ], $mol_number.prototype, "event_inc", null);
+    __decorate([
+        $mol_mem
+    ], $mol_number.prototype, "inc_icon", null);
+    __decorate([
+        $mol_mem
+    ], $mol_number.prototype, "Inc", null);
+    $.$mol_number = $mol_number;
+})($ || ($ = {}));
+//mol/number/-view.tree/number.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/number/number.css", "[mol_number] {\n\tdisplay: flex;\n\tflex: 0 1 auto;\n\tposition: relative;\n\talign-items: stretch;\n\tmax-width: 100%;\n}\n\n[mol_number]:hover {\n\tz-index: 2;\n}\n\n[mol_number_string] {\n\tappearance: textfield;\n\tflex: 1 1 7rem;\n\twidth: 7rem;\n}\n\n[mol_number_string]::-webkit-inner-spin-button {\n\tdisplay: none;\n}\n\n[mol_number_inc][disabled],\n[mol_number_dec][disabled] {\n\tvisibility: hidden;\n}\n");
+})($ || ($ = {}));
+//mol/number/-css/number.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_number extends $.$mol_number {
+            event_dec(next) {
+                this.value((Number(this.value()) || 0) - this.precision_change());
+            }
+            event_inc(next) {
+                this.value((Number(this.value()) || 0) + this.precision_change());
+            }
+            value_string(next) {
+                if (next !== void 0) {
+                    this.value(next === '' ? null : Number(next));
+                }
+                const precisionView = this.precision_view();
+                const value = next ? Number(next) : this.value();
+                if (value === 0)
+                    return '0';
+                if (!value)
+                    return '';
+                if (precisionView >= 1) {
+                    return (value / precisionView).toFixed();
+                }
+                else {
+                    const fixedNumber = Math.log10(1 / precisionView);
+                    return value.toFixed(fixedNumber);
+                }
+            }
+        }
+        $$.$mol_number = $mol_number;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//mol/number/number.view.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $care_app_person_edit extends $mol_page {
+        domain() {
+            return this.person().domain();
+        }
+        company_name(id, next) {
+            return this.person().company_name(id, next);
+        }
+        company_position(id, next) {
+            return this.person().company_position(id, next);
+        }
+        company_industry(id, next) {
+            return this.person().company_industry(id, next);
+        }
+        company_tasks(id, next) {
+            return this.person().company_tasks(id, next);
+        }
+        company_date_start(id, next) {
+            return this.person().company_date_start(id, next);
+        }
+        company_date_end(id, next) {
+            return this.person().company_date_end(id, next);
+        }
+        education_level(id, next) {
+            return this.person().education_level(id, next);
+        }
+        education_institution(id, next) {
+            return this.person().education_institution(id, next);
+        }
+        education_department(id, next) {
+            return this.person().education_department(id, next);
+        }
+        education_specialty(id, next) {
+            return this.person().education_specialty(id, next);
+        }
+        education_year_end(id, next) {
+            return this.person().education_year_end(id, next);
+        }
+        person() {
+            const obj = new this.$.$care_app_person();
+            return obj;
+        }
+        title() {
+            return "Моя страница - редактироване";
+        }
+        contact_dict() {
+            return {
+                telegram: "Телеграм",
+                mail: "Почта",
+                website: "Сайт"
+            };
+        }
+        body() {
+            return [
+                this.Form()
+            ];
+        }
+        about(next) {
+            if (next !== undefined)
+                return next;
+            return "";
+        }
+        About_control() {
+            const obj = new this.$.$mol_textarea();
+            obj.value = (next) => this.about(next);
+            return obj;
+        }
+        About_field() {
+            const obj = new this.$.$mol_form_field();
+            obj.name = () => "Обо мне";
+            obj.control = () => this.About_control();
+            return obj;
+        }
+        contact_label(id) {
+            return "";
+        }
+        Contact_label(id) {
+            const obj = new this.$.$mol_view();
+            obj.sub = () => [
+                this.contact_label(id)
+            ];
+            return obj;
+        }
+        contact_value(id, next) {
+            if (next !== undefined)
+                return next;
+            return "";
+        }
+        Contact_control(id) {
+            const obj = new this.$.$mol_string();
+            obj.value = (next) => this.contact_value(id, next);
+            return obj;
+        }
+        Contact_row(id) {
+            const obj = new this.$.$mol_bar();
+            obj.sub = () => [
+                this.Contact_label(id),
+                this.Contact_control(id)
+            ];
+            return obj;
+        }
+        contact_rows() {
+            return [
+                this.Contact_row("0")
+            ];
+        }
+        Contact_list() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => this.contact_rows();
+            return obj;
+        }
+        Contact_field() {
+            const obj = new this.$.$mol_form_field();
+            obj.name = () => "Контакты";
+            obj.content = () => [
+                this.Contact_list()
+            ];
+            return obj;
+        }
+        Company_position(id) {
+            const obj = new this.$.$mol_string();
+            obj.hint = () => "Позиция";
+            obj.value = (next) => this.company_position(id, next);
+            return obj;
+        }
+        Company_name(id) {
+            const obj = new this.$.$mol_string();
+            obj.hint = () => "Имя компании";
+            obj.value = (next) => this.company_name(id, next);
+            return obj;
+        }
+        Company_industry(id) {
+            const obj = new this.$.$mol_string();
+            obj.hint = () => "Сфера деятельности";
+            obj.value = (next) => this.company_industry(id, next);
+            return obj;
+        }
+        Company_tasks(id) {
+            const obj = new this.$.$mol_textarea();
+            obj.hint = () => "Рабочие обязанности";
+            obj.value = (next) => this.company_tasks(id, next);
+            return obj;
+        }
+        Company_date_start_label(id) {
+            const obj = new this.$.$mol_paragraph();
+            obj.title = () => "Начало работы";
+            return obj;
+        }
+        Company_date_start(id) {
+            const obj = new this.$.$mol_date();
+            obj.value_moment = (next) => this.company_date_start(id, next);
+            return obj;
+        }
+        Company_date_start_bar(id) {
+            const obj = new this.$.$mol_bar();
+            obj.sub = () => [
+                this.Company_date_start_label(id),
+                this.Company_date_start(id)
+            ];
+            return obj;
+        }
+        company_working_now(id, next) {
+            if (next !== undefined)
+                return next;
+            return true;
+        }
+        Company_working_now(id) {
+            const obj = new this.$.$mol_check_box();
+            obj.title = () => "Работаю тут";
+            obj.checked = (next) => this.company_working_now(id, next);
+            return obj;
+        }
+        company_date_end_moment(id, next) {
+            if (next !== undefined)
+                return next;
+            const obj = new this.$.$mol_time_moment();
+            return obj;
+        }
+        Company_date_end(id) {
+            const obj = new this.$.$mol_date();
+            obj.value_moment = (next) => this.company_date_end_moment(id, next);
+            return obj;
+        }
+        date_end_content(id) {
+            return [
+                this.Company_working_now(id),
+                this.Company_date_end(id)
+            ];
+        }
+        Company_date_end_bar(id) {
+            const obj = new this.$.$mol_bar();
+            obj.sub = () => this.date_end_content(id);
+            return obj;
+        }
+        Company_date(id) {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => [
+                this.Company_date_start_bar(id),
+                this.Company_date_end_bar(id)
+            ];
+            return obj;
+        }
+        company_delete(id, next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        Company_delete_icon(id) {
+            const obj = new this.$.$mol_icon_delete();
+            return obj;
+        }
+        Company_delete(id) {
+            const obj = new this.$.$mol_button_minor();
+            obj.click = (next) => this.company_delete(id, next);
+            obj.sub = () => [
+                this.Company_delete_icon(id)
+            ];
+            return obj;
+        }
+        company_add(id, next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        Company_add_icon(id) {
+            const obj = new this.$.$mol_icon_plus();
+            return obj;
+        }
+        Company_add(id) {
+            const obj = new this.$.$mol_button_minor();
+            obj.click = (next) => this.company_add(id, next);
+            obj.sub = () => [
+                this.Company_add_icon(id)
+            ];
+            return obj;
+        }
+        Company_action(id) {
+            const obj = new this.$.$mol_bar();
+            obj.sub = () => [
+                this.Company_delete(id),
+                this.Company_add(id)
+            ];
+            return obj;
+        }
+        Company_row(id) {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => [
+                this.Company_position(id),
+                this.Company_name(id),
+                this.Company_industry(id),
+                this.Company_tasks(id),
+                this.Company_date(id),
+                this.Company_action(id)
+            ];
+            return obj;
+        }
+        company_list() {
+            return [
+                this.Company_row("0")
+            ];
+        }
+        Company_field() {
+            const obj = new this.$.$mol_form_field();
+            obj.name = () => "Опыт работы";
+            obj.content = () => this.company_list();
+            return obj;
+        }
+        education_level_dict() {
+            return {
+                level0: "Среднее",
+                level1: "Средне-специальное",
+                level2: "Неоконченое высшнее",
+                level3: "Высшее",
+                level4: "Бакалавр",
+                level5: "Магистр",
+                level6: "Кандидат наук",
+                level7: "Доктор наук"
+            };
+        }
+        Education_level(id) {
+            const obj = new this.$.$mol_switch();
+            obj.value = (next) => this.education_level(id, next);
+            obj.options = () => this.education_level_dict();
+            return obj;
+        }
+        Education_institution(id) {
+            const obj = new this.$.$mol_string();
+            obj.hint = () => "Учебное заведение";
+            obj.value = (next) => this.education_institution(id, next);
+            return obj;
+        }
+        Education_depratment(id) {
+            const obj = new this.$.$mol_string();
+            obj.hint = () => "Факультет";
+            obj.value = (next) => this.education_department(id, next);
+            return obj;
+        }
+        Education_specialty(id) {
+            const obj = new this.$.$mol_textarea();
+            obj.hint = () => "Специальность";
+            obj.value = (next) => this.education_specialty(id, next);
+            return obj;
+        }
+        Education_year_end(id) {
+            const obj = new this.$.$mol_number();
+            obj.value = (next) => this.education_year_end(id, next);
+            return obj;
+        }
+        education_delete(id, next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        Education_delete_icon(id) {
+            const obj = new this.$.$mol_icon_delete();
+            return obj;
+        }
+        Education_delete(id) {
+            const obj = new this.$.$mol_button_minor();
+            obj.click = (next) => this.education_delete(id, next);
+            obj.sub = () => [
+                this.Education_delete_icon(id)
+            ];
+            return obj;
+        }
+        education_add(id, next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        Education_add_icon(id) {
+            const obj = new this.$.$mol_icon_plus();
+            return obj;
+        }
+        Education_add(id) {
+            const obj = new this.$.$mol_button_minor();
+            obj.click = (next) => this.education_add(id, next);
+            obj.sub = () => [
+                this.Education_add_icon(id)
+            ];
+            return obj;
+        }
+        Education_action(id) {
+            const obj = new this.$.$mol_bar();
+            obj.sub = () => [
+                this.Education_delete(id),
+                this.Education_add(id)
+            ];
+            return obj;
+        }
+        Education_row(id) {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => [
+                this.Education_level(id),
+                this.Education_institution(id),
+                this.Education_depratment(id),
+                this.Education_specialty(id),
+                this.Education_year_end(id),
+                this.Education_action(id)
+            ];
+            return obj;
+        }
+        education_list() {
+            return [
+                this.Education_row("0")
+            ];
+        }
+        Education_field() {
+            const obj = new this.$.$mol_form_field();
+            obj.name = () => "Образование";
+            obj.content = () => this.education_list();
+            return obj;
+        }
+        skill_add_name(next) {
+            if (next !== undefined)
+                return next;
+            return "";
+        }
+        Skill_add_name() {
+            const obj = new this.$.$mol_string();
+            obj.hint = () => "Название";
+            obj.value = (next) => this.skill_add_name(next);
+            return obj;
+        }
+        skill_add(next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        Skill_add_icon() {
+            const obj = new this.$.$mol_icon_plus();
+            return obj;
+        }
+        Skill_add_button() {
+            const obj = new this.$.$mol_button_minor();
+            obj.click = (next) => this.skill_add(next);
+            obj.sub = () => [
+                this.Skill_add_icon()
+            ];
+            return obj;
+        }
+        Skill_add() {
+            const obj = new this.$.$mol_bar();
+            obj.sub = () => [
+                this.Skill_add_name(),
+                this.Skill_add_button()
+            ];
+            return obj;
+        }
+        skill_name(id) {
+            return "";
+        }
+        Skill_name(id) {
+            const obj = new this.$.$mol_view();
+            obj.sub = () => [
+                this.skill_name(id)
+            ];
+            return obj;
+        }
+        skill_delete(id, next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        Skill_delete_icon(id) {
+            const obj = new this.$.$mol_icon_delete();
+            return obj;
+        }
+        Skill_delete(id) {
+            const obj = new this.$.$mol_button_minor();
+            obj.click = (next) => this.skill_delete(id, next);
+            obj.sub = () => [
+                this.Skill_delete_icon(id)
+            ];
+            return obj;
+        }
+        Skill(id) {
+            const obj = new this.$.$mol_view();
+            obj.sub = () => [
+                this.Skill_name(id),
+                this.Skill_delete(id)
+            ];
+            return obj;
+        }
+        skill_list() {
+            return [
+                this.Skill("0")
+            ];
+        }
+        Skill_list() {
+            const obj = new this.$.$mol_row();
+            obj.sub = () => this.skill_list();
+            return obj;
+        }
+        Skills() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => [
+                this.Skill_add(),
+                this.Skill_list()
+            ];
+            return obj;
+        }
+        Skill_list_field() {
+            const obj = new this.$.$mol_form_field();
+            obj.name = () => "Навыки и умения";
+            obj.content = () => [
+                this.Skills()
+            ];
+            return obj;
+        }
+        Form() {
+            const obj = new this.$.$mol_form();
+            obj.form_fields = () => [
+                this.About_field(),
+                this.Contact_field(),
+                this.Company_field(),
+                this.Education_field(),
+                this.Skill_list_field()
+            ];
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "person", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "about", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "About_control", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "About_field", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Contact_label", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "contact_value", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Contact_control", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Contact_row", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Contact_list", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Contact_field", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_position", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_name", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_industry", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_tasks", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_date_start_label", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_date_start", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_date_start_bar", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "company_working_now", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_working_now", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "company_date_end_moment", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_date_end", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_date_end_bar", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_date", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "company_delete", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_delete_icon", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_delete", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "company_add", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_add_icon", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_add", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_action", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Company_row", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Company_field", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Education_level", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Education_institution", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Education_depratment", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Education_specialty", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Education_year_end", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "education_delete", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Education_delete_icon", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Education_delete", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "education_add", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Education_add_icon", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Education_add", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Education_action", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Education_row", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Education_field", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "skill_add_name", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Skill_add_name", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "skill_add", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Skill_add_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Skill_add_button", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Skill_add", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Skill_name", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "skill_delete", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Skill_delete_icon", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Skill_delete", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_edit.prototype, "Skill", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Skill_list", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Skills", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Skill_list_field", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Form", null);
+    $.$care_app_person_edit = $care_app_person_edit;
+})($ || ($ = {}));
+//care/app/person/edit/-view.tree/edit.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $care_app_person_edit extends $.$care_app_person_edit {
+            contact_rows() {
+                return Object.keys(this.contact_dict()).map(id => this.Contact_row(id));
+            }
+            contact_label(id) {
+                return this.contact_dict()[id];
+            }
+            contact_value(id, next) {
+                return this.person()[`contact_${id}`](next);
+            }
+            company_add(id) {
+                const next = this.person().company_list().slice();
+                const index = next.indexOf(id);
+                if (index === -1) {
+                    next.push($mol_guid());
+                }
+                else {
+                    next.splice(index, 0, $mol_guid());
+                }
+                this.person().company_list(next);
+            }
+            company_delete(id) {
+                const list = this.person().company_list();
+                this.person().company_list(list.filter(id2 => id2 !== id));
+            }
+            company_list() {
+                const list = this.person().company_list();
+                if (list.length === 0) {
+                    return [this.Company_add(null)];
+                }
+                return list.map(id => this.Company_row(id));
+            }
+            date_end_content(id) {
+                return [
+                    this.Company_working_now(id),
+                    ...!this.company_working_now(id) ? [this.Company_date_end(id)] : [],
+                ];
+            }
+            education_add(id) {
+                const next = this.person().education_list().slice();
+                const index = next.indexOf(id);
+                if (index === -1) {
+                    next.push($mol_guid());
+                }
+                else {
+                    next.splice(index, 0, $mol_guid());
+                }
+                this.person().education_list(next);
+            }
+            education_delete(id) {
+                const list = this.person().education_list();
+                this.person().education_list(list.filter(id2 => id2 !== id));
+            }
+            education_list() {
+                const list = this.person().education_list();
+                if (list.length === 0) {
+                    return [this.Education_add(null)];
+                }
+                return list.map(id => this.Education_row(id));
+            }
+            skill_list() {
+                const list = this.person().skill_list();
+                if (list.length === 0) {
+                    return [];
+                }
+                return list.map(id => this.Skill(id));
+            }
+            skill_add() {
+                const name = this.skill_add_name();
+                if (!name)
+                    return;
+                const list = this.person().skill_list();
+                this.person().skill_list([...list, name]);
+                this.skill_add_name('');
+            }
+            skill_delete(id) {
+                const list = this.person().skill_list();
+                this.person().skill_list(list.filter(id2 => id2 !== id));
+            }
+            skill_name(id) {
+                return id;
+            }
+        }
+        $$.$care_app_person_edit = $care_app_person_edit;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/person/edit/edit.view.ts
+;
+"use strict";
+var $;
+(function ($) {
     class $care_app_person_activity extends $mol_page {
         person() {
             const obj = new this.$.$care_app_person();
@@ -15413,6 +16577,7 @@ var $;
                 this.Job_page(),
                 this.Job_add_page(),
                 this.Job_search_page(),
+                this.Person_edit_page(),
                 this.Person_activity_page()
             ];
         }
@@ -15508,6 +16673,11 @@ var $;
             obj.job_service = () => this.job_service();
             return obj;
         }
+        Person_edit_page() {
+            const obj = new this.$.$care_app_person_edit();
+            obj.person = () => this.user();
+            return obj;
+        }
         Person_activity_page() {
             const obj = new this.$.$care_app_person_activity();
             obj.person = () => this.user();
@@ -15571,6 +16741,9 @@ var $;
     __decorate([
         $mol_mem
     ], $care_app.prototype, "Job_search_page", null);
+    __decorate([
+        $mol_mem
+    ], $care_app.prototype, "Person_edit_page", null);
     __decorate([
         $mol_mem
     ], $care_app.prototype, "Person_activity_page", null);
@@ -15639,6 +16812,12 @@ var $;
                     shrink: 0,
                 },
             },
+            Person_edit_page: {
+                flex: {
+                    basis: rem(22),
+                    shrink: 0,
+                },
+            },
             Person_activity_page: {
                 flex: {
                     basis: rem(22),
@@ -15681,6 +16860,8 @@ var $;
                 }
                 return [
                     this.Nav_page(),
+                    ...this.arg().person_edit === '' ? [this.Person_edit_page()] : [],
+                    ...this.arg().person_activity === '' ? [this.Person_activity_page()] : [],
                     ...this.arg().orgs === '' ? [this.Org_list_page()] : [],
                     ...this.arg().org ? [this.Org_page()] : [],
                     ...this.arg().org === '' ? [this.Org_add_page()] : [],
@@ -15689,7 +16870,6 @@ var $;
                     ...this.arg().project && this.arg().job === '' ? [this.Job_add_page()] : [],
                     ...this.arg().job_search === '' ? [this.Job_search_page()] : [],
                     ...this.arg().job ? [this.Job_page()] : [],
-                    ...this.arg().person_activity === '' ? [this.Person_activity_page()] : [],
                 ];
             }
             sign_out() {

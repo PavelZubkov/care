@@ -372,7 +372,7 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    function $mol_wire_mem<Keys extends number>(keys: Keys): <Host extends object, Field extends keyof Host, Prop extends Extract<Host[Field], (...args: any[]) => any>>(host: Host, field: Field, descr?: TypedPropertyDescriptor<Prop> | undefined) => {
+    function $mol_wire_mem<Keys extends number>(keys: Keys): <Host extends object, Field extends keyof Host, Prop extends Extract<Host[Field], (...args: any[]) => any>>(host: Host, field: string | Field, descr?: TypedPropertyDescriptor<Prop> | undefined) => {
         value: NonNullable<Prop>;
         enumerable?: boolean | undefined;
         configurable?: boolean | undefined;
@@ -384,7 +384,7 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    let $mol_mem: <Host extends object, Field extends keyof Host, Prop extends Extract<Host[Field], (...args: any[]) => any>>(host: Host, field: Field, descr?: TypedPropertyDescriptor<Prop> | undefined) => {
+    let $mol_mem: <Host extends object, Field extends keyof Host, Prop extends Extract<Host[Field], (...args: any[]) => any>>(host: Host, field: string | Field, descr?: TypedPropertyDescriptor<Prop> | undefined) => {
         value: NonNullable<Prop>;
         enumerable?: boolean | undefined;
         configurable?: boolean | undefined;
@@ -392,7 +392,7 @@ declare namespace $ {
         get?: (() => Prop) | undefined;
         set?: ((value: Prop) => void) | undefined;
     };
-    let $mol_mem_key: <Host extends object, Field extends keyof Host, Prop extends Extract<Host[Field], (...args: any[]) => any>>(host: Host, field: Field, descr?: TypedPropertyDescriptor<Prop> | undefined) => {
+    let $mol_mem_key: <Host extends object, Field extends keyof Host, Prop extends Extract<Host[Field], (...args: any[]) => any>>(host: Host, field: string | Field, descr?: TypedPropertyDescriptor<Prop> | undefined) => {
         value: NonNullable<Prop>;
         enumerable?: boolean | undefined;
         configurable?: boolean | undefined;
@@ -400,7 +400,7 @@ declare namespace $ {
         get?: (() => Prop) | undefined;
         set?: ((value: Prop) => void) | undefined;
     };
-    let $mol_mem_key2: <Host extends object, Field extends keyof Host, Prop extends Extract<Host[Field], (...args: any[]) => any>>(host: Host, field: Field, descr?: TypedPropertyDescriptor<Prop> | undefined) => {
+    let $mol_mem_key2: <Host extends object, Field extends keyof Host, Prop extends Extract<Host[Field], (...args: any[]) => any>>(host: Host, field: string | Field, descr?: TypedPropertyDescriptor<Prop> | undefined) => {
         value: NonNullable<Prop>;
         enumerable?: boolean | undefined;
         configurable?: boolean | undefined;
@@ -408,7 +408,7 @@ declare namespace $ {
         get?: (() => Prop) | undefined;
         set?: ((value: Prop) => void) | undefined;
     };
-    let $mol_mem_key3: <Host extends object, Field extends keyof Host, Prop extends Extract<Host[Field], (...args: any[]) => any>>(host: Host, field: Field, descr?: TypedPropertyDescriptor<Prop> | undefined) => {
+    let $mol_mem_key3: <Host extends object, Field extends keyof Host, Prop extends Extract<Host[Field], (...args: any[]) => any>>(host: Host, field: string | Field, descr?: TypedPropertyDescriptor<Prop> | undefined) => {
         value: NonNullable<Prop>;
         enumerable?: boolean | undefined;
         configurable?: boolean | undefined;
@@ -2326,6 +2326,38 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_icon_account extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_pencil extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_bar extends $mol_view {
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_icon_briefcase extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_briefcase_outline extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
     class $mol_icon_office extends $mol_icon {
         path(): string;
     }
@@ -2344,30 +2376,27 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    class $mol_icon_briefcase extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_briefcase_outline extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
     class $care_app_nav extends $mol_page {
         body(): readonly any[];
+        Person_icon(): $mol_icon_account;
+        person_label(): string;
+        Person_link(): $$.$mol_link;
+        Person_edit_icon(): $mol_icon_pencil;
+        Person_edit_link(): $$.$mol_link;
+        Person(): $mol_bar;
+        Person_activity_icon(): $mol_icon_briefcase_outline;
+        person_activity_label(): string;
+        Person_activity(): $$.$mol_link;
         Org_list_icon(): $mol_icon_office_building;
         org_list_label(): string;
         Org_list(): $$.$mol_link;
         Job_search_icon(): $mol_icon_magnify;
         job_search_label(): string;
         Job_search(): $$.$mol_link;
-        Person_activity_icon(): $mol_icon_briefcase_outline;
-        Person_activity_label(): string;
-        Person_activity(): $$.$mol_link;
     }
+}
+
+declare namespace $.$$ {
 }
 
 declare namespace $ {
@@ -2593,6 +2622,25 @@ declare namespace $ {
         response_list(next?: $care_app_job[]): $care_app_job[];
         response_status(key: $care_app_job): "wait" | "decline" | "apply";
         response_message(key: $care_app_job): string;
+        about(next?: string): string;
+        contact_telegram(next?: string): string;
+        contact_mail(next?: string): string;
+        contact_website(next?: string): string;
+        company_list(next?: string[]): string[];
+        company_name(id: string, next?: string): string;
+        company_website(id: string, next?: string): string;
+        company_position(id: string, next?: string): string;
+        company_industry(id: string, next?: string): string;
+        company_tasks(id: string, next?: string): string;
+        company_date_start(id: string, next?: $mol_time_moment): $mol_time_moment;
+        company_date_end(id: string, next?: $mol_time_moment): $mol_time_moment | null;
+        education_list(next?: string[]): string[];
+        education_level(id: string, next?: string): string;
+        education_institution(id: string, next?: string): string;
+        education_department(id: string, next?: string): string;
+        education_specialty(id: string, next?: string): string;
+        education_year_end(id: string, next?: string): number;
+        skill_list(next?: string[]): string[];
     }
 }
 
@@ -4191,6 +4239,188 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    class $mol_icon_tick extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_check_box extends $mol_check {
+        Icon(): $mol_icon_tick;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_icon_delete extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_minus extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_number extends $mol_view {
+        precision_view(): number;
+        precision_change(): number;
+        value(val?: any): number;
+        sub(): readonly any[];
+        precision(): number;
+        value_string(val?: any): string;
+        hint(): string;
+        enabled(): boolean;
+        string_enabled(): boolean;
+        String(): $$.$mol_string;
+        event_dec(val?: any): any;
+        dec_enabled(): boolean;
+        dec_icon(): $mol_icon_minus;
+        Dec(): $mol_button_minor;
+        event_inc(val?: any): any;
+        inc_enabled(): boolean;
+        inc_icon(): $mol_icon_plus;
+        Inc(): $mol_button_minor;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+    class $mol_number extends $.$mol_number {
+        event_dec(next?: Event): void;
+        event_inc(next?: Event): void;
+        value_string(next?: string): string;
+    }
+}
+
+declare namespace $ {
+    class $care_app_person_edit extends $mol_page {
+        domain(): $care_app_domain;
+        company_name(id: any, next?: any): string;
+        company_position(id: any, next?: any): string;
+        company_industry(id: any, next?: any): string;
+        company_tasks(id: any, next?: any): string;
+        company_date_start(id: any, next?: any): $mol_time_moment;
+        company_date_end(id: any, next?: any): $mol_time_moment | null;
+        education_level(id: any, next?: any): string;
+        education_institution(id: any, next?: any): string;
+        education_department(id: any, next?: any): string;
+        education_specialty(id: any, next?: any): string;
+        education_year_end(id: any, next?: any): number;
+        person(): $care_app_person;
+        title(): string;
+        contact_dict(): {
+            telegram: string;
+            mail: string;
+            website: string;
+        };
+        body(): readonly any[];
+        about(next?: any): string;
+        About_control(): $$.$mol_textarea;
+        About_field(): $$.$mol_form_field;
+        contact_label(id: any): string;
+        Contact_label(id: any): $mol_view;
+        contact_value(id: any, next?: any): string;
+        Contact_control(id: any): $$.$mol_string;
+        Contact_row(id: any): $mol_bar;
+        contact_rows(): readonly any[];
+        Contact_list(): $$.$mol_list;
+        Contact_field(): $$.$mol_form_field;
+        Company_position(id: any): $$.$mol_string;
+        Company_name(id: any): $$.$mol_string;
+        Company_industry(id: any): $$.$mol_string;
+        Company_tasks(id: any): $$.$mol_textarea;
+        Company_date_start_label(id: any): $$.$mol_paragraph;
+        Company_date_start(id: any): $$.$mol_date;
+        Company_date_start_bar(id: any): $mol_bar;
+        company_working_now(id: any, next?: any): boolean;
+        Company_working_now(id: any): $mol_check_box;
+        company_date_end_moment(id: any, next?: any): $mol_time_moment;
+        Company_date_end(id: any): $$.$mol_date;
+        date_end_content(id: any): readonly any[];
+        Company_date_end_bar(id: any): $mol_bar;
+        Company_date(id: any): $$.$mol_list;
+        company_delete(id: any, next?: any): any;
+        Company_delete_icon(id: any): $mol_icon_delete;
+        Company_delete(id: any): $mol_button_minor;
+        company_add(id: any, next?: any): any;
+        Company_add_icon(id: any): $mol_icon_plus;
+        Company_add(id: any): $mol_button_minor;
+        Company_action(id: any): $mol_bar;
+        Company_row(id: any): $$.$mol_list;
+        company_list(): readonly any[];
+        Company_field(): $$.$mol_form_field;
+        education_level_dict(): {
+            level0: string;
+            level1: string;
+            level2: string;
+            level3: string;
+            level4: string;
+            level5: string;
+            level6: string;
+            level7: string;
+        };
+        Education_level(id: any): $$.$mol_switch;
+        Education_institution(id: any): $$.$mol_string;
+        Education_depratment(id: any): $$.$mol_string;
+        Education_specialty(id: any): $$.$mol_textarea;
+        Education_year_end(id: any): $$.$mol_number;
+        education_delete(id: any, next?: any): any;
+        Education_delete_icon(id: any): $mol_icon_delete;
+        Education_delete(id: any): $mol_button_minor;
+        education_add(id: any, next?: any): any;
+        Education_add_icon(id: any): $mol_icon_plus;
+        Education_add(id: any): $mol_button_minor;
+        Education_action(id: any): $mol_bar;
+        Education_row(id: any): $$.$mol_list;
+        education_list(): readonly any[];
+        Education_field(): $$.$mol_form_field;
+        skill_add_name(next?: any): string;
+        Skill_add_name(): $$.$mol_string;
+        skill_add(next?: any): any;
+        Skill_add_icon(): $mol_icon_plus;
+        Skill_add_button(): $mol_button_minor;
+        Skill_add(): $mol_bar;
+        skill_name(id: any): string;
+        Skill_name(id: any): $mol_view;
+        skill_delete(id: any, next?: any): any;
+        Skill_delete_icon(id: any): $mol_icon_delete;
+        Skill_delete(id: any): $mol_button_minor;
+        Skill(id: any): $mol_view;
+        skill_list(): readonly any[];
+        Skill_list(): $mol_row;
+        Skills(): $$.$mol_list;
+        Skill_list_field(): $$.$mol_form_field;
+        Form(): $$.$mol_form;
+    }
+}
+
+declare namespace $.$$ {
+    class $care_app_person_edit extends $.$care_app_person_edit {
+        contact_rows(): $mol_bar[];
+        contact_label(id: string): any;
+        contact_value(id: string, next?: string): any;
+        company_add(id: string): void;
+        company_delete(id: string): void;
+        company_list(): $mol_list[] | $mol_button_minor[];
+        date_end_content(id: string): ($mol_date | $mol_check_box)[];
+        education_add(id: string): void;
+        education_delete(id: string): void;
+        education_list(): $mol_list[] | $mol_button_minor[];
+        skill_list(): $mol_view[];
+        skill_add(): void;
+        skill_delete(id: string): void;
+        skill_name(id: string): string;
+    }
+}
+
+declare namespace $ {
     class $care_app_person_activity extends $mol_page {
         person(): $care_app_person;
         title(): string;
@@ -4253,6 +4483,7 @@ declare namespace $ {
         Job_page(): $$.$care_app_job_page;
         Job_add_page(): $$.$care_app_job_add;
         Job_search_page(): $$.$care_app_job_search;
+        Person_edit_page(): $$.$care_app_person_edit;
         Person_activity_page(): $$.$care_app_person_activity;
     }
 }
@@ -4269,7 +4500,7 @@ declare namespace $.$$ {
         org_opened(): $care_app_org;
         project_opened(): $care_app_project;
         job_opened(): $care_app_job;
-        pages(): ($care_app_sign_up | $care_app_sign_in)[] | ($care_app_org_list | $care_app_org_page | $care_app_org_add | $care_app_project_add | $care_app_project_page | $care_app_job_add | $care_app_job_page | $care_app_job_search | $care_app_person_activity | $care_app_nav)[];
+        pages(): ($care_app_sign_up | $care_app_sign_in)[] | ($care_app_org_list | $care_app_org_page | $care_app_org_add | $care_app_project_add | $care_app_project_page | $care_app_job_add | $care_app_job_page | $care_app_job_search | $care_app_person_edit | $care_app_person_activity | $care_app_nav)[];
         sign_out(): void;
     }
 }
