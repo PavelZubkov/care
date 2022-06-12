@@ -318,14 +318,862 @@ $mol_icon_logout $mol_icon path \M16,17V14H9V10H16V7L21,12L16,17M14,2C15.1,2 16,
 
 $mol_icon_logout_variant $mol_icon path \M14.08,15.59L16.67,13H7V11H16.67L14.08,8.41L15.5,7L20.5,12L15.5,17L14.08,15.59M19,3C20.1,3 21,3.9 21,5V9.67L19,7.67V5H5V19H19V16.33L21,14.33V19C21,20.1 20.1,21 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3H19Z
 
+$mol_icon_office $mol_icon path \M3,18L7,16.75V7L14,5V19.5L3.5,18.25L14,22L20,20.75V3.5L13.95,2L3,5.75V18Z
+
+$mol_icon_office_building $mol_icon path \M5,3V21H11V17.5H13V21H19V3H5M7,5H9V7H7V5M11,5H13V7H11V5M15,5H17V7H15V5M7,9H9V11H7V9M11,9H13V11H11V9M15,9H17V11H15V9M7,13H9V15H7V13M11,13H13V15H11V13M15,13H17V15H15V13M7,17H9V19H7V17M15,17H17V19H15V17Z
+
+$mol_icon_magnify $mol_icon path \M9.5,3C13.09,3 16,5.91 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16C5.91,16 3,13.09 3,9.5C3,5.91 5.91,3 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z
+
 $care_app_nav $mol_page
-	body / \123
+	body /
+		<= Org_list $mol_link
+			arg * orgs \
+			sub / 
+				<= Org_list_icon $mol_icon_office_building
+				<= org_list_label \Организации
+		<= Job_search $mol_link
+			arg * job_search \
+			sub /
+				<= Job_search_icon $mol_icon_magnify
+				<= job_search_label \Поиск вакансий
+
+$mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
+
+$mol_icon_cross $mol_icon path \M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z
+
+$care_app_org_list $mol_page
+	user $care_app_person
+	title @ \Organizations
+	tools /
+		<= Org_add $mol_link
+			hint @ \Create organization
+			arg * org \
+			sub / <= Org_add_icon $mol_icon_plus
+		<= Close_page $mol_link
+			hint @ \Close page
+			arg * orgs null
+			sub / <= Close_page_icon $mol_icon_cross
+	body /
+		<= List $mol_list
+			rows <= rows /
+	Row* $mol_link
+		arg * org <= org_id* \
+		title <= org_name* \
+	List_empty $mol_view
+		sub / <= list_empty_text @ \You are not subscribed to any organization
+
+$mol_image2 $mol_view
+	links /
+	aspect 1
+	sub /
+		<= Content $mol_view
+			style *
+				paddingTop <= height \100%
+				backgroundImage <= background \
+
+$care_app_org_page $mol_page
+	org $care_app_org
+	title \Организация
+	tools /
+		<= Close_page $mol_link
+			arg *
+				org null
+				project null
+			sub / <= Close_page_icon $mol_icon_cross
+	body /
+		<= Org_head $mol_view
+			sub /
+				<= Org_image $mol_image2
+					links / <= org_image \
+				<= Org_name $mol_view
+					sub / <= org_name \
+		<= Org_body $mol_list
+			rows /
+				<= Description $mol_labeler
+					title \Об организации
+					content / <= org_description \
+				<= Activity $mol_labeler
+					title \Деятельность
+					content / <= Project_list $mol_list
+						rows <= project_rows /
+							<= Project_add $mol_link
+								arg * project \
+								title \Создать проект
+							<= Project_link*0 $mol_link
+								arg * project <= project_id* \
+								sub / <= project_name* \
+
+$mol_stack $mol_view
+
+$mol_paragraph $mol_view
+	line_height 24
+	letter_width 7
+	width_limit Infinity
+	sub / <= title
+
+$mol_dimmer $mol_paragraph
+	haystack \
+	needle \
+	sub <= parts /$mol_view_content
+	Low* $mol_paragraph
+		sub /
+			<= string* \
+	High* $mol_paragraph
+		sub /
+			<= string* \
+
+$mol_text_code_token $mol_dimmer
+	attr *
+		^
+		mol_text_code_token_type <= type \
+
+$mol_text_code_token_link $mol_text_code_token
+	dom_name \a
+	type \code-link
+	attr *
+		^
+		href <= haystack \
+		target \_blank
+
+$mol_text_code_row $mol_paragraph
+	text \
+	minimal_height 24
+	numb_showed true
+	Numb $mol_view
+		sub /
+			<= numb 0
+	Token* $mol_text_code_token
+		type <= token_type* \
+		haystack <= token_text* \
+		needle <= highlight \
+	Token_link* $mol_text_code_token_link
+		haystack <= token_text* \
+		needle <= highlight \
+	find_pos* null
+
+$mol_icon_content_copy $mol_icon path \M19,21H8V7H19M19,5H8C6.9,5 6,5.9 6,7V21C6,22.1 6.9,23 8,23H19C20.1,23 21,22.1 21,21V7C21,5.9 20.1,5 19,5M16,1H4C2.9,1 2,1.9 2,3V17H4V3H16V1Z
+
+$mol_button_copy $mol_button_minor
+	text \
+	sub /
+		<= Icon $mol_icon_content_copy
+
+$mol_text_code $mol_stack
+	attr *
+		^
+		mol_text_code_sidebar_showed <= sidebar_showed false
+	text \
+	text_lines /string
+	find_pos* null
+	sub /
+		<= Rows $mol_list
+			render_visible_only <= render_visible_only false
+			rows <= rows /
+				<= Row*0 $mol_text_code_row
+					numb_showed <= sidebar_showed
+					numb <= row_numb* 0
+					text <= row_text* \
+					highlight <= highlight \
+		<= Copy $mol_button_copy
+			hint @ \Copy whole code
+			text <= text
+
+$mol_float $mol_view
+	style *
+		^
+		minHeight \auto
+
+$mol_icon_chevron $mol_icon path \M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z
+
+$mol_check_expand $mol_check
+	Icon $mol_icon_chevron
+	level 0
+	style *
+		^
+		paddingLeft <= level_style \0px
+	checked?val <=> expanded?val false
+	enabled <= expandable false
+
+$mol_grid $mol_view
+	row_height 32
+	row_ids /string[]
+	row_id* null
+	col_ids /
+	records *
+	record* null
+	hierarchy null
+	hierarchy_col \
+	minimal_width 0
+	-
+	sub /
+		<= Head
+		<= Table $mol_grid_table
+			sub <= rows /$mol_view
+	Head $mol_grid_row
+		cells <= head_cells /$mol_view
+	Row* $mol_grid_row
+		minimal_height <= row_height
+		minimal_width <= minimal_width
+		cells <= cells* /$mol_view
+	-
+	Cell* $mol_view
+	cell* null
+	Cell_text* $mol_grid_cell
+		sub <= cell_content_text* <= cell_content* /$mol_view_content
+	Cell_number* $mol_grid_number
+		sub <= cell_content_number* <= cell_content* /$mol_view_content
+	Col_head* $mol_float
+		dom_name \th
+		sub <= col_head_content* /$mol_view_content
+	Cell_branch* $mol_check_expand
+		level <= cell_level* 0
+		label <= cell_content* /$mol_view_content
+		expanded?val <=> cell_expanded*?val false
+	Cell_content* /
+		<= Cell_dimmer* $mol_dimmer
+			needle <= needle \
+			haystack <= cell_value* \
+
+$mol_grid_table $mol_list
+	dom_name \table
+
+$mol_grid_row $mol_view
+	dom_name \tr
+	sub <= cells /$mol_view
+
+$mol_grid_cell $mol_view
+	dom_name \td
+	minimal_height 40
+
+$mol_grid_number $mol_grid_cell
+
+$mol_image $mol_view
+	dom_name \img
+	field *
+		^
+		src <= uri \
+		alt <= title
+		loading <= loading \eager
+
+$mol_link_iconed $mol_link
+	sub /
+		<= Icon $mol_image
+			uri <= icon \
+			title \
+	content /
+		<= title <= uri
+	host \
+
+$mol_embed_native $mol_scroll
+	dom_name \object
+	window null
+	attr *
+		^
+		data <= uri?val \
+		type <= mime \
+	sub /
+		<= Fallback_link $mol_link
+			uri <= uri
+			sub /
+				<= Fallback_image $mol_image
+					uri <= uri
+					title <= title?val \
+
+$mol_text $mol_list
+	uri_base \
+	text \
+	param \
+	flow_tokens /
+	auto /
+		<= auto_scroll null
+	- \Blocks
+	Paragraph* $mol_paragraph
+		sub <= block_content* /
+	Quote* $mol_text
+		uri_resolve* <= uri_resolve* null
+		text <= quote_text* \
+		auto_scroll null
+	List* $mol_text
+		uri_resolve* <= uri_resolve* null
+		text <= list_text* \
+		auto_scroll null
+	Header* $mol_text_header
+		dom_name <= header_level* \h
+		content <= block_content* /
+		arg <= header_arg* *
+	Code* $mol_text_code
+		text <= code_text* \
+		highlight <= highlight \
+		sidebar_showed <= code_sidebar_showed true
+	- \Table
+	Table* $mol_grid
+		head_cells <= table_head_cells* /
+		rows <= table_rows* /
+	Table_row* $mol_grid_row
+		cells <= table_cells* /
+	Table_cell* $mol_text
+		auto_scroll null
+		uri_resolve* <= uri_resolve* null
+		text <= table_cell_text* \
+	- \Lines
+	String* $mol_dimmer
+		dom_name \span
+		needle <= highlight \
+		haystack <= line_text* \
+	Span* $mol_text_span
+		dom_name \span
+		type <= line_type* \
+		sub <= line_content* /
+	Code_line* $mol_text_code_row
+		numb_showed false
+		highlight <= highlight \
+		text <= line_text* \
+	Link* $mol_link_iconed
+		uri <= link_uri* \
+		content <= line_content* /
+	Link_http* $mol_link_iconed
+		uri <= link_uri* \
+		content / <= String*
+	Image* $mol_embed_native
+		uri <= link_uri* \
+		title <= line_text* \
+
+$mol_text_header $mol_paragraph
+	sub /
+		<= Link $mol_link
+			arg <= arg *
+			hint @ \Permalink to this section
+			sub <= content /
+
+$mol_text_span $mol_paragraph
+	dom_name \span
+	attr *
+		^
+		mol_text_type <= type \
+
+$mol_textarea $mol_stack
+	attr *
+		^
+		mol_textarea_clickable <= clickable?val false
+		mol_textarea_sidebar_showed <= sidebar_showed false
+	event *
+		keydown?event <=> press?event null
+		pointermove?event <=> hover?event null
+	sub /
+		<= Edit $mol_textarea_edit
+			value?val <=> value?val \
+			hint <= hint \ 
+			enabled <= enabled true
+			length_max <= length_max Infinity
+			selection?val <=> selection?val /number
+		<= View $mol_text_code
+			text <= value
+			render_visible_only false
+			row_numb* <= row_numb* 0
+			sidebar_showed <= sidebar_showed
+			highlight <= highlight \
+
+$mol_textarea_edit $mol_string
+	dom_name \textarea
+	field *
+		^
+		scrollTop 0
+
+$mol_icon_upload $mol_icon path \M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z
+
+$mol_button_open $mol_button_minor
+	sub /
+		<= Icon $mol_icon_upload
+		<= Native $mol_button_open_native
+			files?next <=> files?next /
+			accept <= accept \
+			multiple <= multiple true
+
+$mol_button_open_native $mol_view
+	dom_name \input
+	files?next /
+	attr *
+		type \file
+		accept <= accept \
+		multiple <= multiple true
+	event *
+		change?next <=> picked?next null
+
+$mol_attach $mol_view
+	items?val /string
+	sub /
+		<= Content $mol_row
+			sub <= content /$mol_view
+	Add $mol_button_open
+		title <= attach_title \
+		files?val <=> attach_new?val null
+	Item* $mol_button_minor
+		click?event <=> item_drop*?event null
+		sub /
+			<= Image* $mol_image
+				title \
+				uri <= item_uri* \
+
+$care_attach $mol_attach
+
+$care_app_org_add $mol_page
+	org $care_app_org_service
+	title @ \Creating an organization
+	error *
+		required @ \*
+	body /
+		<= Form $mol_form
+			form_fields /
+				<= Name_field $mol_form_field
+					name @ \Name
+					bid <= name_bid \
+					control <= Name_control $mol_textarea
+						value? <=> name? \
+				<= Description_field $mol_form_field
+					name @ \Description
+					bid <= description_bid \
+					control <= Description_control $mol_textarea
+						value? <=> description? \
+				<= Image_field $mol_form_field
+					name @ \Image
+					control <= Image_control $care_attach
+						items? <=> images? /
+			buttons /
+				<= Submit $mol_button_major
+					enabled <= submit_enabled true
+					click? <=> submit? null
+					title @ \Create
+
+$mol_check_list $mol_view
+	Option* $mol_check
+		checked?val <=> option_checked*?val false
+		label <= option_label* /
+			<= option_title* \
+		enabled <= option_enabled* <= enabled true
+		hint <= option_hint* \
+		minimal_height 24
+	options *
+	keys /string
+	sub <= items /$mol_check
+
+$mol_switch $mol_check_list
+	value?val \
+
+$mol_pop $mol_view
+	showed?val false
+	align_vert \
+	align_hor \
+	sub /
+		<= Anchor null
+	sub_visible /
+		<= Anchor
+		<= Bubble $mol_pop_bubble
+			align <= align \bottom_center
+			content <= bubble_content /$mol_view_content
+			height_max <= height_max 9999
+
+$mol_pop_bubble $mol_scroll
+	sub <= content /$mol_view_content
+	style *
+		^
+		maxHeight <= height_max 9999
+	attr *
+		^
+		mol_pop_align <= align \
+		tabindex 0
+
+$mol_pick $mol_pop
+	event *
+		^
+		keydown?event <=> keydown?event null
+	Anchor <= Trigger $mol_check
+		minimal_width 40
+		minimal_height 40
+		enabled <= trigger_enabled true
+		checked?val <=> showed?val
+		sub <= trigger_content /$mol_view_content
+		hint <= hint \
+
+$mol_icon_calendar $mol_icon path \M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z
+
+$mol_icon_chevron_left $mol_icon path \M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z
+
+$mol_icon_chevron_right $mol_icon path \M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z
+
+$mol_hor $mol_view
+
+$mol_calendar $mol_list
+	sub /
+		<= Head $mol_view
+			sub <= head /
+				<= Title $mol_view
+					minimal_height 24
+					sub /
+						<= title \
+		<= Weekdays $mol_hor
+			sub <= weekdays /$mol_view
+	weeks /$mol_view
+	-
+	Weekday* $mol_calendar_day
+		holiday <= weekend* false
+		sub /
+			<= weekday* \
+	-
+	Week* $mol_hor
+		sub <= week_days* /$mol_view
+	-
+	Day* $mol_calendar_day
+		ghost <= day_ghost* false
+		holiday <= day_holiday* false
+		selected <= day_selected* false
+		theme <= day_theme* \
+		sub <= day_content* /
+			<= day_text* \
+	-
+	month_string \
+	month_moment $mol_time_moment
+
+$mol_calendar_day $mol_view
+	minimal_height 24
+	minimal_width 36
+	attr *
+		mol_calendar_holiday <= holiday false
+		mol_calendar_ghost <= ghost false
+		mol_calendar_selected <= selected false
+		mol_theme <= theme \
+
+$mol_date $mol_pick
+	Icon $mol_icon_calendar
+	-
+	bubble_content /
+		<= Input $mol_string
+			value?val <=> value?val \
+			hint <= input_hint \YYYY-MM-DD hh:mm
+			enabled <= enabled true
+		<= Calendar $mol_date_calendar
+			month_moment <= month_moment <= value_moment
+			day_selected* <= day_selected* false
+			day_click*?event <=> day_click*?event null
+			Title => Calendar_title
+			head /
+				<= Calendar_tools $mol_view
+					sub /
+						<= Prev $mol_button_minor
+							hint <= prev_hint @ \Previous month
+							click?event <=> prev?event null
+							sub /
+								<= Prev_icon $mol_icon_chevron_left
+						<= Calendar_title
+						<= Next $mol_button_minor
+							hint <= next_hint @ \Next month
+							click?event <=> next?event null
+							sub /
+								<= Next_icon $mol_icon_chevron_right
+	-
+	value_number?val NaN
+	value_moment?val $mol_time_moment
+
+$mol_date_calendar $mol_calendar
+	day_content* /
+		<= Day_button* $mol_button_minor
+			title <= day_text*
+			event_click?event <=> day_click*?event null
+			minimal_height 24
+
+$care_app_project_add $mol_page
+	project_service $care_app_project_service
+	org $care_app_org
+	title \Создание проекта
+	body /
+		<= Form $mol_form
+			form_fields /
+				<= Name_field $mol_form_field
+					name \Название
+					control <= Name_control $mol_textarea
+						value? <=> name? \
+				<= Description_field $mol_form_field
+					name \Описание
+					control <= Description_control $mol_textarea
+						value? <=> description? \
+				<= Result_field $mol_form_field
+					name \Результаты
+					control <= Result_control $mol_textarea
+						value? <=> result? \
+				<= Duration_field $mol_form_field
+					name \Продолжительность
+					control <= Duration_control $mol_switch
+						value? <=> duration? \one_time
+						options <= duration_dict *
+							one_time \Разовый
+							month0 \Менее 1 месяца
+							month1_3 \1 - 3 месяца
+							month3_12 \3 месяца - 1 год
+							month12_plus \Более 1 года
+							unlimited \Неограниченно
+				<= Date_start_field $mol_form_field
+					name \Дата начала
+					control <= Date_start_control $mol_date
+						align \top_center
+						value_moment? <=> date_start? $mol_time_moment
+			buttons /
+				<= Submit $mol_button_major
+					click? <=> submit? null
+					title \Создать
+
+$care_app_project_page $mol_page
+	project $care_app_project
+		name => name
+		description => description
+		result => result
+		duration => duration
+		date_start => date_start
+	add_page $care_app_project_add
+		duration_dict => duration_dict
+	title \Проект
+	tools /
+		<= Close_page $mol_link
+			arg * project null
+			sub / <= Close_page_icon $mol_icon_cross
+	body /
+		<= Name_field $mol_labeler
+			title \Название
+			content / <= name
+		<= Description_field $mol_labeler
+			title \Описание
+			content / <= description
+		<= Result_field $mol_labeler
+			title \Ожидаемые результат
+			content / <= result
+		<= Duration_field $mol_labeler
+			title \Продолжительность
+			content / <= duration_string \
+		<= Date_start_field $mol_labeler
+			title \Дата начала
+			content / <= date_start_string \
+		<= Job_field $mol_labeler
+			title \Вакансии
+			content / <= Job_list $mol_list
+				rows <= job_list_rows /
+					<= Job_add $mol_link
+						arg * job \
+						title @ \Добавить
+					<= Job_link*0 $mol_link
+						arg * job <= job_id* \
+						sub / <= job_name* \
+
+$care_app_job_add $mol_page
+	job_service $care_app_job_service
+	project $care_app_project
+	title \Создание вакансия
+	tools /
+		<= Close_page $mol_link
+			arg * project null
+			sub / <= Close_page_icon $mol_icon_cross
+	body /
+		<= Form $mol_form
+			form_fields /
+				<= Name_field $mol_form_field
+					name \Название
+					control <= Name_control $mol_textarea
+						value? <=> name? \
+				<= Functions_field $mol_form_field
+					name \Обязанности
+					control <= Functions_control $mol_textarea
+						value? <=> functions? \
+				<= Requests_field $mol_form_field
+					name \Требования
+					control <= Requests_control $mol_textarea
+						value? <=> requests? \
+				<= Provided_field $mol_form_field
+					name \Что предоставляется
+					control <= Provided_control $mol_textarea
+						value? <=> provided? \
+				<= Experience_field $mol_form_field
+					name \Опыт работы
+					control <= Experience_control $mol_switch
+						value? <=> experience? \no_matter
+						options <= experience_dict *
+							no_matter \Не имеет значения
+							no_expirience \Без опыта
+							year1_3 \1 - 3 года
+							year3_6 \3 - 6 лет
+							year6_plus \Более 6 лет
+				<= Format_field $mol_form_field
+					name \Формат
+					control <= Format_control $mol_switch
+						value? <=> format? \remotely
+						options <= format_dict *
+							remotely \Удаленно
+							offline \Офлайн
+							both \Оба
+				<= Duration_field $mol_form_field
+					name \Продолжительность вакансии
+					control <= Duration_control $mol_switch
+						value? <=> duration? \one_time
+						options <= duration_dict *
+							one_time \Разовая
+							month0 \Меньше месяца
+							month1_3 \1 - 3 месяца
+							month3_6 \3 - 6 месяцев
+							month6_12 \6 - 12 месяцев
+							month12_plus \Более 1 года
+							unlimited \Неограниченно
+				<= Work_shedule_field $mol_form_field
+					name \Название
+					control <= Work_shedule_control $mol_switch
+						value? <=> work_schedule? \every_day
+						options <= work_schedule_dict *
+							every_day \Каждый день
+							shift \Сменный
+							flexible \Гибкий
+				<= Pay_field $mol_form_field
+					name \Оплата
+					control <= Pay_control $mol_switch
+						value? <=> pay? \no
+						options <= pay_dict *
+							no \Не предусмотрено
+							yes \Предусмотрено
+			buttons /
+				<= Submit $mol_button_major
+					click? <=> submit? null
+					title @ \Создать
+
+$care_app_job_page $mol_page
+	job $care_app_job
+		name => name
+		functions => functions
+		requests => requests
+		provided => provided
+		experience => experience
+		format => format
+		duration => duration
+		work_schedule => work_schedule
+		pay => pay
+	title \Вакансия
+	tools /
+		<= Close_page $mol_link
+			arg * job null
+			sub / <= Close_page_icon $mol_icon_cross
+	add_page $care_app_job_add
+		experience_dict => experience_dict
+		pay_dict => pay_dict
+		format_dict => format_dict
+		duration_dict => duration_dict
+		work_schedule_dict => work_schedule_dict
+	body /
+		<= Name_field $mol_labeler
+			title \Название
+			content / <= name
+		<= Project_field $mol_labeler
+			title \Проект
+			content / <= Project_link $mol_link
+				arg * project <= project_id \
+				title <= project_name \
+		<= Functions_field $mol_labeler
+			title \Обязанности
+			content / <= functions
+		<= Requests_field $mol_labeler
+			title \Требования
+			content / <= requests
+		<= Provided_field $mol_labeler
+			title \Что предоставляется
+			content / <= provided
+		<= Experience_field $mol_labeler
+			title \Опыт работы
+			content / <= experience_string \
+		<= Format_field $mol_labeler
+			title \Формат
+			content / <= format_string \
+		<= Duration_field $mol_labeler
+			title \Продолжительность вакансии
+			content / <= duration_string \
+		<= Work_shedule_field $mol_labeler
+			title \Название
+			content / <= work_schedule_string \
+		<= Pay_field $mol_labeler
+			title \Оплата
+			content / <= pay_string \
+
+$mol_nav $mol_plugin
+	cycle?val false
+	-
+	mod_ctrl false
+	mod_shift false
+	mod_alt false
+	-
+	keys_x?val /
+	keys_y?val /
+	-
+	current_x?val null
+	current_y?val null
+	-
+	event_up?event null
+	event_down?event null
+	event_left?event null
+	event_right?event null
+	event *
+		^
+		keydown?event <=> event_key?event null
+
+$mol_search $mol_pop
+	query?val \
+	suggests /string
+	plugins /$mol_plugin
+		^
+		<= Hotkey $mol_hotkey
+			key * escape?val <=> clear?val null
+		<= Nav $mol_nav
+			keys_y <= nav_components /$mol_view
+			current_y?component <=> nav_focused?component null
+	showed?val <=> suggests_showed?val false
+	align_hor \right
+	Anchor $mol_view
+		sub <= anchor_content /
+			<= Query $mol_string
+				value?val <=> query?val \
+				hint <= hint @ \Search...
+				submit?event <=> submit?event null
+				enabled <= enabled true
+			<= Clear $mol_button_minor
+				hint @ \Clear
+				click?event <=> clear?event null
+				sub /
+					<= Clear_icon $mol_icon_cross
+	bubble_content /$mol_view_content
+		<= Menu $mol_list
+			rows <= menu_items /$mol_view
+	Suggest* $mol_button_minor
+		click?event <=> suggest_select*?event null
+		sub <= suggest_content* /$mol_view_content
+			<= Suggest_label* $mol_dimmer
+				haystack <= suggest_label* \
+				needle <= query?val \
+
+$care_app_job_search $mol_page
+	job_service $care_app_job_service
+	title \Поиск вакансий
+	body /
+		<= Body_list $mol_list
+			rows /
+				<= Search $mol_search
+					query? <=> query? \
+					suggests <= suggests /string
+				<= Job_list $mol_list
+					rows <= rows_filtered /
+						<= Job_row*0 $mol_link
+							sub /
+								<= Job_name* $mol_dimmer
+									needle <= query
+									haystack <= job_name* \
+							arg * job <= job_id* \
 
 $care_app $mol_book2
 	domain $care_app_domain
 		person => person
-		user => user
 		sign => sign
+		org => org
+		project => project_service
+		job => job_service
 	pages /
 		<= Sign_up_page $care_app_sign_up
 		<= Sign_in_page $care_app_sign_in
@@ -336,3 +1184,21 @@ $care_app $mol_book2
 					hint @ \Sign out
 					click? <=> sign_out? null
 					sub / <= Sign_out_icon $mol_icon_logout_variant
+		<= Org_list_page $care_app_org_list
+			user <= user $care_app_person
+		<= Org_page $care_app_org_page
+			org <= org_opened $care_app_org
+		<= Org_add_page $care_app_org_add
+			org <= org
+		<= Project_page $care_app_project_page
+			project <= project_opened $care_app_project
+		<= Project_add_page $care_app_project_add
+			project_service <= project_service
+			org <= org_opened
+		<= Job_page $care_app_job_page
+			job <= job_opened $care_app_job
+		<= Job_add_page $care_app_job_add
+			job_service <= job_service
+			project <= project_opened
+		<= Job_search_page $care_app_job_search
+			job_service <= job_service

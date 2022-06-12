@@ -1,6 +1,18 @@
 {
 	"$care_app_Nav_page_title": "Care",
 	"$care_app_Sign_out_hint": "Sign out",
+	"$care_app_job_add_Submit_title": "Создать",
+	"$care_app_org_add_Description_field_name": "Description",
+	"$care_app_org_add_Image_field_name": "Image",
+	"$care_app_org_add_Name_field_name": "Name",
+	"$care_app_org_add_Submit_title": "Create",
+	"$care_app_org_add_error_required": "*",
+	"$care_app_org_add_title": "Creating an organization",
+	"$care_app_org_list_Close_page_hint": "Close page",
+	"$care_app_org_list_Org_add_hint": "Create organization",
+	"$care_app_org_list_list_empty_text": "You are not subscribed to any organization",
+	"$care_app_org_list_title": "Organizations",
+	"$care_app_project_page_Job_add_title": "Добавить",
 	"$care_app_sign_in_Password_control_hint": "****",
 	"$care_app_sign_in_Password_field_name": "Password",
 	"$care_app_sign_in_Phone_control_hint": "+7 (999)",
@@ -26,5 +38,11 @@
 	"$care_app_sign_up_error_required": "*",
 	"$care_app_sign_up_sign_in_link_label": "Have account?",
 	"$care_app_sign_up_submit_label": "Sign up",
-	"$care_app_sign_up_title": "Sign up"
+	"$care_app_sign_up_title": "Sign up",
+	"$mol_date_next_hint": "Next month",
+	"$mol_date_prev_hint": "Previous month",
+	"$mol_search_Clear_hint": "Clear",
+	"$mol_search_hint": "Search...",
+	"$mol_text_code_Copy_hint": "Copy whole code",
+	"$mol_text_header_Link_hint": "Permalink to this section"
 }
