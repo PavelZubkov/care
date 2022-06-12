@@ -34,5 +34,7 @@ $care_app $mol_book2
 			project <= project_opened
 		<= Job_search_page $care_app_job_search
 			job_service <= job_service
+		<= Person_edit_page $care_app_person_edit
+			person <= user
 		<= Person_activity_page $care_app_person_activity
 			person <= user

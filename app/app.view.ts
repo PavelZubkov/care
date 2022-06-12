@@ -34,6 +34,10 @@ namespace $.$$ {
 
 			return [
 				this.Nav_page(),
+
+				... this.arg().person_edit === '' ? [this.Person_edit_page()] : [],
+				... this.arg().person_activity === '' ? [this.Person_activity_page()] : [],
+
 				... this.arg().orgs === '' ? [this.Org_list_page()] : [],
 				... this.arg().org ? [this.Org_page()] : [],
 				... this.arg().org === '' ? [this.Org_add_page()] : [],
@@ -45,7 +49,6 @@ namespace $.$$ {
 				... this.arg().job_search === '' ? [this.Job_search_page()] : [],
 				... this.arg().job ? [this.Job_page()] : [],
 
-				... this.arg().person_activity === '' ? [this.Person_activity_page()] : [],
 			]
 		}
 
