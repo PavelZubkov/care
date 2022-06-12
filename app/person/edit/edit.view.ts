@@ -2,6 +2,10 @@ namespace $.$$ {
 
 	export class $care_app_person_edit extends $.$care_app_person_edit {
 
+		images(next?: string[]) {
+			return this.person().images(next && next.slice(-1)) // now only 1 image
+		}
+
 		contact_rows() {
 			return Object.keys(this.contact_dict()).map( id => this.Contact_row(id) )
 		}
@@ -21,7 +25,7 @@ namespace $.$$ {
 			if (index === -1) {
 				next.push($mol_guid())
 			} else {
-				next.splice(index, 0, $mol_guid())
+				next.splice(index + 1, 0, $mol_guid())
 			}
 
 			this.person().company_list(next)
@@ -48,6 +52,13 @@ namespace $.$$ {
 			]
 		}
 
+		company_date_end_moment(id: string, next?: $mol_time_moment) {
+			if (!this.company_working_now(id)) {
+				return this.person().company_date_end(id, next) ?? new $mol_time_moment
+			}
+			return next ?? new $mol_time_moment
+		}
+
 		education_add(id: string) {
 			const next = this.person().education_list().slice()
 
@@ -55,7 +66,7 @@ namespace $.$$ {
 			if (index === -1) {
 				next.push($mol_guid())
 			} else {
-				next.splice(index, 0, $mol_guid())
+				next.splice(index + 1, 0, $mol_guid())
 			}
 
 			this.person().education_list(next)

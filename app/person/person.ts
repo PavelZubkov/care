@@ -85,6 +85,11 @@ namespace $ {
 			return String( this.state().sub('about').value(next) ?? '' )
 		}
 
+		images(next?: string[]) {
+			const array = this.state().sub('images').list(next)
+			return array.map( base64 => String(base64) )
+		}
+
 		contact_telegram(next?: string) {
 			return String( this.state().sub('contact_telegram').value(next) ?? '' )
 		}
@@ -130,6 +135,10 @@ namespace $ {
 		company_date_end(id: string, next?: $mol_time_moment) {
 			const str = this.state().sub('company').sub(id).sub('date_end').value(next && next.toString()) ?? ''
 			return str ? new $mol_time_moment(String(str)) : null
+		}
+
+		company_working_now(id: string, next?: boolean) {
+			return Boolean( this.state().sub('company').sub(id).sub('working_now').value(next) ?? false )
 		}
 
 		education_list(next?: string[]) {
