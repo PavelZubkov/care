@@ -6,10 +6,12 @@ $care_app $mol_book2
 		org => org
 		project => project_service
 		job => job_service
+		person => person_service
 	pages /
 		<= Sign_up_page $care_app_sign_up
 		<= Sign_in_page $care_app_sign_in
 		<= Nav_page $care_app_nav
+			user <= user
 			title @ \Care
 			tools /
 				<= Sign_out $mol_button_minor
@@ -34,6 +36,8 @@ $care_app $mol_book2
 			project <= project_opened
 		<= Job_search_page $care_app_job_search
 			job_service <= job_service
+		<= Person_page $care_app_person_page
+			person <= person_opened $care_app_person
 		<= Person_edit_page $care_app_person_edit
 			person <= user
 		<= Person_activity_page $care_app_person_activity

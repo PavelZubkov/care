@@ -1,9 +1,11 @@
 $care_app_nav $mol_page
+	user $care_app_person
+		id => user_id
 	body /
 		<= Person $mol_bar
 			sub /
 				<= Person_link $mol_link
-					arg * person \
+					arg * person <= user_id
 					sub /
 						<= Person_icon $mol_icon_account
 						<= person_label \Моя страница

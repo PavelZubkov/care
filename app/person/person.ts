@@ -55,6 +55,10 @@ namespace $ {
 			return String( this.state().sub('name_sur').value(next) ?? '' )
 		}
 
+		name_full() {
+			return `${this.name()} ${this.name_sur()}`
+		}
+
 		phone(next?: string) {
 			return String( this.state().sub('phone').value(next) ?? '' )
 		}

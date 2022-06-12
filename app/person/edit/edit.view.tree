@@ -86,9 +86,6 @@ $care_app_person_edit $mol_page
 						rows <= education_list /
 							<= Education_row*0 $mol_list
 								rows /
-									- <= Education_level* $mol_string
-										hint \Уровень
-										value? <=> education_level*?
 									<= Education_level* $mol_switch
 										value? <=> education_level*?
 										options <= education_level_dict *
@@ -106,7 +103,7 @@ $care_app_person_edit $mol_page
 									<= Education_depratment* $mol_string
 										hint \Факультет
 										value? <=> education_department*?
-									<= Education_specialty* $mol_textarea
+									<= Education_specialty* $mol_string
 										hint \Специальность
 										value? <=> education_specialty*?
 									<= Education_year_end* $mol_number

@@ -1,0 +1,123 @@
+$care_app_person_page $mol_page
+	person $care_app_person
+		images => images
+		name_full => name_full
+		about => about
+		contact_telegram => contact_telegram
+		contact_mail => contact_mail
+		contact_website => contact_website
+		company_name* => company_name*
+		company_position* => company_position*
+		company_industry* => company_industry*
+		company_tasks* => company_tasks*
+		company_date_start* => company_date_start*
+		company_date_end* => company_date_end*
+		company_working_now* => company_working_now*
+		education_level* => education_level*
+		education_institution* => education_institution*
+		education_department* => education_department*
+		education_specialty* => education_specialty*
+		education_year_end* => education_year_end*
+	Page_edit $care_app_person_edit
+		contact_dict => contact_dict
+		education_level_dict => education_level_dict
+	title \Моя страница
+	tools /
+		<= Close_page $mol_link
+			arg *
+				person null
+			sub / <= Close_page_icon $mol_icon_cross
+	working_now \По настоящее время
+	body / 
+		<= Person_head $mol_view
+			sub /
+				<= Image $mol_image2
+					links <= images
+				<= Name_full $mol_view
+					sub / <= name_full
+		<= Person_body $mol_list
+			rows /
+				<= About $care_labeler
+					title \Обо мне
+					content / <= about
+				<= Contact $care_labeler
+					title \Контакты
+					content /
+						<= Contact_list $mol_list
+							rows <= contact_rows /
+								<= Contact_telegram $care_labeler
+									dir \row
+									title \Телеграм
+									content / <= contact_telegram
+								<= Contanct_mail $care_labeler
+									dir \row
+									title \Почта
+									content / <= contact_mail
+								<= Contanct_website $care_labeler
+									dir \row
+									title \Сайт
+									content /
+										<= Website_link_iconed $mol_link_iconed
+											uri <= contact_website
+				<= Company $care_labeler
+					title \Опыт работы
+					content /
+						<= Company_list $mol_list
+							rows <= company_rows /
+								<= Company_row*0 $mol_list
+									rows <= company_row_rows* /
+										<= Company_position* $care_labeler
+											dir \row
+											title \Позиция
+											content / <= company_position*
+										<= Company_name* $care_labeler
+											dir \row
+											title \Компания
+											content / <= company_name*
+										<= Company_industry* $care_labeler
+											dir \row
+											title \Сфера деятельности
+											content / <= company_industry*
+										<= Company_tasks* $care_labeler
+											dir \column
+											title \Обязанности
+											content / <= company_tasks*
+										<= Company_date_start* $care_labeler
+											dir \row
+											title \Начало работы
+											content / <= company_date_start_string* \
+										<= Company_date_end* $care_labeler
+											dir \row
+											title \Окончание
+											content / <= company_date_end_string* \
+				<= Education $care_labeler
+					title \Образование
+					content /
+						<= Eduaction_list $mol_list
+							rows <= education_rows /
+								<= Education_row*0 $mol_list
+									rows /
+										<= Education_level* $care_labeler
+											dir \row
+											title \Уровень
+											content / <= education_level_string* \
+										<= Education_institution* $care_labeler
+											dir \row
+											title \Учебное заведение
+											content / <= education_institution*
+										<= Education_depratment* $care_labeler
+											dir \row
+											title \Факультет
+											content / <= education_department*
+										<= Education_specialty* $care_labeler
+											dir \row
+											title \Специальность
+											content / <= education_specialty*
+										<= Education_year_end* $care_labeler
+											dir \row
+											title \Год выпуска
+											content / <= education_year_end*
+				<= Skill_list $care_labeler
+					title \Навыки и умения
+					content <= skill_list /
+						<= Skill*0 $mol_view sub / <= skill_name* \

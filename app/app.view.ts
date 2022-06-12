@@ -22,6 +22,10 @@ namespace $.$$ {
 			return this.job_service().item( this.arg().job )
 		}
 
+		person_opened() {
+			return this.person_service().item( this.arg().person )
+		}
+
 		pages() {
 			
 			if (!this.user()) {
@@ -35,6 +39,7 @@ namespace $.$$ {
 			return [
 				this.Nav_page(),
 
+				... this.arg().person ? [this.Person_page()] : [],
 				... this.arg().person_edit === '' ? [this.Person_edit_page()] : [],
 				... this.arg().person_activity === '' ? [this.Person_activity_page()] : [],
 
