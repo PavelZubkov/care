@@ -335,11 +335,13 @@ $mol_icon_office_building $mol_icon path \M5,3V21H11V17.5H13V21H19V3H5M7,5H9V7H7
 $mol_icon_magnify $mol_icon path \M9.5,3C13.09,3 16,5.91 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16C5.91,16 3,13.09 3,9.5C3,5.91 5.91,3 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z
 
 $care_app_nav $mol_page
+	user $care_app_person
+		id => user_id
 	body /
 		<= Person $mol_bar
 			sub /
 				<= Person_link $mol_link
-					arg * person \
+					arg * person <= user_id
 					sub /
 						<= Person_icon $mol_icon_account
 						<= person_label \Моя страница
@@ -1353,9 +1355,6 @@ $care_app_person_edit $mol_page
 						rows <= education_list /
 							<= Education_row*0 $mol_list
 								rows /
-									- <= Education_level* $mol_string
-										hint \Уровень
-										value? <=> education_level*?
 									<= Education_level* $mol_switch
 										value? <=> education_level*?
 										options <= education_level_dict *
@@ -1373,7 +1372,7 @@ $care_app_person_edit $mol_page
 									<= Education_depratment* $mol_string
 										hint \Факультет
 										value? <=> education_department*?
-									<= Education_specialty* $mol_textarea
+									<= Education_specialty* $mol_string
 										hint \Специальность
 										value? <=> education_specialty*?
 									<= Education_year_end* $mol_number
@@ -1408,6 +1407,142 @@ $care_app_person_edit $mol_page
 													click? <=> skill_delete*? null
 													sub / <= Skill_delete_icon* $mol_icon_delete
 
+$care_labeler $mol_view
+	attr *
+		^
+		care_labeler_dir <= dir \column
+	sub /
+		<= Label $mol_view
+			sub <= label /$mol_view_content
+				<= title
+		<= Content $mol_view
+			sub <= content /
+	
+
+$care_app_person_page $mol_page
+	person $care_app_person
+		images => images
+		name_full => name_full
+		about => about
+		contact_telegram => contact_telegram
+		contact_mail => contact_mail
+		contact_website => contact_website
+		company_name* => company_name*
+		company_position* => company_position*
+		company_industry* => company_industry*
+		company_tasks* => company_tasks*
+		company_date_start* => company_date_start*
+		company_date_end* => company_date_end*
+		company_working_now* => company_working_now*
+		education_level* => education_level*
+		education_institution* => education_institution*
+		education_department* => education_department*
+		education_specialty* => education_specialty*
+		education_year_end* => education_year_end*
+	Page_edit $care_app_person_edit
+		contact_dict => contact_dict
+		education_level_dict => education_level_dict
+	title \Моя страница
+	tools /
+		<= Close_page $mol_link
+			arg *
+				person null
+			sub / <= Close_page_icon $mol_icon_cross
+	working_now \По настоящее время
+	body / 
+		<= Person_head $mol_view
+			sub /
+				<= Image $mol_image2
+					links <= images
+				<= Name_full $mol_view
+					sub / <= name_full
+		<= Person_body $mol_list
+			rows /
+				<= About $care_labeler
+					title \Обо мне
+					content / <= about
+				<= Contact $care_labeler
+					title \Контакты
+					content /
+						<= Contact_list $mol_list
+							rows <= contact_rows /
+								<= Contact_telegram $care_labeler
+									dir \row
+									title \Телеграм
+									content / <= contact_telegram
+								<= Contanct_mail $care_labeler
+									dir \row
+									title \Почта
+									content / <= contact_mail
+								<= Contanct_website $care_labeler
+									dir \row
+									title \Сайт
+									content /
+										<= Website_link_iconed $mol_link_iconed
+											uri <= contact_website
+				<= Company $care_labeler
+					title \Опыт работы
+					content /
+						<= Company_list $mol_list
+							rows <= company_rows /
+								<= Company_row*0 $mol_list
+									rows <= company_row_rows* /
+										<= Company_position* $care_labeler
+											dir \row
+											title \Позиция
+											content / <= company_position*
+										<= Company_name* $care_labeler
+											dir \row
+											title \Компания
+											content / <= company_name*
+										<= Company_industry* $care_labeler
+											dir \row
+											title \Сфера деятельности
+											content / <= company_industry*
+										<= Company_tasks* $care_labeler
+											dir \column
+											title \Обязанности
+											content / <= company_tasks*
+										<= Company_date_start* $care_labeler
+											dir \row
+											title \Начало работы
+											content / <= company_date_start_string* \
+										<= Company_date_end* $care_labeler
+											dir \row
+											title \Окончание
+											content / <= company_date_end_string* \
+				<= Education $care_labeler
+					title \Образование
+					content /
+						<= Eduaction_list $mol_list
+							rows <= education_rows /
+								<= Education_row*0 $mol_list
+									rows /
+										<= Education_level* $care_labeler
+											dir \row
+											title \Уровень
+											content / <= education_level_string* \
+										<= Education_institution* $care_labeler
+											dir \row
+											title \Учебное заведение
+											content / <= education_institution*
+										<= Education_depratment* $care_labeler
+											dir \row
+											title \Факультет
+											content / <= education_department*
+										<= Education_specialty* $care_labeler
+											dir \row
+											title \Специальность
+											content / <= education_specialty*
+										<= Education_year_end* $care_labeler
+											dir \row
+											title \Год выпуска
+											content / <= education_year_end*
+				<= Skill_list $care_labeler
+					title \Навыки и умения
+					content <= skill_list /
+						<= Skill*0 $mol_view sub / <= skill_name* \
+
 $care_app_person_activity $mol_page
 	person $care_app_person
 	title \Деятельность
@@ -1437,10 +1572,12 @@ $care_app $mol_book2
 		org => org
 		project => project_service
 		job => job_service
+		person => person_service
 	pages /
 		<= Sign_up_page $care_app_sign_up
 		<= Sign_in_page $care_app_sign_in
 		<= Nav_page $care_app_nav
+			user <= user
 			title @ \Care
 			tools /
 				<= Sign_out $mol_button_minor
@@ -1465,6 +1602,8 @@ $care_app $mol_book2
 			project <= project_opened
 		<= Job_search_page $care_app_job_search
 			job_service <= job_service
+		<= Person_page $care_app_person_page
+			person <= person_opened $care_app_person
 		<= Person_edit_page $care_app_person_edit
 			person <= user
 		<= Person_activity_page $care_app_person_activity

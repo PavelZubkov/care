@@ -7737,269 +7737,6 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    class $mol_icon_account extends $mol_icon {
-        path() {
-            return "M12,4C14.21,4 16,5.79 16,8C16,10.21 14.21,12 12,12C9.79,12 8,10.21 8,8C8,5.79 9.79,4 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z";
-        }
-    }
-    $.$mol_icon_account = $mol_icon_account;
-})($ || ($ = {}));
-//mol/icon/account/-view.tree/account.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_icon_pencil extends $mol_icon {
-        path() {
-            return "M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z";
-        }
-    }
-    $.$mol_icon_pencil = $mol_icon_pencil;
-})($ || ($ = {}));
-//mol/icon/pencil/-view.tree/pencil.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_bar extends $mol_view {
-    }
-    $.$mol_bar = $mol_bar;
-})($ || ($ = {}));
-//mol/bar/-view.tree/bar.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/bar/bar.view.css", "[mol_bar] {\n\tdisplay: flex;\n\t/* box-shadow: inset 0 0 0 1px var(--mol_theme_line); */\n\tborder-radius: var(--mol_gap_round);\n}\n");
-})($ || ($ = {}));
-//mol/bar/-css/bar.view.css.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_icon_briefcase extends $mol_icon {
-        path() {
-            return "M10,2H14C15.1,2 16,2.9 16,4V6H20C21.1,6 22,6.9 22,8V19C22,20.1 21.1,21 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z";
-        }
-    }
-    $.$mol_icon_briefcase = $mol_icon_briefcase;
-})($ || ($ = {}));
-//mol/icon/briefcase/-view.tree/briefcase.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_icon_briefcase_outline extends $mol_icon {
-        path() {
-            return "M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z";
-        }
-    }
-    $.$mol_icon_briefcase_outline = $mol_icon_briefcase_outline;
-})($ || ($ = {}));
-//mol/icon/briefcase/outline/-view.tree/outline.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_icon_office extends $mol_icon {
-        path() {
-            return "M3,18L7,16.75V7L14,5V19.5L3.5,18.25L14,22L20,20.75V3.5L13.95,2L3,5.75V18Z";
-        }
-    }
-    $.$mol_icon_office = $mol_icon_office;
-})($ || ($ = {}));
-//mol/icon/office/-view.tree/office.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_icon_office_building extends $mol_icon {
-        path() {
-            return "M5,3V21H11V17.5H13V21H19V3H5M7,5H9V7H7V5M11,5H13V7H11V5M15,5H17V7H15V5M7,9H9V11H7V9M11,9H13V11H11V9M15,9H17V11H15V9M7,13H9V15H7V13M11,13H13V15H11V13M15,13H17V15H15V13M7,17H9V19H7V17M15,17H17V19H15V17Z";
-        }
-    }
-    $.$mol_icon_office_building = $mol_icon_office_building;
-})($ || ($ = {}));
-//mol/icon/office/building/-view.tree/building.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_icon_magnify extends $mol_icon {
-        path() {
-            return "M9.5,3C13.09,3 16,5.91 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16C5.91,16 3,13.09 3,9.5C3,5.91 5.91,3 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z";
-        }
-    }
-    $.$mol_icon_magnify = $mol_icon_magnify;
-})($ || ($ = {}));
-//mol/icon/magnify/-view.tree/magnify.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $care_app_nav extends $mol_page {
-        body() {
-            return [
-                this.Person(),
-                this.Person_activity(),
-                this.Org_list(),
-                this.Job_search()
-            ];
-        }
-        Person_icon() {
-            const obj = new this.$.$mol_icon_account();
-            return obj;
-        }
-        person_label() {
-            return "Моя страница";
-        }
-        Person_link() {
-            const obj = new this.$.$mol_link();
-            obj.arg = () => ({
-                person: ""
-            });
-            obj.sub = () => [
-                this.Person_icon(),
-                this.person_label()
-            ];
-            return obj;
-        }
-        Person_edit_icon() {
-            const obj = new this.$.$mol_icon_pencil();
-            return obj;
-        }
-        Person_edit_link() {
-            const obj = new this.$.$mol_link();
-            obj.arg = () => ({
-                person_edit: ""
-            });
-            obj.sub = () => [
-                this.Person_edit_icon()
-            ];
-            return obj;
-        }
-        Person() {
-            const obj = new this.$.$mol_bar();
-            obj.sub = () => [
-                this.Person_link(),
-                this.Person_edit_link()
-            ];
-            return obj;
-        }
-        Person_activity_icon() {
-            const obj = new this.$.$mol_icon_briefcase_outline();
-            return obj;
-        }
-        person_activity_label() {
-            return "Деятельность";
-        }
-        Person_activity() {
-            const obj = new this.$.$mol_link();
-            obj.arg = () => ({
-                person_activity: ""
-            });
-            obj.sub = () => [
-                this.Person_activity_icon(),
-                this.person_activity_label()
-            ];
-            return obj;
-        }
-        Org_list_icon() {
-            const obj = new this.$.$mol_icon_office_building();
-            return obj;
-        }
-        org_list_label() {
-            return "Организации";
-        }
-        Org_list() {
-            const obj = new this.$.$mol_link();
-            obj.arg = () => ({
-                orgs: ""
-            });
-            obj.sub = () => [
-                this.Org_list_icon(),
-                this.org_list_label()
-            ];
-            return obj;
-        }
-        Job_search_icon() {
-            const obj = new this.$.$mol_icon_magnify();
-            return obj;
-        }
-        job_search_label() {
-            return "Поиск вакансий";
-        }
-        Job_search() {
-            const obj = new this.$.$mol_link();
-            obj.arg = () => ({
-                job_search: ""
-            });
-            obj.sub = () => [
-                this.Job_search_icon(),
-                this.job_search_label()
-            ];
-            return obj;
-        }
-    }
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person_icon", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person_link", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person_edit_icon", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person_edit_link", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person_activity_icon", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person_activity", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Org_list_icon", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Org_list", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Job_search_icon", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Job_search", null);
-    $.$care_app_nav = $care_app_nav;
-})($ || ($ = {}));
-//care/app/nav/-view.tree/nav.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        $mol_style_define($.$care_app_nav, {
-            Person: {
-                justifyContent: 'space-between',
-            },
-            Person_link: {
-                flex: {
-                    grow: 1,
-                },
-            },
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-//care/app/nav/nav.view.css.ts
-;
-"use strict";
-var $;
-(function ($) {
     class $care_app_index extends $mol_object2 {
         domain() {
             throw new Error('Not defined');
@@ -8853,6 +8590,9 @@ var $;
         name_sur(next) {
             return String(this.state().sub('name_sur').value(next) ?? '');
         }
+        name_full() {
+            return `${this.name()} ${this.name_sur()}`;
+        }
         phone(next) {
             return String(this.state().sub('phone').value(next) ?? '');
         }
@@ -8946,6 +8686,279 @@ var $;
     $.$care_app_person = $care_app_person;
 })($ || ($ = {}));
 //care/app/person/person.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_account extends $mol_icon {
+        path() {
+            return "M12,4C14.21,4 16,5.79 16,8C16,10.21 14.21,12 12,12C9.79,12 8,10.21 8,8C8,5.79 9.79,4 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z";
+        }
+    }
+    $.$mol_icon_account = $mol_icon_account;
+})($ || ($ = {}));
+//mol/icon/account/-view.tree/account.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_pencil extends $mol_icon {
+        path() {
+            return "M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z";
+        }
+    }
+    $.$mol_icon_pencil = $mol_icon_pencil;
+})($ || ($ = {}));
+//mol/icon/pencil/-view.tree/pencil.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_bar extends $mol_view {
+    }
+    $.$mol_bar = $mol_bar;
+})($ || ($ = {}));
+//mol/bar/-view.tree/bar.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/bar/bar.view.css", "[mol_bar] {\n\tdisplay: flex;\n\t/* box-shadow: inset 0 0 0 1px var(--mol_theme_line); */\n\tborder-radius: var(--mol_gap_round);\n}\n");
+})($ || ($ = {}));
+//mol/bar/-css/bar.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_briefcase extends $mol_icon {
+        path() {
+            return "M10,2H14C15.1,2 16,2.9 16,4V6H20C21.1,6 22,6.9 22,8V19C22,20.1 21.1,21 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z";
+        }
+    }
+    $.$mol_icon_briefcase = $mol_icon_briefcase;
+})($ || ($ = {}));
+//mol/icon/briefcase/-view.tree/briefcase.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_briefcase_outline extends $mol_icon {
+        path() {
+            return "M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z";
+        }
+    }
+    $.$mol_icon_briefcase_outline = $mol_icon_briefcase_outline;
+})($ || ($ = {}));
+//mol/icon/briefcase/outline/-view.tree/outline.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_office extends $mol_icon {
+        path() {
+            return "M3,18L7,16.75V7L14,5V19.5L3.5,18.25L14,22L20,20.75V3.5L13.95,2L3,5.75V18Z";
+        }
+    }
+    $.$mol_icon_office = $mol_icon_office;
+})($ || ($ = {}));
+//mol/icon/office/-view.tree/office.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_office_building extends $mol_icon {
+        path() {
+            return "M5,3V21H11V17.5H13V21H19V3H5M7,5H9V7H7V5M11,5H13V7H11V5M15,5H17V7H15V5M7,9H9V11H7V9M11,9H13V11H11V9M15,9H17V11H15V9M7,13H9V15H7V13M11,13H13V15H11V13M15,13H17V15H15V13M7,17H9V19H7V17M15,17H17V19H15V17Z";
+        }
+    }
+    $.$mol_icon_office_building = $mol_icon_office_building;
+})($ || ($ = {}));
+//mol/icon/office/building/-view.tree/building.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_magnify extends $mol_icon {
+        path() {
+            return "M9.5,3C13.09,3 16,5.91 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16C5.91,16 3,13.09 3,9.5C3,5.91 5.91,3 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z";
+        }
+    }
+    $.$mol_icon_magnify = $mol_icon_magnify;
+})($ || ($ = {}));
+//mol/icon/magnify/-view.tree/magnify.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $care_app_nav extends $mol_page {
+        user_id() {
+            return this.user().id();
+        }
+        user() {
+            const obj = new this.$.$care_app_person();
+            return obj;
+        }
+        body() {
+            return [
+                this.Person(),
+                this.Person_activity(),
+                this.Org_list(),
+                this.Job_search()
+            ];
+        }
+        Person_icon() {
+            const obj = new this.$.$mol_icon_account();
+            return obj;
+        }
+        person_label() {
+            return "Моя страница";
+        }
+        Person_link() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                person: this.user_id()
+            });
+            obj.sub = () => [
+                this.Person_icon(),
+                this.person_label()
+            ];
+            return obj;
+        }
+        Person_edit_icon() {
+            const obj = new this.$.$mol_icon_pencil();
+            return obj;
+        }
+        Person_edit_link() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                person_edit: ""
+            });
+            obj.sub = () => [
+                this.Person_edit_icon()
+            ];
+            return obj;
+        }
+        Person() {
+            const obj = new this.$.$mol_bar();
+            obj.sub = () => [
+                this.Person_link(),
+                this.Person_edit_link()
+            ];
+            return obj;
+        }
+        Person_activity_icon() {
+            const obj = new this.$.$mol_icon_briefcase_outline();
+            return obj;
+        }
+        person_activity_label() {
+            return "Деятельность";
+        }
+        Person_activity() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                person_activity: ""
+            });
+            obj.sub = () => [
+                this.Person_activity_icon(),
+                this.person_activity_label()
+            ];
+            return obj;
+        }
+        Org_list_icon() {
+            const obj = new this.$.$mol_icon_office_building();
+            return obj;
+        }
+        org_list_label() {
+            return "Организации";
+        }
+        Org_list() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                orgs: ""
+            });
+            obj.sub = () => [
+                this.Org_list_icon(),
+                this.org_list_label()
+            ];
+            return obj;
+        }
+        Job_search_icon() {
+            const obj = new this.$.$mol_icon_magnify();
+            return obj;
+        }
+        job_search_label() {
+            return "Поиск вакансий";
+        }
+        Job_search() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                job_search: ""
+            });
+            obj.sub = () => [
+                this.Job_search_icon(),
+                this.job_search_label()
+            ];
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "user", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_link", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_edit_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_edit_link", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_activity_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Person_activity", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Org_list_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Org_list", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Job_search_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Job_search", null);
+    $.$care_app_nav = $care_app_nav;
+})($ || ($ = {}));
+//care/app/nav/-view.tree/nav.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($.$care_app_nav, {
+            Person: {
+                justifyContent: 'space-between',
+            },
+            Person_link: {
+                flex: {
+                    grow: 1,
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/nav/nav.view.css.ts
 ;
 "use strict";
 var $;
@@ -9376,7 +9389,7 @@ var $;
                 padding: $mol_gap.block,
             },
             Org_image: {
-                width: rem(5),
+                width: rem(7),
                 border: {
                     radius: per(50),
                 },
@@ -9386,7 +9399,7 @@ var $;
             },
             Org_name: {
                 width: per(100),
-                maxWidth: calc('100% - 5rem'),
+                maxWidth: calc('100% - 7rem'),
                 font: {
                     size: rem(1.25),
                 },
@@ -15973,7 +15986,7 @@ var $;
             return obj;
         }
         Education_specialty(id) {
-            const obj = new this.$.$mol_textarea();
+            const obj = new this.$.$mol_string();
             obj.hint = () => "Специальность";
             obj.value = (next) => this.education_specialty(id, next);
             return obj;
@@ -16466,6 +16479,689 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    class $care_labeler extends $mol_view {
+        attr() {
+            return {
+                ...super.attr(),
+                care_labeler_dir: this.dir()
+            };
+        }
+        sub() {
+            return [
+                this.Label(),
+                this.Content()
+            ];
+        }
+        dir() {
+            return "column";
+        }
+        label() {
+            return [
+                this.title()
+            ];
+        }
+        Label() {
+            const obj = new this.$.$mol_view();
+            obj.sub = () => this.label();
+            return obj;
+        }
+        content() {
+            return [];
+        }
+        Content() {
+            const obj = new this.$.$mol_view();
+            obj.sub = () => this.content();
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $care_labeler.prototype, "Label", null);
+    __decorate([
+        $mol_mem
+    ], $care_labeler.prototype, "Content", null);
+    $.$care_labeler = $care_labeler;
+})($ || ($ = {}));
+//care/labeler/-view.tree/labeler.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("care/labeler/labeler.view.css", "[care_labeler_content] [care_labeler_label] {\n\tfont-weight: normal;\n}\n\n[care_labeler_content] [care_labeler] {\n\tpadding: 0;\n}\n");
+})($ || ($ = {}));
+//care/labeler/-css/labeler.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem, per } = $mol_style_unit;
+        $mol_style_define($.$care_labeler, {
+            padding: $mol_gap.space,
+            Label: {
+                color: $mol_theme.shade,
+                font: {
+                    weight: 'bold',
+                },
+            },
+            Content: {
+                padding: {
+                    left: $mol_gap.block,
+                },
+                whiteSpace: 'break-spaces',
+                flex: {
+                    wrap: 'wrap',
+                },
+            },
+            '@': {
+                care_labeler_dir: {
+                    column: {
+                        flex: {
+                            direction: 'column',
+                        },
+                    },
+                    row: {
+                        alignItems: 'flex-start',
+                        flex: {
+                            direction: 'row',
+                        },
+                        Label: {
+                            maxWidth: rem(8),
+                            flex: {
+                                grow: 1,
+                            },
+                        },
+                    },
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/labeler/labeler.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $care_app_person_page extends $mol_page {
+        images() {
+            return this.person().images();
+        }
+        name_full() {
+            return this.person().name_full();
+        }
+        about() {
+            return this.person().about();
+        }
+        contact_telegram() {
+            return this.person().contact_telegram();
+        }
+        contact_mail() {
+            return this.person().contact_mail();
+        }
+        contact_website() {
+            return this.person().contact_website();
+        }
+        company_name(id) {
+            return this.person().company_name(id);
+        }
+        company_position(id) {
+            return this.person().company_position(id);
+        }
+        company_industry(id) {
+            return this.person().company_industry(id);
+        }
+        company_tasks(id) {
+            return this.person().company_tasks(id);
+        }
+        company_date_start(id) {
+            return this.person().company_date_start(id);
+        }
+        company_date_end(id) {
+            return this.person().company_date_end(id);
+        }
+        company_working_now(id) {
+            return this.person().company_working_now(id);
+        }
+        education_level(id) {
+            return this.person().education_level(id);
+        }
+        education_institution(id) {
+            return this.person().education_institution(id);
+        }
+        education_department(id) {
+            return this.person().education_department(id);
+        }
+        education_specialty(id) {
+            return this.person().education_specialty(id);
+        }
+        education_year_end(id) {
+            return this.person().education_year_end(id);
+        }
+        person() {
+            const obj = new this.$.$care_app_person();
+            return obj;
+        }
+        contact_dict() {
+            return this.Page_edit().contact_dict();
+        }
+        education_level_dict() {
+            return this.Page_edit().education_level_dict();
+        }
+        Page_edit() {
+            const obj = new this.$.$care_app_person_edit();
+            return obj;
+        }
+        title() {
+            return "Моя страница";
+        }
+        tools() {
+            return [
+                this.Close_page()
+            ];
+        }
+        working_now() {
+            return "По настоящее время";
+        }
+        body() {
+            return [
+                this.Person_head(),
+                this.Person_body()
+            ];
+        }
+        Close_page_icon() {
+            const obj = new this.$.$mol_icon_cross();
+            return obj;
+        }
+        Close_page() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                person: null
+            });
+            obj.sub = () => [
+                this.Close_page_icon()
+            ];
+            return obj;
+        }
+        Image() {
+            const obj = new this.$.$mol_image2();
+            obj.links = () => this.images();
+            return obj;
+        }
+        Name_full() {
+            const obj = new this.$.$mol_view();
+            obj.sub = () => [
+                this.name_full()
+            ];
+            return obj;
+        }
+        Person_head() {
+            const obj = new this.$.$mol_view();
+            obj.sub = () => [
+                this.Image(),
+                this.Name_full()
+            ];
+            return obj;
+        }
+        About() {
+            const obj = new this.$.$care_labeler();
+            obj.title = () => "Обо мне";
+            obj.content = () => [
+                this.about()
+            ];
+            return obj;
+        }
+        Contact_telegram() {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Телеграм";
+            obj.content = () => [
+                this.contact_telegram()
+            ];
+            return obj;
+        }
+        Contanct_mail() {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Почта";
+            obj.content = () => [
+                this.contact_mail()
+            ];
+            return obj;
+        }
+        Website_link_iconed() {
+            const obj = new this.$.$mol_link_iconed();
+            obj.uri = () => this.contact_website();
+            return obj;
+        }
+        Contanct_website() {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Сайт";
+            obj.content = () => [
+                this.Website_link_iconed()
+            ];
+            return obj;
+        }
+        contact_rows() {
+            return [
+                this.Contact_telegram(),
+                this.Contanct_mail(),
+                this.Contanct_website()
+            ];
+        }
+        Contact_list() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => this.contact_rows();
+            return obj;
+        }
+        Contact() {
+            const obj = new this.$.$care_labeler();
+            obj.title = () => "Контакты";
+            obj.content = () => [
+                this.Contact_list()
+            ];
+            return obj;
+        }
+        Company_position(id) {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Позиция";
+            obj.content = () => [
+                this.company_position(id)
+            ];
+            return obj;
+        }
+        Company_name(id) {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Компания";
+            obj.content = () => [
+                this.company_name(id)
+            ];
+            return obj;
+        }
+        Company_industry(id) {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Сфера деятельности";
+            obj.content = () => [
+                this.company_industry(id)
+            ];
+            return obj;
+        }
+        Company_tasks(id) {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "column";
+            obj.title = () => "Обязанности";
+            obj.content = () => [
+                this.company_tasks(id)
+            ];
+            return obj;
+        }
+        company_date_start_string(id) {
+            return "";
+        }
+        Company_date_start(id) {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Начало работы";
+            obj.content = () => [
+                this.company_date_start_string(id)
+            ];
+            return obj;
+        }
+        company_date_end_string(id) {
+            return "";
+        }
+        Company_date_end(id) {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Окончание";
+            obj.content = () => [
+                this.company_date_end_string(id)
+            ];
+            return obj;
+        }
+        company_row_rows(id) {
+            return [
+                this.Company_position(id),
+                this.Company_name(id),
+                this.Company_industry(id),
+                this.Company_tasks(id),
+                this.Company_date_start(id),
+                this.Company_date_end(id)
+            ];
+        }
+        Company_row(id) {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => this.company_row_rows(id);
+            return obj;
+        }
+        company_rows() {
+            return [
+                this.Company_row("0")
+            ];
+        }
+        Company_list() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => this.company_rows();
+            return obj;
+        }
+        Company() {
+            const obj = new this.$.$care_labeler();
+            obj.title = () => "Опыт работы";
+            obj.content = () => [
+                this.Company_list()
+            ];
+            return obj;
+        }
+        education_level_string(id) {
+            return "";
+        }
+        Education_level(id) {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Уровень";
+            obj.content = () => [
+                this.education_level_string(id)
+            ];
+            return obj;
+        }
+        Education_institution(id) {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Учебное заведение";
+            obj.content = () => [
+                this.education_institution(id)
+            ];
+            return obj;
+        }
+        Education_depratment(id) {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Факультет";
+            obj.content = () => [
+                this.education_department(id)
+            ];
+            return obj;
+        }
+        Education_specialty(id) {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Специальность";
+            obj.content = () => [
+                this.education_specialty(id)
+            ];
+            return obj;
+        }
+        Education_year_end(id) {
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Год выпуска";
+            obj.content = () => [
+                this.education_year_end(id)
+            ];
+            return obj;
+        }
+        Education_row(id) {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => [
+                this.Education_level(id),
+                this.Education_institution(id),
+                this.Education_depratment(id),
+                this.Education_specialty(id),
+                this.Education_year_end(id)
+            ];
+            return obj;
+        }
+        education_rows() {
+            return [
+                this.Education_row("0")
+            ];
+        }
+        Eduaction_list() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => this.education_rows();
+            return obj;
+        }
+        Education() {
+            const obj = new this.$.$care_labeler();
+            obj.title = () => "Образование";
+            obj.content = () => [
+                this.Eduaction_list()
+            ];
+            return obj;
+        }
+        skill_name(id) {
+            return "";
+        }
+        Skill(id) {
+            const obj = new this.$.$mol_view();
+            obj.sub = () => [
+                this.skill_name(id)
+            ];
+            return obj;
+        }
+        skill_list() {
+            return [
+                this.Skill("0")
+            ];
+        }
+        Skill_list() {
+            const obj = new this.$.$care_labeler();
+            obj.title = () => "Навыки и умения";
+            obj.content = () => this.skill_list();
+            return obj;
+        }
+        Person_body() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => [
+                this.About(),
+                this.Contact(),
+                this.Company(),
+                this.Education(),
+                this.Skill_list()
+            ];
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "person", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Page_edit", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Close_page_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Close_page", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Image", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Name_full", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Person_head", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "About", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Contact_telegram", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Contanct_mail", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Website_link_iconed", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Contanct_website", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Contact_list", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Contact", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Company_position", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Company_name", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Company_industry", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Company_tasks", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Company_date_start", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Company_date_end", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Company_row", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Company_list", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Company", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Education_level", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Education_institution", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Education_depratment", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Education_specialty", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Education_year_end", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Education_row", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Eduaction_list", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Education", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_person_page.prototype, "Skill", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Skill_list", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Person_body", null);
+    $.$care_app_person_page = $care_app_person_page;
+})($ || ($ = {}));
+//care/app/person/page/-view.tree/page.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem, per } = $mol_style_unit;
+        const { calc } = $mol_style_func;
+        $mol_style_define($.$care_app_person_page, {
+            Body: {
+                padding: $mol_gap.block,
+            },
+            Image: {
+                width: rem(7),
+                border: {
+                    radius: per(50),
+                },
+                margin: {
+                    right: $mol_gap.block,
+                },
+            },
+            Name_full: {
+                width: per(100),
+                maxWidth: calc('100% - 7rem'),
+                font: {
+                    size: rem(1.25),
+                },
+            },
+            Person_head: {
+                width: per(100),
+                alignItems: 'center',
+                flex: {
+                    direction: 'row',
+                },
+                margin: {
+                    bottom: $mol_gap.block,
+                },
+            },
+            About: {
+                whiteSpace: 'pre',
+            },
+            Website_link_iconed: {
+                padding: 0,
+            },
+            Skill: {
+                padding: $mol_gap.text,
+                color: $mol_theme.special,
+            }
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/person/page/page.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $care_app_person_page extends $.$care_app_person_page {
+            company_rows() {
+                return this.person().company_list().map(id => this.Company_row(id));
+            }
+            company_date_start_string(id) {
+                return this.person().company_date_start(id).toString('MM.YYYY');
+            }
+            company_date_end_string(id) {
+                if (this.person().company_working_now(id))
+                    return this.working_now();
+                return this.person().company_date_end(id)?.toString('MM.YYYY') ?? '';
+            }
+            education_rows() {
+                return this.person().education_list().map(id => this.Education_row(id));
+            }
+            education_level_string(id) {
+                return this.education_level_dict()[this.person().education_level(id)];
+            }
+            skill_list() {
+                return this.person().skill_list().map(key => this.Skill(key));
+            }
+            skill_name(key) {
+                return key;
+            }
+        }
+        $$.$care_app_person_page = $care_app_person_page;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/person/page/page.view.ts
+;
+"use strict";
+var $;
+(function ($) {
     class $care_app_person_activity extends $mol_page {
         person() {
             const obj = new this.$.$care_app_person();
@@ -16612,6 +17308,9 @@ var $;
         job_service() {
             return this.domain().job();
         }
+        person_service() {
+            return this.domain().person();
+        }
         domain() {
             const obj = new this.$.$care_app_domain();
             return obj;
@@ -16629,6 +17328,7 @@ var $;
                 this.Job_page(),
                 this.Job_add_page(),
                 this.Job_search_page(),
+                this.Person_page(),
                 this.Person_edit_page(),
                 this.Person_activity_page()
             ];
@@ -16661,6 +17361,7 @@ var $;
         }
         Nav_page() {
             const obj = new this.$.$care_app_nav();
+            obj.user = () => this.user();
             obj.title = () => this.$.$mol_locale.text('$care_app_Nav_page_title');
             obj.tools = () => [
                 this.Sign_out()
@@ -16723,6 +17424,15 @@ var $;
         Job_search_page() {
             const obj = new this.$.$care_app_job_search();
             obj.job_service = () => this.job_service();
+            return obj;
+        }
+        person_opened() {
+            const obj = new this.$.$care_app_person();
+            return obj;
+        }
+        Person_page() {
+            const obj = new this.$.$care_app_person_page();
+            obj.person = () => this.person_opened();
             return obj;
         }
         Person_edit_page() {
@@ -16795,6 +17505,12 @@ var $;
     ], $care_app.prototype, "Job_search_page", null);
     __decorate([
         $mol_mem
+    ], $care_app.prototype, "person_opened", null);
+    __decorate([
+        $mol_mem
+    ], $care_app.prototype, "Person_page", null);
+    __decorate([
+        $mol_mem
     ], $care_app.prototype, "Person_edit_page", null);
     __decorate([
         $mol_mem
@@ -16864,6 +17580,12 @@ var $;
                     shrink: 0,
                 },
             },
+            Person_page: {
+                flex: {
+                    basis: rem(22),
+                    shrink: 0,
+                },
+            },
             Person_edit_page: {
                 flex: {
                     basis: rem(22),
@@ -16902,6 +17624,9 @@ var $;
             job_opened() {
                 return this.job_service().item(this.arg().job);
             }
+            person_opened() {
+                return this.person_service().item(this.arg().person);
+            }
             pages() {
                 if (!this.user()) {
                     return [
@@ -16912,6 +17637,7 @@ var $;
                 }
                 return [
                     this.Nav_page(),
+                    ...this.arg().person ? [this.Person_page()] : [],
                     ...this.arg().person_edit === '' ? [this.Person_edit_page()] : [],
                     ...this.arg().person_activity === '' ? [this.Person_activity_page()] : [],
                     ...this.arg().orgs === '' ? [this.Org_list_page()] : [],

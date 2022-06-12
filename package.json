@@ -247,12 +247,14 @@
     "$mol_search",
     "$mol_nav",
     "$mol_fiber",
+    "$care_app_person_page",
     "$care_app_person_edit",
     "$mol_check_box",
     "$mol_icon_tick",
     "$mol_icon_delete",
     "$mol_number",
     "$mol_icon_minus",
+    "$care_labeler",
     "$care_app_person_activity"
   ],
   "dependencies": {

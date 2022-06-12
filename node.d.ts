@@ -2379,80 +2379,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    class $mol_icon_account extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_pencil extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_bar extends $mol_view {
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    class $mol_icon_briefcase extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_briefcase_outline extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_office extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_office_building extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_magnify extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $care_app_nav extends $mol_page {
-        body(): readonly any[];
-        Person_icon(): $mol_icon_account;
-        person_label(): string;
-        Person_link(): $$.$mol_link;
-        Person_edit_icon(): $mol_icon_pencil;
-        Person_edit_link(): $$.$mol_link;
-        Person(): $mol_bar;
-        Person_activity_icon(): $mol_icon_briefcase_outline;
-        person_activity_label(): string;
-        Person_activity(): $$.$mol_link;
-        Org_list_icon(): $mol_icon_office_building;
-        org_list_label(): string;
-        Org_list(): $$.$mol_link;
-        Job_search_icon(): $mol_icon_magnify;
-        job_search_label(): string;
-        Job_search(): $$.$mol_link;
-    }
-}
-
-declare namespace $.$$ {
-}
-
-declare namespace $ {
     class $care_app_index extends $mol_object2 {
         domain(): $care_app_domain;
         state(): $mol_state_shared;
@@ -2669,6 +2595,7 @@ declare namespace $ {
         state(): $mol_state_shared;
         name(next?: string): string;
         name_sur(next?: string): string;
+        name_full(): string;
         phone(next?: string): string;
         password(next?: string): string;
         org_list(next?: $care_app_org[]): $care_app_org[];
@@ -2697,6 +2624,82 @@ declare namespace $ {
         education_year_end(id: string, next?: string): number;
         skill_list(next?: string[]): string[];
     }
+}
+
+declare namespace $ {
+    class $mol_icon_account extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_pencil extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_bar extends $mol_view {
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_icon_briefcase extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_briefcase_outline extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_office extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_office_building extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_magnify extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $care_app_nav extends $mol_page {
+        user_id(): string;
+        user(): $care_app_person;
+        body(): readonly any[];
+        Person_icon(): $mol_icon_account;
+        person_label(): string;
+        Person_link(): $$.$mol_link;
+        Person_edit_icon(): $mol_icon_pencil;
+        Person_edit_link(): $$.$mol_link;
+        Person(): $mol_bar;
+        Person_activity_icon(): $mol_icon_briefcase_outline;
+        person_activity_label(): string;
+        Person_activity(): $$.$mol_link;
+        Org_list_icon(): $mol_icon_office_building;
+        org_list_label(): string;
+        Org_list(): $$.$mol_link;
+        Job_search_icon(): $mol_icon_magnify;
+        job_search_label(): string;
+        Job_search(): $$.$mol_link;
+    }
+}
+
+declare namespace $.$$ {
 }
 
 declare namespace $ {
@@ -4428,7 +4431,7 @@ declare namespace $ {
         Education_level(id: any): $$.$mol_switch;
         Education_institution(id: any): $$.$mol_string;
         Education_depratment(id: any): $$.$mol_string;
-        Education_specialty(id: any): $$.$mol_textarea;
+        Education_specialty(id: any): $$.$mol_string;
         Education_year_end(id: any): $$.$mol_number;
         education_delete(id: any, next?: any): any;
         Education_delete_icon(id: any): $mol_icon_delete;
@@ -4483,6 +4486,126 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    class $care_labeler extends $mol_view {
+        attr(): {
+            care_labeler_dir: string;
+        };
+        sub(): readonly any[];
+        dir(): string;
+        label(): readonly $mol_view_content[];
+        Label(): $mol_view;
+        content(): readonly any[];
+        Content(): $mol_view;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+    class $care_app_person_page extends $mol_page {
+        images(): string[];
+        name_full(): string;
+        about(): string;
+        contact_telegram(): string;
+        contact_mail(): string;
+        contact_website(): string;
+        company_name(id: any): string;
+        company_position(id: any): string;
+        company_industry(id: any): string;
+        company_tasks(id: any): string;
+        company_date_start(id: any): $mol_time_moment;
+        company_date_end(id: any): $mol_time_moment | null;
+        company_working_now(id: any): boolean;
+        education_level(id: any): string;
+        education_institution(id: any): string;
+        education_department(id: any): string;
+        education_specialty(id: any): string;
+        education_year_end(id: any): number;
+        person(): $care_app_person;
+        contact_dict(): {
+            telegram: string;
+            mail: string;
+            website: string;
+        };
+        education_level_dict(): {
+            level0: string;
+            level1: string;
+            level2: string;
+            level3: string;
+            level4: string;
+            level5: string;
+            level6: string;
+            level7: string;
+        };
+        Page_edit(): $$.$care_app_person_edit;
+        title(): string;
+        tools(): readonly any[];
+        working_now(): string;
+        body(): readonly any[];
+        Close_page_icon(): $mol_icon_cross;
+        Close_page(): $$.$mol_link;
+        Image(): $$.$mol_image2;
+        Name_full(): $mol_view;
+        Person_head(): $mol_view;
+        About(): $care_labeler;
+        Contact_telegram(): $care_labeler;
+        Contanct_mail(): $care_labeler;
+        Website_link_iconed(): $$.$mol_link_iconed;
+        Contanct_website(): $care_labeler;
+        contact_rows(): readonly any[];
+        Contact_list(): $$.$mol_list;
+        Contact(): $care_labeler;
+        Company_position(id: any): $care_labeler;
+        Company_name(id: any): $care_labeler;
+        Company_industry(id: any): $care_labeler;
+        Company_tasks(id: any): $care_labeler;
+        company_date_start_string(id: any): string;
+        Company_date_start(id: any): $care_labeler;
+        company_date_end_string(id: any): string;
+        Company_date_end(id: any): $care_labeler;
+        company_row_rows(id: any): readonly any[];
+        Company_row(id: any): $$.$mol_list;
+        company_rows(): readonly any[];
+        Company_list(): $$.$mol_list;
+        Company(): $care_labeler;
+        education_level_string(id: any): string;
+        Education_level(id: any): $care_labeler;
+        Education_institution(id: any): $care_labeler;
+        Education_depratment(id: any): $care_labeler;
+        Education_specialty(id: any): $care_labeler;
+        Education_year_end(id: any): $care_labeler;
+        Education_row(id: any): $$.$mol_list;
+        education_rows(): readonly any[];
+        Eduaction_list(): $$.$mol_list;
+        Education(): $care_labeler;
+        skill_name(id: any): string;
+        Skill(id: any): $mol_view;
+        skill_list(): readonly any[];
+        Skill_list(): $care_labeler;
+        Person_body(): $$.$mol_list;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $.$$ {
+    class $care_app_person_page extends $.$care_app_person_page {
+        company_rows(): $mol_list[];
+        company_date_start_string(id: string): string;
+        company_date_end_string(id: string): string;
+        education_rows(): $mol_list[];
+        education_level_string(id: string): any;
+        skill_list(): $mol_view[];
+        skill_name(key: string): string;
+    }
+}
+
+declare namespace $ {
     class $care_app_person_activity extends $mol_page {
         person(): $care_app_person;
         title(): string;
@@ -4525,6 +4648,7 @@ declare namespace $ {
         org(): $care_app_org_service;
         project_service(): $care_app_project_service;
         job_service(): $care_app_job_service;
+        person_service(): $care_app_person_service;
         domain(): $care_app_domain;
         pages(): readonly any[];
         Sign_up_page(): $$.$care_app_sign_up;
@@ -4545,6 +4669,8 @@ declare namespace $ {
         Job_page(): $$.$care_app_job_page;
         Job_add_page(): $$.$care_app_job_add;
         Job_search_page(): $$.$care_app_job_search;
+        person_opened(): $care_app_person;
+        Person_page(): $$.$care_app_person_page;
         Person_edit_page(): $$.$care_app_person_edit;
         Person_activity_page(): $$.$care_app_person_activity;
     }
@@ -4562,7 +4688,8 @@ declare namespace $.$$ {
         org_opened(): $care_app_org;
         project_opened(): $care_app_project;
         job_opened(): $care_app_job;
-        pages(): ($care_app_sign_up | $care_app_sign_in)[] | ($care_app_org_list | $care_app_org_page | $care_app_org_add | $care_app_project_add | $care_app_project_page | $care_app_job_add | $care_app_job_page | $care_app_job_search | $care_app_person_edit | $care_app_person_activity | $care_app_nav)[];
+        person_opened(): $care_app_person;
+        pages(): ($care_app_sign_up | $care_app_sign_in)[] | ($care_app_org_list | $care_app_org_page | $care_app_org_add | $care_app_project_add | $care_app_project_page | $care_app_job_add | $care_app_job_page | $care_app_job_search | $care_app_person_edit | $care_app_person_page | $care_app_person_activity | $care_app_nav)[];
         sign_out(): void;
     }
 }
