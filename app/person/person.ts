@@ -68,6 +68,19 @@ namespace $ {
 			return ids.map( id => this.domain().org().item( String(id) ) )
 		}
 
+		response_list(next?: $care_app_job[]) {
+			const ids = this.state().sub('response_list').list(next && next.map(obj => obj.id()))
+			return ids.map( id => this.domain().job().item( String(id) ) )
+		}
+
+		response_status(key: $care_app_job) {
+			return this.domain().job().item(key.id()).response_status(this)
+		}
+
+		response_message(key: $care_app_job) {
+			return this.domain().job().item(key.id()).response_message(this)
+		}
+
 	}
 
 }

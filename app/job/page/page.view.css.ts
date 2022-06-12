@@ -24,6 +24,14 @@ namespace $.$$ {
 			},
 		},
 
+		Response_field: {
+			Content: {
+				flex: {
+					direction: 'column',
+				},
+			},
+		},
+
 	} )
 
 }

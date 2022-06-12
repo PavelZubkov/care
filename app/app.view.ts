@@ -41,9 +41,11 @@ namespace $.$$ {
 				... this.arg().project === '' && this.arg().org ? [this.Project_add_page()] : [],
 				... this.arg().project ? [this.Project_page()] : [],
 				... this.arg().project && this.arg().job === '' ? [this.Job_add_page()] : [],
-				... this.arg().job ? [this.Job_page()] : [],
 
 				... this.arg().job_search === '' ? [this.Job_search_page()] : [],
+				... this.arg().job ? [this.Job_page()] : [],
+
+				... this.arg().person_activity === '' ? [this.Person_activity_page()] : [],
 			]
 		}
 

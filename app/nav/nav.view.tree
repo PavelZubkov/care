@@ -10,3 +10,8 @@ $care_app_nav $mol_page
 			sub /
 				<= Job_search_icon $mol_icon_magnify
 				<= job_search_label \Поиск вакансий
+		<= Person_activity $mol_link
+			arg * person_activity \
+			sub /
+				<= Person_activity_icon $mol_icon_briefcase_outline
+				<= Person_activity_label \Деятельность

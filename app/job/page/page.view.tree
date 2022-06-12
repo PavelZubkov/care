@@ -21,35 +21,70 @@ $care_app_job_page $mol_page
 		duration_dict => duration_dict
 		work_schedule_dict => work_schedule_dict
 	body /
-		<= Name_field $mol_labeler
-			title \Название
-			content / <= name
-		<= Project_field $mol_labeler
-			title \Проект
-			content / <= Project_link $mol_link
-				arg * project <= project_id \
-				title <= project_name \
-		<= Functions_field $mol_labeler
-			title \Обязанности
-			content / <= functions
-		<= Requests_field $mol_labeler
-			title \Требования
-			content / <= requests
-		<= Provided_field $mol_labeler
-			title \Что предоставляется
-			content / <= provided
-		<= Experience_field $mol_labeler
-			title \Опыт работы
-			content / <= experience_string \
-		<= Format_field $mol_labeler
-			title \Формат
-			content / <= format_string \
-		<= Duration_field $mol_labeler
-			title \Продолжительность вакансии
-			content / <= duration_string \
-		<= Work_shedule_field $mol_labeler
-			title \Название
-			content / <= work_schedule_string \
-		<= Pay_field $mol_labeler
-			title \Оплата
-			content / <= pay_string \
+		<= Tabs $mol_deck
+			items <= tabs /
+				<= Job
+				<= Response_list
+	Response_list $mol_list
+		title \Отклики
+		rows <= response_rows /
+			<= Response_list_row*0 $mol_list rows <= response_list_rows* /
+				<= Person* $mol_link
+					arg * person <= person_id* \
+					title <= person_full_name* \
+				<= Message* $mol_paragraph
+					title <= person_message* \
+				<= Status* $mol_switch
+					value? <=> person_response_status*? \
+					options *
+						wait \На рассмотрении
+						apply \Принят
+						decline \Отклонено
+	Job $mol_list
+		title \Информация
+		rows /
+			<= Name_field $mol_labeler
+				title \Название
+				content / <= name
+			<= Project_field $mol_labeler
+				title \Проект
+				content / <= Project_link $mol_link
+					arg * project <= project_id \
+					title <= project_name \
+			<= Functions_field $mol_labeler
+				title \Обязанности
+				content / <= functions
+			<= Requests_field $mol_labeler
+				title \Требования
+				content / <= requests
+			<= Provided_field $mol_labeler
+				title \Что предоставляется
+				content / <= provided
+			<= Experience_field $mol_labeler
+				title \Опыт работы
+				content / <= experience_string \
+			<= Format_field $mol_labeler
+				title \Формат
+				content / <= format_string \
+			<= Duration_field $mol_labeler
+				title \Продолжительность вакансии
+				content / <= duration_string \
+			<= Work_shedule_field $mol_labeler
+				title \Название
+				content / <= work_schedule_string \
+			<= Pay_field $mol_labeler
+				title \Оплата
+				content / <= pay_string \
+			<= Response_field $mol_labeler
+				title \Отклик на вакансию
+				content <= response_content /
+					<= Response_text $mol_textarea
+						hint \Сопроводительное сообщение
+						value? <=> response_text? \
+						enabled <= response_text_enabled true
+					<= Response_submit $mol_button_major
+						click? <=> response_submit? null
+						title \Отправить
+					<= response_wait \На рассмотрении
+					<= response_apply \Вы приняты
+					<= response_decline \Вас не приняли

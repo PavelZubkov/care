@@ -1,0 +1,20 @@
+$care_app_person_activity $mol_page
+	person $care_app_person
+	title \Деятельность
+	msg *
+		wait \На рассмотрении
+		apply \Принята
+		decline \Отклонена
+	body /
+		<= Tabs $mol_deck
+			items /
+				<= Response_list $mol_list
+					title \Заявки
+					rows <= response_list_rows /
+						<= Response_list_row*0 $mol_list
+							rows /
+								<= Job_link* $mol_link
+									arg * job <= job_id* \
+									title <= job_name* \
+								<= Response_status* $mol_paragraph
+									title <= response_status* \

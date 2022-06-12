@@ -91,6 +91,21 @@ namespace $ {
 			const id = String(this.state().sub('project').value(next && next.id()))
 			return this.domain().project().item(id)
 		}
+
+		response_list(next?: $care_app_person[]) {
+			const ids = this.state().sub('response_list').list(next && next.map(obj => obj.id()))
+			return ids.map( id => this.domain().person().item( String(id) ) )
+		}
+
+		response_status(key: $care_app_person, next?: 'wait' | 'decline' | 'apply') {
+			const status = this.state().sub('response_status').sub(key.id()).value(next) ?? 'wait'
+			return (status as typeof next)!
+		}
+
+		response_message(key: $care_app_person, next?: string) {
+			return String( this.state().sub('response_message').sub(key.id()).value(next) ?? '' )
+		}
+
 	}
 
 }

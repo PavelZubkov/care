@@ -68,6 +68,13 @@ namespace $.$$ {
 			},
 		},
 
+		Person_activity_page: {
+			flex: {
+				basis: rem(22),
+				shrink: 0,
+			},
+		},
+
 	} )
 
 }
