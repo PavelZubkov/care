@@ -4,4 +4,9 @@ $care_app_nav $mol_page
 			arg * orgs \
 			sub / 
 				<= Org_list_icon $mol_icon_office_building
-				<= org_list_label @ \Organizations
+				<= org_list_label \Организации
+		<= Job_search $mol_link
+			arg * job_search \
+			sub /
+				<= Job_search_icon $mol_icon_magnify
+				<= job_search_label \Поиск вакансий

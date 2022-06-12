@@ -64,6 +64,11 @@ namespace $ {
 			return this.domain().person().item( String( id ) )
 		}
 
+		project_list(next?: $care_app_project[]) {
+			const ids = this.state().sub('projects').list(next && next.map(obj => obj.id()))
+			return ids.map( id => this.domain().project().item( String(id) ) )
+		}
+
 	}
 
 }

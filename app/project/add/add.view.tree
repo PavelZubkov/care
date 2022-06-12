@@ -1,0 +1,39 @@
+$care_app_project_add $mol_page
+	project_service $care_app_project_service
+	org $care_app_org
+	title \Создание проекта
+	body /
+		<= Form $mol_form
+			form_fields /
+				<= Name_field $mol_form_field
+					name \Название
+					control <= Name_control $mol_textarea
+						value? <=> name? \
+				<= Description_field $mol_form_field
+					name \Описание
+					control <= Description_control $mol_textarea
+						value? <=> description? \
+				<= Result_field $mol_form_field
+					name \Результаты
+					control <= Result_control $mol_textarea
+						value? <=> result? \
+				<= Duration_field $mol_form_field
+					name \Продолжительность
+					control <= Duration_control $mol_switch
+						value? <=> duration? \one_time
+						options <= duration_dict *
+							one_time \Разовый
+							month0 \Менее 1 месяца
+							month1_3 \1 - 3 месяца
+							month3_12 \3 месяца - 1 год
+							month12_plus \Более 1 года
+							unlimited \Неограниченно
+				<= Date_start_field $mol_form_field
+					name \Дата начала
+					control <= Date_start_control $mol_date
+						align \top_center
+						value_moment? <=> date_start? $mol_time_moment
+			buttons /
+				<= Submit $mol_button_major
+					click? <=> submit? null
+					title \Создать

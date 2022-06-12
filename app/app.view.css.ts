@@ -18,7 +18,50 @@ namespace $.$$ {
 			},
 		},
 
+		Org_page: {
+			flex: {
+				basis: rem(22),
+				shrink: 0,
+			},
+		},
+
 		Org_list_page: {
+			flex: {
+				basis: rem(22),
+				shrink: 0,
+			},
+		},
+
+		Project_add_page: {
+			flex: {
+				basis: rem(22),
+				shrink: 0,
+			},
+		},
+
+		Project_page: {
+			flex: {
+				basis: rem(22),
+				shrink: 0,
+			},
+		},
+
+
+		Job_page: {
+			flex: {
+				basis: rem(22),
+				shrink: 0,
+			},
+		},
+
+		Job_add_page: {
+			flex: {
+				basis: rem(22),
+				shrink: 0,
+			},
+		},
+
+		Job_search_page: {
 			flex: {
 				basis: rem(22),
 				shrink: 0,

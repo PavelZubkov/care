@@ -1,0 +1,17 @@
+$care_app_job_search $mol_page
+	job_service $care_app_job_service
+	title \Поиск вакансий
+	body /
+		<= Body_list $mol_list
+			rows /
+				<= Search $mol_search
+					query? <=> query? \
+					suggests <= suggests /string
+				<= Job_list $mol_list
+					rows <= rows_filtered /
+						<= Job_row*0 $mol_link
+							sub /
+								<= Job_name* $mol_dimmer
+									needle <= query
+									haystack <= job_name* \
+							arg * job <= job_id* \

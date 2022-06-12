@@ -1,0 +1,55 @@
+$care_app_job_page $mol_page
+	job $care_app_job
+		name => name
+		functions => functions
+		requests => requests
+		provided => provided
+		experience => experience
+		format => format
+		duration => duration
+		work_schedule => work_schedule
+		pay => pay
+	title \Вакансия
+	tools /
+		<= Close_page $mol_link
+			arg * job null
+			sub / <= Close_page_icon $mol_icon_cross
+	add_page $care_app_job_add
+		experience_dict => experience_dict
+		pay_dict => pay_dict
+		format_dict => format_dict
+		duration_dict => duration_dict
+		work_schedule_dict => work_schedule_dict
+	body /
+		<= Name_field $mol_labeler
+			title \Название
+			content / <= name
+		<= Project_field $mol_labeler
+			title \Проект
+			content / <= Project_link $mol_link
+				arg * project <= project_id \
+				title <= project_name \
+		<= Functions_field $mol_labeler
+			title \Обязанности
+			content / <= functions
+		<= Requests_field $mol_labeler
+			title \Требования
+			content / <= requests
+		<= Provided_field $mol_labeler
+			title \Что предоставляется
+			content / <= provided
+		<= Experience_field $mol_labeler
+			title \Опыт работы
+			content / <= experience_string \
+		<= Format_field $mol_labeler
+			title \Формат
+			content / <= format_string \
+		<= Duration_field $mol_labeler
+			title \Продолжительность вакансии
+			content / <= duration_string \
+		<= Work_shedule_field $mol_labeler
+			title \Название
+			content / <= work_schedule_string \
+		<= Pay_field $mol_labeler
+			title \Оплата
+			content / <= pay_string \

@@ -1,0 +1,40 @@
+$care_app_project_page $mol_page
+	project $care_app_project
+		name => name
+		description => description
+		result => result
+		duration => duration
+		date_start => date_start
+	add_page $care_app_project_add
+		duration_dict => duration_dict
+	title \Проект
+	tools /
+		<= Close_page $mol_link
+			arg * project null
+			sub / <= Close_page_icon $mol_icon_cross
+	body /
+		<= Name_field $mol_labeler
+			title \Название
+			content / <= name
+		<= Description_field $mol_labeler
+			title \Описание
+			content / <= description
+		<= Result_field $mol_labeler
+			title \Ожидаемые результат
+			content / <= result
+		<= Duration_field $mol_labeler
+			title \Продолжительность
+			content / <= duration_string \
+		<= Date_start_field $mol_labeler
+			title \Дата начала
+			content / <= date_start_string \
+		<= Job_field $mol_labeler
+			title \Вакансии
+			content / <= Job_list $mol_list
+				rows <= job_list_rows /
+					<= Job_add $mol_link
+						arg * job \
+						title @ \Добавить
+					<= Job_link*0 $mol_link
+						arg * job <= job_id* \
+						sub / <= job_name* \

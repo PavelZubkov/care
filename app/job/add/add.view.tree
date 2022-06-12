@@ -1,0 +1,76 @@
+$care_app_job_add $mol_page
+	job_service $care_app_job_service
+	project $care_app_project
+	title \Создание вакансия
+	tools /
+		<= Close_page $mol_link
+			arg * project null
+			sub / <= Close_page_icon $mol_icon_cross
+	body /
+		<= Form $mol_form
+			form_fields /
+				<= Name_field $mol_form_field
+					name \Название
+					control <= Name_control $mol_textarea
+						value? <=> name? \
+				<= Functions_field $mol_form_field
+					name \Обязанности
+					control <= Functions_control $mol_textarea
+						value? <=> functions? \
+				<= Requests_field $mol_form_field
+					name \Требования
+					control <= Requests_control $mol_textarea
+						value? <=> requests? \
+				<= Provided_field $mol_form_field
+					name \Что предоставляется
+					control <= Provided_control $mol_textarea
+						value? <=> provided? \
+				<= Experience_field $mol_form_field
+					name \Опыт работы
+					control <= Experience_control $mol_switch
+						value? <=> experience? \no_matter
+						options <= experience_dict *
+							no_matter \Не имеет значения
+							no_expirience \Без опыта
+							year1_3 \1 - 3 года
+							year3_6 \3 - 6 лет
+							year6_plus \Более 6 лет
+				<= Format_field $mol_form_field
+					name \Формат
+					control <= Format_control $mol_switch
+						value? <=> format? \remotely
+						options <= format_dict *
+							remotely \Удаленно
+							offline \Офлайн
+							both \Оба
+				<= Duration_field $mol_form_field
+					name \Продолжительность вакансии
+					control <= Duration_control $mol_switch
+						value? <=> duration? \one_time
+						options <= duration_dict *
+							one_time \Разовая
+							month0 \Меньше месяца
+							month1_3 \1 - 3 месяца
+							month3_6 \3 - 6 месяцев
+							month6_12 \6 - 12 месяцев
+							month12_plus \Более 1 года
+							unlimited \Неограниченно
+				<= Work_shedule_field $mol_form_field
+					name \Название
+					control <= Work_shedule_control $mol_switch
+						value? <=> work_schedule? \every_day
+						options <= work_schedule_dict *
+							every_day \Каждый день
+							shift \Сменный
+							flexible \Гибкий
+				<= Pay_field $mol_form_field
+					name \Оплата
+					control <= Pay_control $mol_switch
+						value? <=> pay? \no
+						options <= pay_dict *
+							no \Не предусмотрено
+							yes \Предусмотрено
+			buttons /
+				<= Submit $mol_button_major
+					click? <=> submit? null
+					title @ \Создать

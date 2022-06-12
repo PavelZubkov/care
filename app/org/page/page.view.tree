@@ -1,0 +1,31 @@
+$care_app_org_page $mol_page
+	org $care_app_org
+	title \Организация
+	tools /
+		<= Close_page $mol_link
+			arg *
+				org null
+				project null
+			sub / <= Close_page_icon $mol_icon_cross
+	body /
+		<= Org_head $mol_view
+			sub /
+				<= Org_image $mol_image2
+					links / <= org_image \
+				<= Org_name $mol_view
+					sub / <= org_name \
+		<= Org_body $mol_list
+			rows /
+				<= Description $mol_labeler
+					title \Об организации
+					content / <= org_description \
+				<= Activity $mol_labeler
+					title \Деятельность
+					content / <= Project_list $mol_list
+						rows <= project_rows /
+							<= Project_add $mol_link
+								arg * project \
+								title \Создать проект
+							<= Project_link*0 $mol_link
+								arg * project <= project_id* \
+								sub / <= project_name* \

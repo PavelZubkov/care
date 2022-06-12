@@ -33,7 +33,19 @@ namespace $ {
 			return obj
 		}
 
+		@ $mol_mem
+		project() {
+			const obj = new $care_app_project_service
+			obj.domain = $mol_const(this)
+			return obj
+		}
 
+		@ $mol_mem
+		job() {
+			const obj = new $care_app_job_service
+			obj.domain = $mol_const(this)
+			return obj
+		}
 
 	}
 

@@ -1,9 +1,10 @@
 $care_app $mol_book2
 	domain $care_app_domain
 		person => person
-		user => user
 		sign => sign
 		org => org
+		project => project_service
+		job => job_service
 	pages /
 		<= Sign_up_page $care_app_sign_up
 		<= Sign_in_page $care_app_sign_in
@@ -15,6 +16,20 @@ $care_app $mol_book2
 					click? <=> sign_out? null
 					sub / <= Sign_out_icon $mol_icon_logout_variant
 		<= Org_list_page $care_app_org_list
-			user <= user
+			user <= user $care_app_person
+		<= Org_page $care_app_org_page
+			org <= org_opened $care_app_org
 		<= Org_add_page $care_app_org_add
 			org <= org
+		<= Project_page $care_app_project_page
+			project <= project_opened $care_app_project
+		<= Project_add_page $care_app_project_add
+			project_service <= project_service
+			org <= org_opened
+		<= Job_page $care_app_job_page
+			job <= job_opened $care_app_job
+		<= Job_add_page $care_app_job_add
+			job_service <= job_service
+			project <= project_opened
+		<= Job_search_page $care_app_job_search
+			job_service <= job_service
