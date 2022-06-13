@@ -10,19 +10,19 @@ $care_app_org_add $mol_page
 	body /
 		<= Form $mol_form
 			form_fields /
-				<= Name_field $care_labeler
-					title @ \Name
+				<= Name_field $mol_form_field
+					name @ \Name
 					bid <= name_bid \
-					content / <= Name_control $mol_textarea
+					control <= Name_control $mol_textarea
 						value? <=> name? \
-				<= Description_field $care_labeler
-					title @ \Description
+				<= Description_field $mol_form_field
+					name @ \Description
 					bid <= description_bid \
-					content / <= Description_control $mol_textarea
+					control <= Description_control $mol_textarea
 						value? <=> description? \
-				<= Image_field $care_labeler
-					title @ \Image
-					content / <= Image_control $care_attach
+				<= Image_field $mol_form_field
+					name @ \Image
+					control <= Image_control $care_attach
 						items? <=> images? /
 			buttons /
 				<= Submit $mol_button_major
