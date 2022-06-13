@@ -2,6 +2,10 @@ $care_app_project_add $mol_page
 	project_service $care_app_project_service
 	org $care_app_org
 	title \Создание проекта
+	tools /
+		<= Close_page $mol_link
+			arg * project null
+			sub / <= Close_page_icon $mol_icon_cross
 	body /
 		<= Form $mol_form
 			form_fields /

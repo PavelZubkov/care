@@ -13,22 +13,22 @@ $care_app_project_page $mol_page
 			arg * project null
 			sub / <= Close_page_icon $mol_icon_cross
 	body /
-		<= Name_field $mol_labeler
+		<= Name_field $care_labeler
 			title \Название
 			content / <= name
-		<= Description_field $mol_labeler
+		<= Description_field $care_labeler
 			title \Описание
 			content / <= description
-		<= Result_field $mol_labeler
+		<= Result_field $care_labeler
 			title \Ожидаемые результат
 			content / <= result
-		<= Duration_field $mol_labeler
+		<= Duration_field $care_labeler
 			title \Продолжительность
 			content / <= duration_string \
-		<= Date_start_field $mol_labeler
+		<= Date_start_field $care_labeler
 			title \Дата начала
 			content / <= date_start_string \
-		<= Job_field $mol_labeler
+		<= Job_field $care_labeler
 			title \Вакансии
 			content / <= Job_list $mol_list
 				rows <= job_list_rows /

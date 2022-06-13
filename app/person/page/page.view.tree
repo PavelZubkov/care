@@ -23,6 +23,9 @@ $care_app_person_page $mol_page
 		education_level_dict => education_level_dict
 	title \Моя страница
 	tools /
+		<= Person_edit_link $mol_link
+			arg * person_edit \
+			sub / <= Person_edit_icon $mol_icon_pencil
 		<= Close_page $mol_link
 			arg *
 				person null

@@ -16,10 +16,10 @@ $care_app_org_page $mol_page
 					sub / <= org_name \
 		<= Org_body $mol_list
 			rows /
-				<= Description $mol_labeler
+				<= Description $care_labeler
 					title \Об организации
 					content / <= org_description \
-				<= Activity $mol_labeler
+				<= Activity $care_labeler
 					title \Деятельность
 					content / <= Project_list $mol_list
 						rows <= project_rows /

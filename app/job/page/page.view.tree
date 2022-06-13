@@ -43,39 +43,39 @@ $care_app_job_page $mol_page
 	Job $mol_list
 		title \Информация
 		rows /
-			<= Name_field $mol_labeler
+			<= Name_field $care_labeler
 				title \Название
 				content / <= name
-			<= Project_field $mol_labeler
+			<= Project_field $care_labeler
 				title \Проект
 				content / <= Project_link $mol_link
 					arg * project <= project_id \
 					title <= project_name \
-			<= Functions_field $mol_labeler
+			<= Functions_field $care_labeler
 				title \Обязанности
 				content / <= functions
-			<= Requests_field $mol_labeler
+			<= Requests_field $care_labeler
 				title \Требования
 				content / <= requests
-			<= Provided_field $mol_labeler
+			<= Provided_field $care_labeler
 				title \Что предоставляется
 				content / <= provided
-			<= Experience_field $mol_labeler
+			<= Experience_field $care_labeler
 				title \Опыт работы
 				content / <= experience_string \
-			<= Format_field $mol_labeler
+			<= Format_field $care_labeler
 				title \Формат
 				content / <= format_string \
-			<= Duration_field $mol_labeler
+			<= Duration_field $care_labeler
 				title \Продолжительность вакансии
 				content / <= duration_string \
-			<= Work_shedule_field $mol_labeler
+			<= Work_shedule_field $care_labeler
 				title \Название
 				content / <= work_schedule_string \
-			<= Pay_field $mol_labeler
+			<= Pay_field $care_labeler
 				title \Оплата
 				content / <= pay_string \
-			<= Response_field $mol_labeler
+			<= Response_field $care_labeler
 				title \Отклик на вакансию
 				content <= response_content /
 					<= Response_text $mol_textarea

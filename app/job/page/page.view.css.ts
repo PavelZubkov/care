@@ -32,6 +32,10 @@ namespace $.$$ {
 			},
 		},
 
+		Message: {
+			padding: $mol_gap.text,
+		},
+
 	} )
 
 }

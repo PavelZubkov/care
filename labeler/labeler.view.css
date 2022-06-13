@@ -3,5 +3,5 @@
 }
 
 [care_labeler_content] [care_labeler] {
-	padding: 0;
+	padding: var(--mol_gap_space);
 }

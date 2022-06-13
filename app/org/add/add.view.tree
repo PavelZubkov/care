@@ -1,24 +1,28 @@
 $care_app_org_add $mol_page
 	org $care_app_org_service
 	title @ \Creating an organization
+	tools /
+		<= Close_page $mol_link
+			arg * org null
+			sub / <= Close_page_icon $mol_icon_cross
 	error *
 		required @ \*
 	body /
 		<= Form $mol_form
 			form_fields /
-				<= Name_field $mol_form_field
-					name @ \Name
+				<= Name_field $care_labeler
+					title @ \Name
 					bid <= name_bid \
-					control <= Name_control $mol_textarea
+					content / <= Name_control $mol_textarea
 						value? <=> name? \
-				<= Description_field $mol_form_field
-					name @ \Description
+				<= Description_field $care_labeler
+					title @ \Description
 					bid <= description_bid \
-					control <= Description_control $mol_textarea
+					content / <= Description_control $mol_textarea
 						value? <=> description? \
-				<= Image_field $mol_form_field
-					name @ \Image
-					control <= Image_control $care_attach
+				<= Image_field $care_labeler
+					title @ \Image
+					content / <= Image_control $care_attach
 						items? <=> images? /
 			buttons /
 				<= Submit $mol_button_major

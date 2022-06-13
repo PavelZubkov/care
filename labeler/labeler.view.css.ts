@@ -4,7 +4,7 @@ namespace $.$$ {
 
 	$mol_style_define( $.$care_labeler , {
 
-		padding: $mol_gap.space,
+		padding: $mol_gap.text,
 	
 		Label: {
 			color: $mol_theme.shade,

@@ -15,6 +15,10 @@ $care_app_person_edit $mol_page
 		education_specialty*? => education_specialty*?
 		education_year_end*? => education_year_end*?
 	title \Моя страница - редактироване
+	tools /
+		<= Close_page $mol_link
+			arg * person_edit null
+			sub / <= Close_page_icon $mol_icon_cross
 	contact_dict *
 		telegram \Телеграм
 		mail \Почта
@@ -22,25 +26,23 @@ $care_app_person_edit $mol_page
 	body / 
 		<= Form $mol_form
 			form_fields /
-				<= Images_field $mol_form_field
-					name \Аватар
-					control <= Images_control $care_attach
+				<= Images_field $care_labeler
+					title \Аватар
+					content / <= Images_control $care_attach
 						items? <=> images? /
-				<= About_field $mol_form_field
-					name \Обо мне
-					control <= About_control $mol_textarea
+				<= About_field $care_labeler
+					title \Обо мне
+					content / <= About_control $mol_textarea
 						value? <=> about?
-				<= Contact_field $mol_form_field
-					name \Контакты
+				<= Contact_field $care_labeler
+					title \Контакты
 					content / <= Contact_list $mol_list
 						rows <= contact_rows /
-							<= Contact_row*0 $mol_bar
-								sub /
-									<= Contact_label* $mol_view sub / <= contact_label* \
-									<= Contact_control* $mol_string
-										value? <=> contact_value*? \
-				<= Company_field $mol_form_field
-					name \Опыт работы
+							<= Contact_row*0 $mol_string
+								hint <= contact_label* \
+								value? <=> contact_value*? \
+				<= Company_field $care_labeler
+					title \Опыт работы
 					content / <= Company_list $mol_list
 						rows <= company_list /
 							<= Company_row*0 $mol_list
@@ -59,17 +61,18 @@ $care_app_person_edit $mol_page
 										value? <=> company_tasks*?
 									<= Company_date* $mol_list
 										rows /
-											<= Company_date_start_bar* $mol_bar
-												sub /
-													<= Company_date_start_label* $mol_paragraph
-														title \Начало работы
+											<= Company_date_start_bar* $care_labeler
+												dir \row
+												title \Начало работы 
+												content /
 													<= Company_date_start* $mol_date
 														value_moment? <=> company_date_start*?
-											<= Company_date_end_bar* $mol_bar
-												sub <= date_end_content* /
-													<= Company_working_now* $mol_check_box
-														title \Работаю тут
-														checked? <=> company_working_now*?
+											<= Company_date_end_bar* $care_labeler
+												dir \row
+												Label <= Company_working_now* $mol_check_box
+													title \Работаю тут
+													checked? <=> company_working_now*?
+												content <= date_end_content* /
 													<= Company_date_end* $mol_date
 														value_moment? <=> company_date_end_moment*? $mol_time_moment
 									<= Company_action* $mol_bar
