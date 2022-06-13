@@ -43,6 +43,9 @@ namespace $.$$ {
 				... this.arg().person_edit === '' ? [this.Person_edit_page()] : [],
 				... this.arg().person_activity === '' ? [this.Person_activity_page()] : [],
 
+				... this.arg().search === '' ? [this.Search_page()] : [],
+				... this.arg().search_filter === '' ? [this.Search_filter_page()] : [],
+
 				... this.arg().orgs === '' ? [this.Org_list_page()] : [],
 				... this.arg().org ? [this.Org_page()] : [],
 				... this.arg().org === '' ? [this.Org_add_page()] : [],
@@ -51,7 +54,6 @@ namespace $.$$ {
 				... this.arg().project ? [this.Project_page()] : [],
 				... this.arg().project && this.arg().job === '' ? [this.Job_add_page()] : [],
 
-				... this.arg().job_search === '' ? [this.Job_search_page()] : [],
 				... this.arg().job ? [this.Job_page()] : [],
 
 			]

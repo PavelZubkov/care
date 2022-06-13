@@ -1,17 +1,38 @@
-$care_app_job_search $mol_page
+$care_app_job_search $mol_list
 	job_service $care_app_job_service
-	title \Поиск вакансий
-	body /
-		<= Body_list $mol_list
-			rows /
-				<= Search $mol_search
-					query? <=> query? \
-					suggests <= suggests /string
-				<= Job_list $mol_list
-					rows <= rows_filtered /
-						<= Job_row*0 $mol_link
-							sub /
-								<= Job_name* $mol_dimmer
-									needle <= query
-									haystack <= job_name* \
-							arg * job <= job_id* \
+	title \Вакансии
+	Job_add_page $care_app_job_add
+		experience_dict => experience_dict
+		format_dict => format_dict
+		duration_dict => duration_dict
+		work_schedule_dict => work_schedule_dict
+		pay_dict => pay_dict
+	rows /
+		<= Search $mol_search
+			query? <=> query? \
+			suggests <= suggests /string
+		<= Job_list $mol_list
+			rows <= rows_filtered /
+				<= Job_row*0 $mol_link
+					sub /
+						<= Job_name* $mol_dimmer
+							needle <= query
+							haystack <= job_name* \
+					arg * job <= job_id* \
+	Filter $mol_list
+		rows /
+			<= Exp_filter $care_app_search_filter_dict
+				dict <= experience_dict
+				title \Опыт работы
+			<= Format_filter $care_app_search_filter_dict
+				dict <= format_dict
+				title \Формат
+			<= Duration_filter $care_app_search_filter_dict
+				dict <= duration_dict
+				title \Продолжительность трудоустройства
+			<= Work_schedule_filter $care_app_search_filter_dict
+				dict <= work_schedule_dict
+				title \График
+			<= Pay_filter $care_app_search_filter_dict
+				dict <= pay_dict
+				title \Оплата

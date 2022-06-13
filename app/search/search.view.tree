@@ -1,0 +1,18 @@
+$care_app_search $mol_page
+	domain $care_app_domain
+		job => job_service
+	tools /
+		<= Filter_open $mol_link
+			hint \Фильтры
+			arg * search_filter \
+			sub / <= Filter_open_icon $mol_icon_tune
+		<= Close_page $mol_link
+			arg * search null
+			sub / <= Close_page_icon $mol_icon_cross
+	title \Поиск
+	body /
+		<= Tabs $mol_deck
+			items /
+				<= Job_search $care_app_job_search
+					job_service <= job_service
+	Filter $mol_view

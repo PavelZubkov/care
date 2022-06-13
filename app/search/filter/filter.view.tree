@@ -1,0 +1,23 @@
+$care_app_search_filter $mol_page
+	title \Фильтры
+	tools /
+		<= Close_page $mol_link
+			arg * search_filter null
+			sub / <= Close_page_icon $mol_icon_cross
+	body /
+		<= List $mol_list
+			rows /
+				<= Filter $mol_view
+				<= Back $mol_button_major
+					title \К поиску
+					click? <=> back? null
+	
+$care_app_search_filter_dict $care_labeler
+	dict *
+	title \Имя фильтра
+	content /
+		<= Check_list $mol_list
+			rows <= check_rows /
+				<= Check*0 $mol_check_box
+					title <= check_title* \
+					checked? <=> checked*? false

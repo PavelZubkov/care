@@ -61,13 +61,6 @@ namespace $.$$ {
 			},
 		},
 
-		Job_search_page: {
-			flex: {
-				basis: rem(22),
-				shrink: 0,
-			},
-		},
-
 		Person_page: {
 			flex: {
 				basis: rem(22),
@@ -83,6 +76,20 @@ namespace $.$$ {
 		},
 
 		Person_activity_page: {
+			flex: {
+				basis: rem(22),
+				shrink: 0,
+			},
+		},
+
+		Search_page: {
+			flex: {
+				basis: rem(22),
+				shrink: 0,
+			},
+		},
+
+		Search_filter_page: {
 			flex: {
 				basis: rem(22),
 				shrink: 0,

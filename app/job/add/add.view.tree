@@ -44,7 +44,7 @@ $care_app_job_add $mol_page
 							offline \Офлайн
 							both \Оба
 				<= Duration_field $mol_form_field
-					name \Продолжительность вакансии
+					name \Продолжительность трудоустройсва
 					control <= Duration_control $mol_switch
 						value? <=> duration? \one_time
 						options <= duration_dict *
@@ -56,7 +56,7 @@ $care_app_job_add $mol_page
 							month12_plus \Более 1 года
 							unlimited \Неограниченно
 				<= Work_shedule_field $mol_form_field
-					name \Название
+					name \График
 					control <= Work_shedule_control $mol_switch
 						value? <=> work_schedule? \every_day
 						options <= work_schedule_dict *

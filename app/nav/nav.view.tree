@@ -1,6 +1,14 @@
 $care_app_nav $mol_page
 	user $care_app_person
 		id => user_id
+	tools /
+		<= Search_open $mol_link
+			arg * search \
+			sub / <= Search_open_icon $mol_icon_magnify
+		<= Sign_out $mol_button_minor
+			hint @ \Sign out
+			click? <=> sign_out? null
+			sub / <= Sign_out_icon $mol_icon_logout_variant
 	body /
 		<= Person $mol_bar
 			sub /
