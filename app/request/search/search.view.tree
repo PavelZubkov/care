@@ -1,0 +1,32 @@
+$care_app_request_search $mol_list
+	request_service $care_app_request_service
+		item* => request*
+	title \Заявки на помощь
+	flags *
+		children \Дети
+		elderly \Пожилые
+		urgently \Срочно
+	rows /
+		<= Search $mol_search
+			query? <=> query? \
+			suggests <= suggests /string
+		<= Request_list $mol_list
+			rows <= rows_filtered /
+				<= Request_row*0 $mol_list
+					rows /
+						<= Description* $care_labeler
+							title \Описание
+							content / <= description* \
+						<= Flags* $care_labeler
+							dir \row
+							title \Значения
+							content <= flags_content* /
+								<= Children* $mol_view sub / <= flag_children* \
+								<= Elderly* $mol_view sub / <= flag_elderly* \
+								<= Urgently* $mol_view sub / <= flag_urgently* \
+						<= Action* $mol_view sub /
+							<= Date* $mol_view sub / <= request_date* \
+							<= Link* $mol_link
+								arg * request <= request_id* \
+								title \Открыть
+	Filter $mol_list

@@ -47,6 +47,13 @@ namespace $ {
 			return obj
 		}
 
+		@ $mol_mem
+		request() {
+			const obj = new $care_app_request_service
+			obj.domain = $mol_const(this)
+			return obj
+		}
+
 	}
 
 }

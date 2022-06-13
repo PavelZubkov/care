@@ -7,6 +7,7 @@ $care_app $mol_book2
 		project => project_service
 		job => job_service
 		person => person_service
+		request => request_service
 	pages /
 		<= Sign_up_page $care_app_sign_up
 		<= Sign_in_page $care_app_sign_in
@@ -41,4 +42,7 @@ $care_app $mol_book2
 			Filter => Search_filter
 		<= Search_filter_page $care_app_search_filter
 			Filter <= Search_filter
-
+		<= Request_add_page $care_app_request_add
+			request_service <= request_service
+		<= Request_page $care_app_request_page
+			request <= request_opened $care_app_request

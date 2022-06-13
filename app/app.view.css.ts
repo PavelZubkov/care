@@ -96,6 +96,20 @@ namespace $.$$ {
 			},
 		},
 
+		Request_add_page: {
+			flex: {
+				basis: rem(22),
+				shrink: 0,
+			},
+		},
+
+		Request_page: {
+			flex: {
+				basis: rem(22),
+				shrink: 0,
+			},
+		}
+
 	} )
 
 }

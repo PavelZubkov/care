@@ -7,6 +7,9 @@ $care_app_sign_in $mol_page
 		required @ \*
 		wrong @ \Wrong phone or password
 	body /
+		<= Request $mol_link
+			arg * sign \request
+			title \Нужна помощь
 		<= Form $mol_form
 			form_fields /
 				<= Phone_field $mol_form_field

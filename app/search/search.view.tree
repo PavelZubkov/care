@@ -1,6 +1,7 @@
 $care_app_search $mol_page
 	domain $care_app_domain
 		job => job_service
+		request => request_service
 	tools /
 		<= Filter_open $mol_link
 			hint \Фильтры
@@ -15,4 +16,6 @@ $care_app_search $mol_page
 			items /
 				<= Job_search $care_app_job_search
 					job_service <= job_service
+				<= Request_search $care_app_request_search
+					request_service <= request_service
 	Filter $mol_view

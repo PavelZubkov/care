@@ -1,0 +1,49 @@
+$care_app_request_page $mol_page
+	request $care_app_request
+		name_full => name_full
+		phone => phone
+		description => description
+		subway => subway
+		things => things
+		children => children
+		elderly => elderly
+		urgently => urgently
+		moment => moment
+	tools /
+		<= Close_page $mol_link
+			arg * request null
+			sub / <= Close_page_icon $mol_icon_cross
+	title \Запрос на помощь
+	yes \да
+	no \нет
+	body /
+		<= List $mol_list rows /
+			<= Name $care_labeler
+				dir \row
+				title \Имя Фамилия
+				content / <= name_full
+			<= Phone $care_labeler
+				dir \row
+				title \Телефон
+				content / <= phone
+			<= Description $care_labeler
+				title \Описание
+				content / <= description
+			<= Things $care_labeler
+				title \Необходимые вещи
+				content / <= things
+			<= Subway $care_labeler
+				title \Ближайшая станция метро или адрес
+				content / <= subway
+			<= Children $care_labeler
+				dir \row
+				title \Дети
+				content / <= chidlren_string \
+			<= Elderly $care_labeler
+				dir \row
+				title \Пожилые
+				content / <= elderly_string \
+			<= Urgently $care_labeler
+				dir \row
+				title \Срочно
+				content / <= urgently_string \

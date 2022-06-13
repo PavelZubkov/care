@@ -26,10 +26,15 @@ namespace $.$$ {
 			return this.person_service().item( this.arg().person )
 		}
 
+		request_opened() {
+			return this.request_service().item( this.arg().request )
+		}
+
 		pages() {
 			
 			if (!this.user()) {
 				return [
+					... this.arg().sign === 'request' ? [this.Request_add_page()] : [],
 					... this.arg().sign === 'in' ? [this.Sign_in_page()] : [],
 					... this.arg().sign === 'up' ? [this.Sign_up_page()] : [],
 					... !this.arg().sign ? [this.Sign_in_page()] : [],
@@ -45,6 +50,8 @@ namespace $.$$ {
 
 				... this.arg().search === '' ? [this.Search_page()] : [],
 				... this.arg().search_filter === '' ? [this.Search_filter_page()] : [],
+
+				... this.arg().request ? [this.Request_page()] : [],
 
 				... this.arg().orgs === '' ? [this.Org_list_page()] : [],
 				... this.arg().org ? [this.Org_page()] : [],

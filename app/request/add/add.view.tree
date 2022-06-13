@@ -1,0 +1,50 @@
+$care_app_request_add $mol_page
+	request_service $care_app_request_service
+	title \Нужна помощь
+	tools /
+		<= Close_page $mol_link
+			arg * sign \in
+			sub / <= Close_page_icon $mol_icon_cross
+	completed? false
+	body <= body_sub /
+		<= Completed $mol_paragraph
+			title \Заявка отправлена, ожидайте когда с Вами свяжутся
+		<= Form $mol_form
+			form_fields /
+				<= Name $care_labeler
+					title \Имя
+					content / <= Name_control $mol_string
+						value? <=> name? \
+				<= Name_sur $care_labeler
+					title \Фамилия
+					content / <= Name_sur_control $mol_string
+						value? <=> name_sur? \
+				<= Phone $care_labeler
+					title \Телефон для связи
+					content / <= Phone_control $mol_string
+						value? <=> phone? \
+				<= Description $care_labeler
+					title \Опишите ситуацию
+					content / <= Description_control $mol_textarea
+						value? <=> description? \
+				<= Things $care_labeler
+					title \Необходимые вещи
+					content / <= Things_control $mol_textarea
+						value? <=> things? \
+				<= Subway $care_labeler
+					title \Ближайшая станция метро или адрес
+					content / <= Subway_control $mol_textarea
+						value? <=> subway? \
+				<= Children_control $mol_check_box
+					title \Работа с детьми
+					checked? <=> chidlren? false
+				<= Elderly_control $mol_check_box
+					title \Работа с пожилыми людми
+					checked? <=> elderly? false
+				<= Urgently_control $mol_check_box
+					title \Срочно
+					checked? <=> urgently? false
+			buttons /
+				<= Submit $mol_button_major
+					title \Отправить
+					click? <=> submit? null
