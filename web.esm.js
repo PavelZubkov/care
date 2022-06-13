@@ -8403,58 +8403,6 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    class $mol_icon_pencil extends $mol_icon {
-        path() {
-            return "M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z";
-        }
-    }
-    $.$mol_icon_pencil = $mol_icon_pencil;
-})($ || ($ = {}));
-//mol/icon/pencil/-view.tree/pencil.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_bar extends $mol_view {
-    }
-    $.$mol_bar = $mol_bar;
-})($ || ($ = {}));
-//mol/bar/-view.tree/bar.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/bar/bar.view.css", "[mol_bar] {\n\tdisplay: flex;\n\t/* box-shadow: inset 0 0 0 1px var(--mol_theme_line); */\n\tborder-radius: var(--mol_gap_round);\n}\n");
-})($ || ($ = {}));
-//mol/bar/-css/bar.view.css.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_icon_briefcase extends $mol_icon {
-        path() {
-            return "M10,2H14C15.1,2 16,2.9 16,4V6H20C21.1,6 22,6.9 22,8V19C22,20.1 21.1,21 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z";
-        }
-    }
-    $.$mol_icon_briefcase = $mol_icon_briefcase;
-})($ || ($ = {}));
-//mol/icon/briefcase/-view.tree/briefcase.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_icon_briefcase_outline extends $mol_icon {
-        path() {
-            return "M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z";
-        }
-    }
-    $.$mol_icon_briefcase_outline = $mol_icon_briefcase_outline;
-})($ || ($ = {}));
-//mol/icon/briefcase/outline/-view.tree/outline.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
     class $mol_icon_office extends $mol_icon {
         path() {
             return "M3,18L7,16.75V7L14,5V19.5L3.5,18.25L14,22L20,20.75V3.5L13.95,2L3,5.75V18Z";
@@ -8495,10 +8443,8 @@ var $;
         }
         body() {
             return [
-                this.Person(),
-                this.Person_activity(),
-                this.Org_list(),
-                this.Job_search()
+                this.Person_link(),
+                this.Org_list()
             ];
         }
         Search_open_icon() {
@@ -8551,46 +8497,6 @@ var $;
             ];
             return obj;
         }
-        Person_edit_icon() {
-            const obj = new this.$.$mol_icon_pencil();
-            return obj;
-        }
-        Person_edit_link() {
-            const obj = new this.$.$mol_link();
-            obj.arg = () => ({
-                person_edit: ""
-            });
-            obj.sub = () => [
-                this.Person_edit_icon()
-            ];
-            return obj;
-        }
-        Person() {
-            const obj = new this.$.$mol_bar();
-            obj.sub = () => [
-                this.Person_link(),
-                this.Person_edit_link()
-            ];
-            return obj;
-        }
-        Person_activity_icon() {
-            const obj = new this.$.$mol_icon_briefcase_outline();
-            return obj;
-        }
-        person_activity_label() {
-            return "Деятельность";
-        }
-        Person_activity() {
-            const obj = new this.$.$mol_link();
-            obj.arg = () => ({
-                person_activity: ""
-            });
-            obj.sub = () => [
-                this.Person_activity_icon(),
-                this.person_activity_label()
-            ];
-            return obj;
-        }
         Org_list_icon() {
             const obj = new this.$.$mol_icon_office_building();
             return obj;
@@ -8606,24 +8512,6 @@ var $;
             obj.sub = () => [
                 this.Org_list_icon(),
                 this.org_list_label()
-            ];
-            return obj;
-        }
-        Job_search_icon() {
-            const obj = new this.$.$mol_icon_magnify();
-            return obj;
-        }
-        job_search_label() {
-            return "Поиск вакансий";
-        }
-        Job_search() {
-            const obj = new this.$.$mol_link();
-            obj.arg = () => ({
-                job_search: ""
-            });
-            obj.sub = () => [
-                this.Job_search_icon(),
-                this.job_search_label()
             ];
             return obj;
         }
@@ -8654,31 +8542,10 @@ var $;
     ], $care_app_nav.prototype, "Person_link", null);
     __decorate([
         $mol_mem
-    ], $care_app_nav.prototype, "Person_edit_icon", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person_edit_link", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person_activity_icon", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Person_activity", null);
-    __decorate([
-        $mol_mem
     ], $care_app_nav.prototype, "Org_list_icon", null);
     __decorate([
         $mol_mem
     ], $care_app_nav.prototype, "Org_list", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Job_search_icon", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_nav.prototype, "Job_search", null);
     $.$care_app_nav = $care_app_nav;
 })($ || ($ = {}));
 //care/app/nav/-view.tree/nav.view.tree.ts
@@ -8688,16 +8555,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        $mol_style_define($.$care_app_nav, {
-            Person: {
-                justifyContent: 'space-between',
-            },
-            Person_link: {
-                flex: {
-                    grow: 1,
-                },
-            },
-        });
+        $mol_style_define($.$care_app_nav, {});
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 //care/app/nav/nav.view.css.ts
@@ -8954,6 +8812,110 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    class $care_labeler extends $mol_view {
+        attr() {
+            return {
+                ...super.attr(),
+                care_labeler_dir: this.dir()
+            };
+        }
+        sub() {
+            return [
+                this.Label(),
+                this.Content()
+            ];
+        }
+        dir() {
+            return "column";
+        }
+        label() {
+            return [
+                this.title()
+            ];
+        }
+        Label() {
+            const obj = new this.$.$mol_view();
+            obj.sub = () => this.label();
+            return obj;
+        }
+        content() {
+            return [];
+        }
+        Content() {
+            const obj = new this.$.$mol_view();
+            obj.sub = () => this.content();
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $care_labeler.prototype, "Label", null);
+    __decorate([
+        $mol_mem
+    ], $care_labeler.prototype, "Content", null);
+    $.$care_labeler = $care_labeler;
+})($ || ($ = {}));
+//care/labeler/-view.tree/labeler.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("care/labeler/labeler.view.css", "[care_labeler_content] [care_labeler_label] {\n\tfont-weight: normal;\n}\n\n[care_labeler_content] [care_labeler] {\n\tpadding: var(--mol_gap_space);\n}\n");
+})($ || ($ = {}));
+//care/labeler/-css/labeler.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem, per } = $mol_style_unit;
+        $mol_style_define($.$care_labeler, {
+            padding: $mol_gap.text,
+            Label: {
+                color: $mol_theme.shade,
+                font: {
+                    weight: 'bold',
+                },
+            },
+            Content: {
+                padding: {
+                    left: $mol_gap.block,
+                },
+                whiteSpace: 'break-spaces',
+                flex: {
+                    wrap: 'wrap',
+                },
+            },
+            '@': {
+                care_labeler_dir: {
+                    column: {
+                        flex: {
+                            direction: 'column',
+                        },
+                    },
+                    row: {
+                        alignItems: 'flex-start',
+                        flex: {
+                            direction: 'row',
+                        },
+                        Label: {
+                            maxWidth: rem(8),
+                            flex: {
+                                grow: 1,
+                            },
+                        },
+                    },
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/labeler/labeler.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
     class $care_app_org_page extends $mol_page {
         org() {
             const obj = new this.$.$care_app_org();
@@ -9020,7 +8982,7 @@ var $;
             return "";
         }
         Description() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Об организации";
             obj.content = () => [
                 this.org_description()
@@ -9063,7 +9025,7 @@ var $;
             return obj;
         }
         Activity() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Деятельность";
             obj.content = () => [
                 this.Project_list()
@@ -11729,6 +11691,11 @@ var $;
         title() {
             return this.$.$mol_locale.text('$care_app_org_add_title');
         }
+        tools() {
+            return [
+                this.Close_page()
+            ];
+        }
         error() {
             return {
                 required: this.$.$mol_locale.text('$care_app_org_add_error_required')
@@ -11738,6 +11705,20 @@ var $;
             return [
                 this.Form()
             ];
+        }
+        Close_page_icon() {
+            const obj = new this.$.$mol_icon_cross();
+            return obj;
+        }
+        Close_page() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                org: null
+            });
+            obj.sub = () => [
+                this.Close_page_icon()
+            ];
+            return obj;
         }
         name_bid() {
             return "";
@@ -11826,6 +11807,12 @@ var $;
     __decorate([
         $mol_mem
     ], $care_app_org_add.prototype, "org", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_org_add.prototype, "Close_page_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_org_add.prototype, "Close_page", null);
     __decorate([
         $mol_mem
     ], $care_app_org_add.prototype, "name", null);
@@ -13046,10 +13033,29 @@ var $;
         title() {
             return "Создание проекта";
         }
+        tools() {
+            return [
+                this.Close_page()
+            ];
+        }
         body() {
             return [
                 this.Form()
             ];
+        }
+        Close_page_icon() {
+            const obj = new this.$.$mol_icon_cross();
+            return obj;
+        }
+        Close_page() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                project: null
+            });
+            obj.sub = () => [
+                this.Close_page_icon()
+            ];
+            return obj;
         }
         name(next) {
             if (next !== undefined)
@@ -13176,6 +13182,12 @@ var $;
     __decorate([
         $mol_mem
     ], $care_app_project_add.prototype, "org", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_project_add.prototype, "Close_page_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_project_add.prototype, "Close_page", null);
     __decorate([
         $mol_mem
     ], $care_app_project_add.prototype, "name", null);
@@ -13339,7 +13351,7 @@ var $;
             return obj;
         }
         Name_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Название";
             obj.content = () => [
                 this.name()
@@ -13347,7 +13359,7 @@ var $;
             return obj;
         }
         Description_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Описание";
             obj.content = () => [
                 this.description()
@@ -13355,7 +13367,7 @@ var $;
             return obj;
         }
         Result_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Ожидаемые результат";
             obj.content = () => [
                 this.result()
@@ -13366,7 +13378,7 @@ var $;
             return "";
         }
         Duration_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Продолжительность";
             obj.content = () => [
                 this.duration_string()
@@ -13377,7 +13389,7 @@ var $;
             return "";
         }
         Date_start_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Дата начала";
             obj.content = () => [
                 this.date_start_string()
@@ -13420,7 +13432,7 @@ var $;
             return obj;
         }
         Job_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Вакансии";
             obj.content = () => [
                 this.Job_list()
@@ -14167,7 +14179,7 @@ var $;
             ];
         }
         Name_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Название";
             obj.content = () => [
                 this.name()
@@ -14189,7 +14201,7 @@ var $;
             return obj;
         }
         Project_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Проект";
             obj.content = () => [
                 this.Project_link()
@@ -14197,7 +14209,7 @@ var $;
             return obj;
         }
         Functions_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Обязанности";
             obj.content = () => [
                 this.functions()
@@ -14205,7 +14217,7 @@ var $;
             return obj;
         }
         Requests_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Требования";
             obj.content = () => [
                 this.requests()
@@ -14213,7 +14225,7 @@ var $;
             return obj;
         }
         Provided_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Что предоставляется";
             obj.content = () => [
                 this.provided()
@@ -14224,7 +14236,7 @@ var $;
             return "";
         }
         Experience_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Опыт работы";
             obj.content = () => [
                 this.experience_string()
@@ -14235,7 +14247,7 @@ var $;
             return "";
         }
         Format_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Формат";
             obj.content = () => [
                 this.format_string()
@@ -14246,7 +14258,7 @@ var $;
             return "";
         }
         Duration_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Продолжительность вакансии";
             obj.content = () => [
                 this.duration_string()
@@ -14257,7 +14269,7 @@ var $;
             return "";
         }
         Work_shedule_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Название";
             obj.content = () => [
                 this.work_schedule_string()
@@ -14268,7 +14280,7 @@ var $;
             return "";
         }
         Pay_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Оплата";
             obj.content = () => [
                 this.pay_string()
@@ -14320,7 +14332,7 @@ var $;
             ];
         }
         Response_field() {
-            const obj = new this.$.$mol_labeler();
+            const obj = new this.$.$care_labeler();
             obj.title = () => "Отклик на вакансию";
             obj.content = () => this.response_content();
             return obj;
@@ -14444,6 +14456,9 @@ var $;
                         direction: 'column',
                     },
                 },
+            },
+            Message: {
+                padding: $mol_gap.text,
             },
         });
     })($$ = $.$$ || ($.$$ = {}));
@@ -14582,6 +14597,22 @@ var $;
     $.$mol_icon_delete = $mol_icon_delete;
 })($ || ($ = {}));
 //mol/icon/delete/-view.tree/delete.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_bar extends $mol_view {
+    }
+    $.$mol_bar = $mol_bar;
+})($ || ($ = {}));
+//mol/bar/-view.tree/bar.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/bar/bar.view.css", "[mol_bar] {\n\tdisplay: flex;\n\t/* box-shadow: inset 0 0 0 1px var(--mol_theme_line); */\n\tborder-radius: var(--mol_gap_round);\n}\n");
+})($ || ($ = {}));
+//mol/bar/-css/bar.view.css.ts
 ;
 "use strict";
 var $;
@@ -14812,6 +14843,11 @@ var $;
         title() {
             return "Моя страница - редактироване";
         }
+        tools() {
+            return [
+                this.Close_page()
+            ];
+        }
         contact_dict() {
             return {
                 telegram: "Телеграм",
@@ -14824,6 +14860,20 @@ var $;
                 this.Form()
             ];
         }
+        Close_page_icon() {
+            const obj = new this.$.$mol_icon_cross();
+            return obj;
+        }
+        Close_page() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                person_edit: null
+            });
+            obj.sub = () => [
+                this.Close_page_icon()
+            ];
+            return obj;
+        }
         images(next) {
             if (next !== undefined)
                 return next;
@@ -14835,9 +14885,11 @@ var $;
             return obj;
         }
         Images_field() {
-            const obj = new this.$.$mol_form_field();
-            obj.name = () => "Аватар";
-            obj.control = () => this.Images_control();
+            const obj = new this.$.$care_labeler();
+            obj.title = () => "Аватар";
+            obj.content = () => [
+                this.Images_control()
+            ];
             return obj;
         }
         About_control() {
@@ -14846,37 +14898,25 @@ var $;
             return obj;
         }
         About_field() {
-            const obj = new this.$.$mol_form_field();
-            obj.name = () => "Обо мне";
-            obj.control = () => this.About_control();
+            const obj = new this.$.$care_labeler();
+            obj.title = () => "Обо мне";
+            obj.content = () => [
+                this.About_control()
+            ];
             return obj;
         }
         contact_label(id) {
             return "";
-        }
-        Contact_label(id) {
-            const obj = new this.$.$mol_view();
-            obj.sub = () => [
-                this.contact_label(id)
-            ];
-            return obj;
         }
         contact_value(id, next) {
             if (next !== undefined)
                 return next;
             return "";
         }
-        Contact_control(id) {
-            const obj = new this.$.$mol_string();
-            obj.value = (next) => this.contact_value(id, next);
-            return obj;
-        }
         Contact_row(id) {
-            const obj = new this.$.$mol_bar();
-            obj.sub = () => [
-                this.Contact_label(id),
-                this.Contact_control(id)
-            ];
+            const obj = new this.$.$mol_string();
+            obj.hint = () => this.contact_label(id);
+            obj.value = (next) => this.contact_value(id, next);
             return obj;
         }
         contact_rows() {
@@ -14890,8 +14930,8 @@ var $;
             return obj;
         }
         Contact_field() {
-            const obj = new this.$.$mol_form_field();
-            obj.name = () => "Контакты";
+            const obj = new this.$.$care_labeler();
+            obj.title = () => "Контакты";
             obj.content = () => [
                 this.Contact_list()
             ];
@@ -14921,20 +14961,16 @@ var $;
             obj.value = (next) => this.company_tasks(id, next);
             return obj;
         }
-        Company_date_start_label(id) {
-            const obj = new this.$.$mol_paragraph();
-            obj.title = () => "Начало работы";
-            return obj;
-        }
         Company_date_start(id) {
             const obj = new this.$.$mol_date();
             obj.value_moment = (next) => this.company_date_start(id, next);
             return obj;
         }
         Company_date_start_bar(id) {
-            const obj = new this.$.$mol_bar();
-            obj.sub = () => [
-                this.Company_date_start_label(id),
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.title = () => "Начало работы ";
+            obj.content = () => [
                 this.Company_date_start(id)
             ];
             return obj;
@@ -14958,13 +14994,14 @@ var $;
         }
         date_end_content(id) {
             return [
-                this.Company_working_now(id),
                 this.Company_date_end(id)
             ];
         }
         Company_date_end_bar(id) {
-            const obj = new this.$.$mol_bar();
-            obj.sub = () => this.date_end_content(id);
+            const obj = new this.$.$care_labeler();
+            obj.dir = () => "row";
+            obj.Label = () => this.Company_working_now(id);
+            obj.content = () => this.date_end_content(id);
             return obj;
         }
         Company_date(id) {
@@ -15040,8 +15077,8 @@ var $;
             return obj;
         }
         Company_field() {
-            const obj = new this.$.$mol_form_field();
-            obj.name = () => "Опыт работы";
+            const obj = new this.$.$care_labeler();
+            obj.title = () => "Опыт работы";
             obj.content = () => [
                 this.Company_list()
             ];
@@ -15275,6 +15312,12 @@ var $;
     ], $care_app_person_edit.prototype, "person", null);
     __decorate([
         $mol_mem
+    ], $care_app_person_edit.prototype, "Close_page_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_edit.prototype, "Close_page", null);
+    __decorate([
+        $mol_mem
     ], $care_app_person_edit.prototype, "images", null);
     __decorate([
         $mol_mem
@@ -15290,13 +15333,7 @@ var $;
     ], $care_app_person_edit.prototype, "About_field", null);
     __decorate([
         $mol_mem_key
-    ], $care_app_person_edit.prototype, "Contact_label", null);
-    __decorate([
-        $mol_mem_key
     ], $care_app_person_edit.prototype, "contact_value", null);
-    __decorate([
-        $mol_mem_key
-    ], $care_app_person_edit.prototype, "Contact_control", null);
     __decorate([
         $mol_mem_key
     ], $care_app_person_edit.prototype, "Contact_row", null);
@@ -15318,9 +15355,6 @@ var $;
     __decorate([
         $mol_mem_key
     ], $care_app_person_edit.prototype, "Company_tasks", null);
-    __decorate([
-        $mol_mem_key
-    ], $care_app_person_edit.prototype, "Company_date_start_label", null);
     __decorate([
         $mol_mem_key
     ], $care_app_person_edit.prototype, "Company_date_start", null);
@@ -15471,6 +15505,41 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
+        const { per } = $mol_style_unit;
+        $mol_style_define($.$care_app_person_edit, {
+            Body: {
+                padding: $mol_gap.space,
+            },
+            Contact_row: {
+                margin: {
+                    bottom: $mol_gap.space,
+                },
+            },
+            Company_row: {
+                $mol_string: {
+                    margin: {
+                        bottom: $mol_gap.space,
+                    },
+                },
+                $mol_textarea: {
+                    margin: {
+                        bottom: $mol_gap.space,
+                    },
+                },
+            },
+            $mol_list: {
+                width: per(100),
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/person/edit/edit.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
         class $care_app_person_edit extends $.$care_app_person_edit {
             images(next) {
                 return this.person().images(next && next.slice(-1));
@@ -15571,106 +15640,14 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    class $care_labeler extends $mol_view {
-        attr() {
-            return {
-                ...super.attr(),
-                care_labeler_dir: this.dir()
-            };
-        }
-        sub() {
-            return [
-                this.Label(),
-                this.Content()
-            ];
-        }
-        dir() {
-            return "column";
-        }
-        label() {
-            return [
-                this.title()
-            ];
-        }
-        Label() {
-            const obj = new this.$.$mol_view();
-            obj.sub = () => this.label();
-            return obj;
-        }
-        content() {
-            return [];
-        }
-        Content() {
-            const obj = new this.$.$mol_view();
-            obj.sub = () => this.content();
-            return obj;
+    class $mol_icon_pencil extends $mol_icon {
+        path() {
+            return "M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z";
         }
     }
-    __decorate([
-        $mol_mem
-    ], $care_labeler.prototype, "Label", null);
-    __decorate([
-        $mol_mem
-    ], $care_labeler.prototype, "Content", null);
-    $.$care_labeler = $care_labeler;
+    $.$mol_icon_pencil = $mol_icon_pencil;
 })($ || ($ = {}));
-//care/labeler/-view.tree/labeler.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("care/labeler/labeler.view.css", "[care_labeler_content] [care_labeler_label] {\n\tfont-weight: normal;\n}\n\n[care_labeler_content] [care_labeler] {\n\tpadding: 0;\n}\n");
-})($ || ($ = {}));
-//care/labeler/-css/labeler.view.css.ts
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        const { rem, per } = $mol_style_unit;
-        $mol_style_define($.$care_labeler, {
-            padding: $mol_gap.space,
-            Label: {
-                color: $mol_theme.shade,
-                font: {
-                    weight: 'bold',
-                },
-            },
-            Content: {
-                padding: {
-                    left: $mol_gap.block,
-                },
-                whiteSpace: 'break-spaces',
-                flex: {
-                    wrap: 'wrap',
-                },
-            },
-            '@': {
-                care_labeler_dir: {
-                    column: {
-                        flex: {
-                            direction: 'column',
-                        },
-                    },
-                    row: {
-                        alignItems: 'flex-start',
-                        flex: {
-                            direction: 'row',
-                        },
-                        Label: {
-                            maxWidth: rem(8),
-                            flex: {
-                                grow: 1,
-                            },
-                        },
-                    },
-                },
-            },
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-//care/labeler/labeler.view.css.ts
+//mol/icon/pencil/-view.tree/pencil.view.tree.ts
 ;
 "use strict";
 var $;
@@ -15749,6 +15726,7 @@ var $;
         }
         tools() {
             return [
+                this.Person_edit_link(),
                 this.Close_page()
             ];
         }
@@ -15760,6 +15738,20 @@ var $;
                 this.Person_head(),
                 this.Person_body()
             ];
+        }
+        Person_edit_icon() {
+            const obj = new this.$.$mol_icon_pencil();
+            return obj;
+        }
+        Person_edit_link() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                person_edit: ""
+            });
+            obj.sub = () => [
+                this.Person_edit_icon()
+            ];
+            return obj;
         }
         Close_page_icon() {
             const obj = new this.$.$mol_icon_cross();
@@ -16064,6 +16056,12 @@ var $;
     __decorate([
         $mol_mem
     ], $care_app_person_page.prototype, "Page_edit", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Person_edit_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_person_page.prototype, "Person_edit_link", null);
     __decorate([
         $mol_mem
     ], $care_app_person_page.prototype, "Close_page_icon", null);

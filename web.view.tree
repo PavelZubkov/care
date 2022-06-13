@@ -328,14 +328,6 @@ $mol_icon_logout_variant $mol_icon path \M14.08,15.59L16.67,13H7V11H16.67L14.08,
 
 $mol_icon_account $mol_icon path \M12,4C14.21,4 16,5.79 16,8C16,10.21 14.21,12 12,12C9.79,12 8,10.21 8,8C8,5.79 9.79,4 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z
 
-$mol_icon_pencil $mol_icon path \M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z
-
-$mol_bar $mol_view
-
-$mol_icon_briefcase $mol_icon path \M10,2H14C15.1,2 16,2.9 16,4V6H20C21.1,6 22,6.9 22,8V19C22,20.1 21.1,21 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z
-
-$mol_icon_briefcase_outline $mol_icon path \M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z
-
 $mol_icon_office $mol_icon path \M3,18L7,16.75V7L14,5V19.5L3.5,18.25L14,22L20,20.75V3.5L13.95,2L3,5.75V18Z
 
 $mol_icon_office_building $mol_icon path \M5,3V21H11V17.5H13V21H19V3H5M7,5H9V7H7V5M11,5H13V7H11V5M15,5H17V7H15V5M7,9H9V11H7V9M11,9H13V11H11V9M15,9H17V11H15V9M7,13H9V15H7V13M11,13H13V15H11V13M15,13H17V15H15V13M7,17H9V19H7V17M15,17H17V19H15V17Z
@@ -352,31 +344,16 @@ $care_app_nav $mol_page
 			click? <=> sign_out? null
 			sub / <= Sign_out_icon $mol_icon_logout_variant
 	body /
-		<= Person $mol_bar
+		<= Person_link $mol_link
+			arg * person <= user_id
 			sub /
-				<= Person_link $mol_link
-					arg * person <= user_id
-					sub /
-						<= Person_icon $mol_icon_account
-						<= person_label \Моя страница
-				<= Person_edit_link $mol_link
-					arg * person_edit \
-					sub / <= Person_edit_icon $mol_icon_pencil
-		<= Person_activity $mol_link
-			arg * person_activity \
-			sub /
-				<= Person_activity_icon $mol_icon_briefcase_outline
-				<= person_activity_label \Деятельность
+				<= Person_icon $mol_icon_account
+				<= person_label \Моя страница
 		<= Org_list $mol_link
 			arg * orgs \
 			sub / 
 				<= Org_list_icon $mol_icon_office_building
 				<= org_list_label \Организации
-		<= Job_search $mol_link
-			arg * job_search \
-			sub /
-				<= Job_search_icon $mol_icon_magnify
-				<= job_search_label \Поиск вакансий
 
 $mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
 
@@ -412,6 +389,18 @@ $mol_image2 $mol_view
 				paddingTop <= height \100%
 				backgroundImage <= background \
 
+$care_labeler $mol_view
+	attr *
+		^
+		care_labeler_dir <= dir \column
+	sub /
+		<= Label $mol_view
+			sub <= label /$mol_view_content
+				<= title
+		<= Content $mol_view
+			sub <= content /
+	
+
 $care_app_org_page $mol_page
 	org $care_app_org
 	title \Организация
@@ -430,10 +419,10 @@ $care_app_org_page $mol_page
 					sub / <= org_name \
 		<= Org_body $mol_list
 			rows /
-				<= Description $mol_labeler
+				<= Description $care_labeler
 					title \Об организации
 					content / <= org_description \
-				<= Activity $mol_labeler
+				<= Activity $care_labeler
 					title \Деятельность
 					content / <= Project_list $mol_list
 						rows <= project_rows /
@@ -760,6 +749,10 @@ $care_attach $mol_attach
 $care_app_org_add $mol_page
 	org $care_app_org_service
 	title @ \Creating an organization
+	tools /
+		<= Close_page $mol_link
+			arg * org null
+			sub / <= Close_page_icon $mol_icon_cross
 	error *
 		required @ \*
 	body /
@@ -925,6 +918,10 @@ $care_app_project_add $mol_page
 	project_service $care_app_project_service
 	org $care_app_org
 	title \Создание проекта
+	tools /
+		<= Close_page $mol_link
+			arg * project null
+			sub / <= Close_page_icon $mol_icon_cross
 	body /
 		<= Form $mol_form
 			form_fields /
@@ -976,22 +973,22 @@ $care_app_project_page $mol_page
 			arg * project null
 			sub / <= Close_page_icon $mol_icon_cross
 	body /
-		<= Name_field $mol_labeler
+		<= Name_field $care_labeler
 			title \Название
 			content / <= name
-		<= Description_field $mol_labeler
+		<= Description_field $care_labeler
 			title \Описание
 			content / <= description
-		<= Result_field $mol_labeler
+		<= Result_field $care_labeler
 			title \Ожидаемые результат
 			content / <= result
-		<= Duration_field $mol_labeler
+		<= Duration_field $care_labeler
 			title \Продолжительность
 			content / <= duration_string \
-		<= Date_start_field $mol_labeler
+		<= Date_start_field $care_labeler
 			title \Дата начала
 			content / <= date_start_string \
-		<= Job_field $mol_labeler
+		<= Job_field $care_labeler
 			title \Вакансии
 			content / <= Job_list $mol_list
 				rows <= job_list_rows /
@@ -1132,39 +1129,39 @@ $care_app_job_page $mol_page
 	Job $mol_list
 		title \Информация
 		rows /
-			<= Name_field $mol_labeler
+			<= Name_field $care_labeler
 				title \Название
 				content / <= name
-			<= Project_field $mol_labeler
+			<= Project_field $care_labeler
 				title \Проект
 				content / <= Project_link $mol_link
 					arg * project <= project_id \
 					title <= project_name \
-			<= Functions_field $mol_labeler
+			<= Functions_field $care_labeler
 				title \Обязанности
 				content / <= functions
-			<= Requests_field $mol_labeler
+			<= Requests_field $care_labeler
 				title \Требования
 				content / <= requests
-			<= Provided_field $mol_labeler
+			<= Provided_field $care_labeler
 				title \Что предоставляется
 				content / <= provided
-			<= Experience_field $mol_labeler
+			<= Experience_field $care_labeler
 				title \Опыт работы
 				content / <= experience_string \
-			<= Format_field $mol_labeler
+			<= Format_field $care_labeler
 				title \Формат
 				content / <= format_string \
-			<= Duration_field $mol_labeler
+			<= Duration_field $care_labeler
 				title \Продолжительность вакансии
 				content / <= duration_string \
-			<= Work_shedule_field $mol_labeler
+			<= Work_shedule_field $care_labeler
 				title \Название
 				content / <= work_schedule_string \
-			<= Pay_field $mol_labeler
+			<= Pay_field $care_labeler
 				title \Оплата
 				content / <= pay_string \
-			<= Response_field $mol_labeler
+			<= Response_field $care_labeler
 				title \Отклик на вакансию
 				content <= response_content /
 					<= Response_text $mol_textarea
@@ -1184,6 +1181,8 @@ $mol_check_box $mol_check
 	Icon $mol_icon_tick
 
 $mol_icon_delete $mol_icon path \M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19C6,20.1 6.9,21 8,21H16C17.1,21 18,20.1 18,19V7H6V19Z
+
+$mol_bar $mol_view
 
 $mol_icon_minus $mol_icon path \M19,13H5V11H19V13Z
 
@@ -1225,6 +1224,10 @@ $care_app_person_edit $mol_page
 		education_specialty*? => education_specialty*?
 		education_year_end*? => education_year_end*?
 	title \Моя страница - редактироване
+	tools /
+		<= Close_page $mol_link
+			arg * person_edit null
+			sub / <= Close_page_icon $mol_icon_cross
 	contact_dict *
 		telegram \Телеграм
 		mail \Почта
@@ -1232,25 +1235,23 @@ $care_app_person_edit $mol_page
 	body / 
 		<= Form $mol_form
 			form_fields /
-				<= Images_field $mol_form_field
-					name \Аватар
-					control <= Images_control $care_attach
+				<= Images_field $care_labeler
+					title \Аватар
+					content / <= Images_control $care_attach
 						items? <=> images? /
-				<= About_field $mol_form_field
-					name \Обо мне
-					control <= About_control $mol_textarea
+				<= About_field $care_labeler
+					title \Обо мне
+					content / <= About_control $mol_textarea
 						value? <=> about?
-				<= Contact_field $mol_form_field
-					name \Контакты
+				<= Contact_field $care_labeler
+					title \Контакты
 					content / <= Contact_list $mol_list
 						rows <= contact_rows /
-							<= Contact_row*0 $mol_bar
-								sub /
-									<= Contact_label* $mol_view sub / <= contact_label* \
-									<= Contact_control* $mol_string
-										value? <=> contact_value*? \
-				<= Company_field $mol_form_field
-					name \Опыт работы
+							<= Contact_row*0 $mol_string
+								hint <= contact_label* \
+								value? <=> contact_value*? \
+				<= Company_field $care_labeler
+					title \Опыт работы
 					content / <= Company_list $mol_list
 						rows <= company_list /
 							<= Company_row*0 $mol_list
@@ -1269,17 +1270,18 @@ $care_app_person_edit $mol_page
 										value? <=> company_tasks*?
 									<= Company_date* $mol_list
 										rows /
-											<= Company_date_start_bar* $mol_bar
-												sub /
-													<= Company_date_start_label* $mol_paragraph
-														title \Начало работы
+											<= Company_date_start_bar* $care_labeler
+												dir \row
+												title \Начало работы 
+												content /
 													<= Company_date_start* $mol_date
 														value_moment? <=> company_date_start*?
-											<= Company_date_end_bar* $mol_bar
-												sub <= date_end_content* /
-													<= Company_working_now* $mol_check_box
-														title \Работаю тут
-														checked? <=> company_working_now*?
+											<= Company_date_end_bar* $care_labeler
+												dir \row
+												Label <= Company_working_now* $mol_check_box
+													title \Работаю тут
+													checked? <=> company_working_now*?
+												content <= date_end_content* /
 													<= Company_date_end* $mol_date
 														value_moment? <=> company_date_end_moment*? $mol_time_moment
 									<= Company_action* $mol_bar
@@ -1348,17 +1350,7 @@ $care_app_person_edit $mol_page
 													click? <=> skill_delete*? null
 													sub / <= Skill_delete_icon* $mol_icon_delete
 
-$care_labeler $mol_view
-	attr *
-		^
-		care_labeler_dir <= dir \column
-	sub /
-		<= Label $mol_view
-			sub <= label /$mol_view_content
-				<= title
-		<= Content $mol_view
-			sub <= content /
-	
+$mol_icon_pencil $mol_icon path \M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z
 
 $care_app_person_page $mol_page
 	person $care_app_person
@@ -1385,6 +1377,9 @@ $care_app_person_page $mol_page
 		education_level_dict => education_level_dict
 	title \Моя страница
 	tools /
+		<= Person_edit_link $mol_link
+			arg * person_edit \
+			sub / <= Person_edit_icon $mol_icon_pencil
 		<= Close_page $mol_link
 			arg *
 				person null

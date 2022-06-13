@@ -2589,32 +2589,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    class $mol_icon_pencil extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_bar extends $mol_view {
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    class $mol_icon_briefcase extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_briefcase_outline extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
     class $mol_icon_office extends $mol_icon {
         path(): string;
     }
@@ -2640,18 +2614,9 @@ declare namespace $ {
         Person_icon(): $mol_icon_account;
         person_label(): string;
         Person_link(): $$.$mol_link;
-        Person_edit_icon(): $mol_icon_pencil;
-        Person_edit_link(): $$.$mol_link;
-        Person(): $mol_bar;
-        Person_activity_icon(): $mol_icon_briefcase_outline;
-        person_activity_label(): string;
-        Person_activity(): $$.$mol_link;
         Org_list_icon(): $mol_icon_office_building;
         org_list_label(): string;
         Org_list(): $$.$mol_link;
-        Job_search_icon(): $mol_icon_magnify;
-        job_search_label(): string;
-        Job_search(): $$.$mol_link;
     }
 }
 
@@ -2726,6 +2691,26 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    class $care_labeler extends $mol_view {
+        attr(): {
+            care_labeler_dir: string;
+        };
+        sub(): readonly any[];
+        dir(): string;
+        label(): readonly $mol_view_content[];
+        Label(): $mol_view;
+        content(): readonly any[];
+        Content(): $mol_view;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
     class $care_app_org_page extends $mol_page {
         org(): $care_app_org;
         title(): string;
@@ -2739,14 +2724,14 @@ declare namespace $ {
         Org_name(): $mol_view;
         Org_head(): $mol_view;
         org_description(): string;
-        Description(): $mol_labeler;
+        Description(): $care_labeler;
         Project_add(): $$.$mol_link;
         project_id(id: any): string;
         project_name(id: any): string;
         Project_link(id: any): $$.$mol_link;
         project_rows(): readonly any[];
         Project_list(): $$.$mol_list;
-        Activity(): $mol_labeler;
+        Activity(): $care_labeler;
         Org_body(): $$.$mol_list;
     }
 }
@@ -3496,10 +3481,13 @@ declare namespace $ {
     class $care_app_org_add extends $mol_page {
         org(): $care_app_org_service;
         title(): string;
+        tools(): readonly any[];
         error(): {
             required: string;
         };
         body(): readonly any[];
+        Close_page_icon(): $mol_icon_cross;
+        Close_page(): $$.$mol_link;
         name_bid(): string;
         name(next?: any): string;
         Name_control(): $$.$mol_textarea;
@@ -3815,7 +3803,10 @@ declare namespace $ {
         project_service(): $care_app_project_service;
         org(): $care_app_org;
         title(): string;
+        tools(): readonly any[];
         body(): readonly any[];
+        Close_page_icon(): $mol_icon_cross;
+        Close_page(): $$.$mol_link;
         name(next?: any): string;
         Name_control(): $$.$mol_textarea;
         Name_field(): $$.$mol_form_field;
@@ -3877,20 +3868,20 @@ declare namespace $ {
         body(): readonly any[];
         Close_page_icon(): $mol_icon_cross;
         Close_page(): $$.$mol_link;
-        Name_field(): $mol_labeler;
-        Description_field(): $mol_labeler;
-        Result_field(): $mol_labeler;
+        Name_field(): $care_labeler;
+        Description_field(): $care_labeler;
+        Result_field(): $care_labeler;
         duration_string(): string;
-        Duration_field(): $mol_labeler;
+        Duration_field(): $care_labeler;
         date_start_string(): string;
-        Date_start_field(): $mol_labeler;
+        Date_start_field(): $care_labeler;
         Job_add(): $$.$mol_link;
         job_id(id: any): string;
         job_name(id: any): string;
         Job_link(id: any): $$.$mol_link;
         job_list_rows(): readonly any[];
         Job_list(): $$.$mol_list;
-        Job_field(): $mol_labeler;
+        Job_field(): $care_labeler;
     }
 }
 
@@ -4070,24 +4061,24 @@ declare namespace $ {
         response_list_rows(id: any): readonly any[];
         Response_list_row(id: any): $$.$mol_list;
         response_rows(): readonly any[];
-        Name_field(): $mol_labeler;
+        Name_field(): $care_labeler;
         project_id(): string;
         project_name(): string;
         Project_link(): $$.$mol_link;
-        Project_field(): $mol_labeler;
-        Functions_field(): $mol_labeler;
-        Requests_field(): $mol_labeler;
-        Provided_field(): $mol_labeler;
+        Project_field(): $care_labeler;
+        Functions_field(): $care_labeler;
+        Requests_field(): $care_labeler;
+        Provided_field(): $care_labeler;
         experience_string(): string;
-        Experience_field(): $mol_labeler;
+        Experience_field(): $care_labeler;
         format_string(): string;
-        Format_field(): $mol_labeler;
+        Format_field(): $care_labeler;
         duration_string(): string;
-        Duration_field(): $mol_labeler;
+        Duration_field(): $care_labeler;
         work_schedule_string(): string;
-        Work_shedule_field(): $mol_labeler;
+        Work_shedule_field(): $care_labeler;
         pay_string(): string;
-        Pay_field(): $mol_labeler;
+        Pay_field(): $care_labeler;
         response_text(next?: any): string;
         response_text_enabled(): boolean;
         Response_text(): $$.$mol_textarea;
@@ -4097,7 +4088,7 @@ declare namespace $ {
         response_apply(): string;
         response_decline(): string;
         response_content(): readonly any[];
-        Response_field(): $mol_labeler;
+        Response_field(): $care_labeler;
     }
 }
 
@@ -4148,6 +4139,14 @@ declare namespace $ {
     class $mol_icon_delete extends $mol_icon {
         path(): string;
     }
+}
+
+declare namespace $ {
+    class $mol_bar extends $mol_view {
+    }
+}
+
+declare namespace $ {
 }
 
 declare namespace $ {
@@ -4208,37 +4207,37 @@ declare namespace $ {
         education_year_end(id: any, next?: any): number;
         person(): $care_app_person;
         title(): string;
+        tools(): readonly any[];
         contact_dict(): {
             telegram: string;
             mail: string;
             website: string;
         };
         body(): readonly any[];
+        Close_page_icon(): $mol_icon_cross;
+        Close_page(): $$.$mol_link;
         images(next?: any): readonly any[];
         Images_control(): $$.$care_attach;
-        Images_field(): $$.$mol_form_field;
+        Images_field(): $care_labeler;
         About_control(): $$.$mol_textarea;
-        About_field(): $$.$mol_form_field;
+        About_field(): $care_labeler;
         contact_label(id: any): string;
-        Contact_label(id: any): $mol_view;
         contact_value(id: any, next?: any): string;
-        Contact_control(id: any): $$.$mol_string;
-        Contact_row(id: any): $mol_bar;
+        Contact_row(id: any): $$.$mol_string;
         contact_rows(): readonly any[];
         Contact_list(): $$.$mol_list;
-        Contact_field(): $$.$mol_form_field;
+        Contact_field(): $care_labeler;
         Company_position(id: any): $$.$mol_string;
         Company_name(id: any): $$.$mol_string;
         Company_industry(id: any): $$.$mol_string;
         Company_tasks(id: any): $$.$mol_textarea;
-        Company_date_start_label(id: any): $$.$mol_paragraph;
         Company_date_start(id: any): $$.$mol_date;
-        Company_date_start_bar(id: any): $mol_bar;
+        Company_date_start_bar(id: any): $care_labeler;
         Company_working_now(id: any): $mol_check_box;
         company_date_end_moment(id: any, next?: any): $mol_time_moment;
         Company_date_end(id: any): $$.$mol_date;
         date_end_content(id: any): readonly any[];
-        Company_date_end_bar(id: any): $mol_bar;
+        Company_date_end_bar(id: any): $care_labeler;
         Company_date(id: any): $$.$mol_list;
         company_delete(id: any, next?: any): any;
         Company_delete_icon(id: any): $mol_icon_delete;
@@ -4250,7 +4249,7 @@ declare namespace $ {
         Company_row(id: any): $$.$mol_list;
         company_list(): readonly any[];
         Company_list(): $$.$mol_list;
-        Company_field(): $$.$mol_form_field;
+        Company_field(): $care_labeler;
         education_level_dict(): {
             level0: string;
             level1: string;
@@ -4298,9 +4297,12 @@ declare namespace $ {
 }
 
 declare namespace $.$$ {
+}
+
+declare namespace $.$$ {
     class $care_app_person_edit extends $.$care_app_person_edit {
         images(next?: string[]): string[];
-        contact_rows(): $mol_bar[];
+        contact_rows(): $mol_string[];
         contact_label(id: string): any;
         contact_value(id: string, next?: string): any;
         company_add(id: string): void;
@@ -4319,23 +4321,9 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    class $care_labeler extends $mol_view {
-        attr(): {
-            care_labeler_dir: string;
-        };
-        sub(): readonly any[];
-        dir(): string;
-        label(): readonly $mol_view_content[];
-        Label(): $mol_view;
-        content(): readonly any[];
-        Content(): $mol_view;
+    class $mol_icon_pencil extends $mol_icon {
+        path(): string;
     }
-}
-
-declare namespace $ {
-}
-
-declare namespace $.$$ {
 }
 
 declare namespace $ {
@@ -4379,6 +4367,8 @@ declare namespace $ {
         tools(): readonly any[];
         working_now(): string;
         body(): readonly any[];
+        Person_edit_icon(): $mol_icon_pencil;
+        Person_edit_link(): $$.$mol_link;
         Close_page_icon(): $mol_icon_cross;
         Close_page(): $$.$mol_link;
         Image(): $$.$mol_image2;
