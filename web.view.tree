@@ -33,6 +33,51 @@ $mol_page $mol_view
 			dom_name \footer
 			sub <= foot /$mol_view
 
+$mol_svg $mol_view
+	dom_name \svg
+	dom_name_space \http://www.w3.org/2000/svg
+	font_size 16
+	font_family \
+	style_size *
+
+$mol_svg_root $mol_svg
+	dom_name \svg
+	attr *
+		^
+		viewBox <= view_box \0 0 100 100
+		preserveAspectRatio <= aspect \xMidYMid
+
+$mol_svg_path $mol_svg
+	dom_name \path
+	attr *
+		^
+		d <= geometry \
+
+
+$mol_icon $mol_svg_root
+	view_box \0 0 24 24
+	minimal_width 16
+	minimal_height 16
+	sub /
+		<= Path $mol_svg_path
+			geometry <= path \
+
+$mol_link $mol_view
+	dom_name \a
+	attr *
+		^
+		href <= uri \
+		title <= hint \
+		target <= target \_self
+		download <= file_name \
+		mol_link_current <= current false
+	sub /$mol_view_content
+		<= title
+	arg *
+	event *
+		^
+		click?event <=> click?event <=> event_click?event null
+
 $mol_hotkey $mol_plugin
 	event *
 		^
@@ -100,35 +145,6 @@ $mol_form_field $mol_labeler
 			sub / <= bid \
 	content /
 		<= control null
-
-$mol_svg $mol_view
-	dom_name \svg
-	dom_name_space \http://www.w3.org/2000/svg
-	font_size 16
-	font_family \
-	style_size *
-
-$mol_svg_root $mol_svg
-	dom_name \svg
-	attr *
-		^
-		viewBox <= view_box \0 0 100 100
-		preserveAspectRatio <= aspect \xMidYMid
-
-$mol_svg_path $mol_svg
-	dom_name \path
-	attr *
-		^
-		d <= geometry \
-
-
-$mol_icon $mol_svg_root
-	view_box \0 0 24 24
-	minimal_width 16
-	minimal_height 16
-	sub /
-		<= Path $mol_svg_path
-			geometry <= path \
 
 $mol_icon_eye $mol_icon path \M12,9C10.34,9 9,10.34 9,12C9,13.66 10.34,15 12,15C13.66,15 15,13.66 15,12C15,10.34 13.66,9 12,9M12,17C9.24,17 7,14.76 7,12C7,9.24 9.24,7 12,7C14.76,7 17,9.24 17,12C17,14.76 14.76,17 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z
 
@@ -200,22 +216,6 @@ $mol_button_major $mol_button_typed
 		^
 		mol_theme \$mol_theme_accent
 
-$mol_link $mol_view
-	dom_name \a
-	attr *
-		^
-		href <= uri \
-		title <= hint \
-		target <= target \_self
-		download <= file_name \
-		mol_link_current <= current false
-	sub /$mol_view_content
-		<= title
-	arg *
-	event *
-		^
-		click?event <=> click?event <=> event_click?event null
-
 $mol_row $mol_view
 
 $mol_form $mol_list
@@ -241,6 +241,9 @@ $care_app_sign_up $mol_page
 		password_short @ \Minimum 8 characters
 		password_not_match @ \Passwords do not match
 	body /
+		<= Request $mol_link
+			arg * sign \request
+			title \Нужна помощь
 		<= Form $mol_form
 			form_fields /
 				<= Name_field $mol_form_field
@@ -291,6 +294,9 @@ $care_app_sign_in $mol_page
 		required @ \*
 		wrong @ \Wrong phone or password
 	body /
+		<= Request $mol_link
+			arg * sign \request
+			title \Нужна помощь
 		<= Form $mol_form
 			form_fields /
 				<= Phone_field $mol_form_field
@@ -1619,9 +1625,43 @@ $care_app_job_search $mol_list
 				dict <= pay_dict
 				title \Оплата
 
+$care_app_request_search $mol_list
+	request_service $care_app_request_service
+		item* => request*
+	title \Заявки на помощь
+	flags *
+		children \Дети
+		elderly \Пожилые
+		urgently \Срочно
+	rows /
+		<= Search $mol_search
+			query? <=> query? \
+			suggests <= suggests /string
+		<= Request_list $mol_list
+			rows <= rows_filtered /
+				<= Request_row*0 $mol_list
+					rows /
+						<= Description* $care_labeler
+							title \Описание
+							content / <= description* \
+						<= Flags* $care_labeler
+							dir \row
+							title \Значения
+							content <= flags_content* /
+								<= Children* $mol_view sub / <= flag_children* \
+								<= Elderly* $mol_view sub / <= flag_elderly* \
+								<= Urgently* $mol_view sub / <= flag_urgently* \
+						<= Action* $mol_view sub /
+							<= Date* $mol_view sub / <= request_date* \
+							<= Link* $mol_link
+								arg * request <= request_id* \
+								title \Открыть
+	Filter $mol_list
+
 $care_app_search $mol_page
 	domain $care_app_domain
 		job => job_service
+		request => request_service
 	tools /
 		<= Filter_open $mol_link
 			hint \Фильтры
@@ -1636,7 +1676,110 @@ $care_app_search $mol_page
 			items /
 				<= Job_search $care_app_job_search
 					job_service <= job_service
+				<= Request_search $care_app_request_search
+					request_service <= request_service
 	Filter $mol_view
+
+$care_app_request_add $mol_page
+	request_service $care_app_request_service
+	title \Нужна помощь
+	tools /
+		<= Close_page $mol_link
+			arg * sign \in
+			sub / <= Close_page_icon $mol_icon_cross
+	completed? false
+	body <= body_sub /
+		<= Completed $mol_paragraph
+			title \Заявка отправлена, ожидайте когда с Вами свяжутся
+		<= Form $mol_form
+			form_fields /
+				<= Name $care_labeler
+					title \Имя
+					content / <= Name_control $mol_string
+						value? <=> name? \
+				<= Name_sur $care_labeler
+					title \Фамилия
+					content / <= Name_sur_control $mol_string
+						value? <=> name_sur? \
+				<= Phone $care_labeler
+					title \Телефон для связи
+					content / <= Phone_control $mol_string
+						value? <=> phone? \
+				<= Description $care_labeler
+					title \Опишите ситуацию
+					content / <= Description_control $mol_textarea
+						value? <=> description? \
+				<= Things $care_labeler
+					title \Необходимые вещи
+					content / <= Things_control $mol_textarea
+						value? <=> things? \
+				<= Subway $care_labeler
+					title \Ближайшая станция метро или адрес
+					content / <= Subway_control $mol_textarea
+						value? <=> subway? \
+				<= Children_control $mol_check_box
+					title \Работа с детьми
+					checked? <=> chidlren? false
+				<= Elderly_control $mol_check_box
+					title \Работа с пожилыми людми
+					checked? <=> elderly? false
+				<= Urgently_control $mol_check_box
+					title \Срочно
+					checked? <=> urgently? false
+			buttons /
+				<= Submit $mol_button_major
+					title \Отправить
+					click? <=> submit? null
+
+$care_app_request_page $mol_page
+	request $care_app_request
+		name_full => name_full
+		phone => phone
+		description => description
+		subway => subway
+		things => things
+		children => children
+		elderly => elderly
+		urgently => urgently
+		moment => moment
+	tools /
+		<= Close_page $mol_link
+			arg * request null
+			sub / <= Close_page_icon $mol_icon_cross
+	title \Запрос на помощь
+	yes \да
+	no \нет
+	body /
+		<= List $mol_list rows /
+			<= Name $care_labeler
+				dir \row
+				title \Имя Фамилия
+				content / <= name_full
+			<= Phone $care_labeler
+				dir \row
+				title \Телефон
+				content / <= phone
+			<= Description $care_labeler
+				title \Описание
+				content / <= description
+			<= Things $care_labeler
+				title \Необходимые вещи
+				content / <= things
+			<= Subway $care_labeler
+				title \Ближайшая станция метро или адрес
+				content / <= subway
+			<= Children $care_labeler
+				dir \row
+				title \Дети
+				content / <= chidlren_string \
+			<= Elderly $care_labeler
+				dir \row
+				title \Пожилые
+				content / <= elderly_string \
+			<= Urgently $care_labeler
+				dir \row
+				title \Срочно
+				content / <= urgently_string \
 
 $care_app $mol_book2
 	attr * mol_theme \$mol_theme_light
@@ -1647,6 +1790,7 @@ $care_app $mol_book2
 		project => project_service
 		job => job_service
 		person => person_service
+		request => request_service
 	pages /
 		<= Sign_up_page $care_app_sign_up
 		<= Sign_in_page $care_app_sign_in
@@ -1681,4 +1825,7 @@ $care_app $mol_book2
 			Filter => Search_filter
 		<= Search_filter_page $care_app_search_filter
 			Filter <= Search_filter
-
+		<= Request_add_page $care_app_request_add
+			request_service <= request_service
+		<= Request_page $care_app_request_page
+			request <= request_opened $care_app_request

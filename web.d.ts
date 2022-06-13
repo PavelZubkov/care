@@ -1383,6 +1383,7 @@ declare namespace $ {
         org(): $care_app_org_service;
         project(): $care_app_project_service;
         job(): $care_app_job_service;
+        request(): $care_app_request_service;
     }
 }
 
@@ -1512,6 +1513,152 @@ declare namespace $ {
         static texts(lang: string, next?: $mol_locale_dict): $mol_locale_dict;
         static text(key: string): string;
         static warn(key: string): null;
+    }
+}
+
+declare namespace $ {
+    class $mol_svg extends $mol_view {
+        dom_name(): string;
+        dom_name_space(): string;
+        font_size(): number;
+        font_family(): string;
+        style_size(): {};
+    }
+}
+
+declare namespace $ {
+    class $mol_after_timeout extends $mol_object2 {
+        delay: number;
+        task: () => void;
+        id: any;
+        constructor(delay: number, task: () => void);
+        destructor(): void;
+    }
+}
+
+declare namespace $ {
+    class $mol_state_time extends $mol_object {
+        static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
+        static now(precision: number): number;
+    }
+}
+
+declare namespace $.$$ {
+    class $mol_svg extends $.$mol_svg {
+        computed_style(): CSSStyleDeclaration;
+        font_size(): number;
+        font_family(): any;
+    }
+}
+
+declare namespace $ {
+    class $mol_svg_root extends $mol_svg {
+        dom_name(): string;
+        attr(): {
+            viewBox: string;
+            preserveAspectRatio: string;
+        };
+        view_box(): string;
+        aspect(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_svg_path extends $mol_svg {
+        dom_name(): string;
+        attr(): {
+            d: string;
+        };
+        geometry(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon extends $mol_svg_root {
+        view_box(): string;
+        minimal_width(): number;
+        minimal_height(): number;
+        sub(): readonly any[];
+        path(): string;
+        Path(): $mol_svg_path;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_link extends $mol_view {
+        dom_name(): string;
+        attr(): {
+            href: string;
+            title: string;
+            target: string;
+            download: string;
+            mol_link_current: boolean;
+        };
+        sub(): readonly $mol_view_content[];
+        arg(): {};
+        event(): {
+            click: (event?: any) => any;
+        };
+        uri(): string;
+        hint(): string;
+        target(): string;
+        file_name(): string;
+        current(): boolean;
+        event_click(event?: any): any;
+        click(event?: any): any;
+    }
+}
+
+declare namespace $ {
+    class $mol_state_arg extends $mol_object {
+        prefix: string;
+        static href(next?: string): string;
+        static href_normal(): string;
+        static href_absolute(): string;
+        static dict(next?: {
+            [key: string]: string | null;
+        }): {
+            [key: string]: string;
+        };
+        static dict_cut(except: string[]): {
+            [key: string]: string;
+        };
+        static value(key: string, next?: string | null): string | null;
+        static link(next: {
+            [key: string]: string;
+        }): string;
+        static prolog: string;
+        static separator: string;
+        static make_link(next: {
+            [key: string]: string | null;
+        }): string;
+        static encode(str: string): string;
+        constructor(prefix?: string);
+        value(key: string, next?: string): string | null;
+        sub(postfix: string): $mol_state_arg;
+        link(next: {
+            [key: string]: string;
+        }): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+    class $mol_link extends $.$mol_link {
+        uri(): string;
+        uri_native(): URL;
+        current(): boolean;
+        file_name(): string;
+        minimal_height(): number;
+        target(): '_self' | '_blank' | '_top' | '_parent' | string;
     }
 }
 
@@ -1873,80 +2020,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    class $mol_svg extends $mol_view {
-        dom_name(): string;
-        dom_name_space(): string;
-        font_size(): number;
-        font_family(): string;
-        style_size(): {};
-    }
-}
-
-declare namespace $ {
-    class $mol_after_timeout extends $mol_object2 {
-        delay: number;
-        task: () => void;
-        id: any;
-        constructor(delay: number, task: () => void);
-        destructor(): void;
-    }
-}
-
-declare namespace $ {
-    class $mol_state_time extends $mol_object {
-        static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
-        static now(precision: number): number;
-    }
-}
-
-declare namespace $.$$ {
-    class $mol_svg extends $.$mol_svg {
-        computed_style(): CSSStyleDeclaration;
-        font_size(): number;
-        font_family(): any;
-    }
-}
-
-declare namespace $ {
-    class $mol_svg_root extends $mol_svg {
-        dom_name(): string;
-        attr(): {
-            viewBox: string;
-            preserveAspectRatio: string;
-        };
-        view_box(): string;
-        aspect(): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    class $mol_svg_path extends $mol_svg {
-        dom_name(): string;
-        attr(): {
-            d: string;
-        };
-        geometry(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon extends $mol_svg_root {
-        view_box(): string;
-        minimal_width(): number;
-        minimal_height(): number;
-        sub(): readonly any[];
-        path(): string;
-        Path(): $mol_svg_path;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
     class $mol_icon_eye extends $mol_icon {
         path(): string;
     }
@@ -2103,78 +2176,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    class $mol_link extends $mol_view {
-        dom_name(): string;
-        attr(): {
-            href: string;
-            title: string;
-            target: string;
-            download: string;
-            mol_link_current: boolean;
-        };
-        sub(): readonly $mol_view_content[];
-        arg(): {};
-        event(): {
-            click: (event?: any) => any;
-        };
-        uri(): string;
-        hint(): string;
-        target(): string;
-        file_name(): string;
-        current(): boolean;
-        event_click(event?: any): any;
-        click(event?: any): any;
-    }
-}
-
-declare namespace $ {
-    class $mol_state_arg extends $mol_object {
-        prefix: string;
-        static href(next?: string): string;
-        static href_normal(): string;
-        static href_absolute(): string;
-        static dict(next?: {
-            [key: string]: string | null;
-        }): {
-            [key: string]: string;
-        };
-        static dict_cut(except: string[]): {
-            [key: string]: string;
-        };
-        static value(key: string, next?: string | null): string | null;
-        static link(next: {
-            [key: string]: string;
-        }): string;
-        static prolog: string;
-        static separator: string;
-        static make_link(next: {
-            [key: string]: string | null;
-        }): string;
-        static encode(str: string): string;
-        constructor(prefix?: string);
-        value(key: string, next?: string): string | null;
-        sub(postfix: string): $mol_state_arg;
-        link(next: {
-            [key: string]: string;
-        }): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $.$$ {
-    class $mol_link extends $.$mol_link {
-        uri(): string;
-        uri_native(): URL;
-        current(): boolean;
-        file_name(): string;
-        minimal_height(): number;
-        target(): '_self' | '_blank' | '_top' | '_parent' | string;
-    }
-}
-
-declare namespace $ {
     class $mol_row extends $mol_view {
     }
 }
@@ -2225,6 +2226,7 @@ declare namespace $ {
             password_not_match: string;
         };
         body(): readonly any[];
+        Request(): $$.$mol_link;
         name_bid(): string;
         name(next?: any): string;
         Name_control(): $$.$mol_string;
@@ -2281,6 +2283,7 @@ declare namespace $ {
             wrong: string;
         };
         body(): readonly any[];
+        Request(): $$.$mol_link;
         phone_bid(): string;
         phone(next?: any): string;
         Phone_control(): $$.$mol_string;
@@ -4678,8 +4681,88 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    class $care_app_request_service extends $mol_object2 {
+        domain(): $care_app_domain;
+        state(): $mol_state_shared;
+        index(): $care_app_index;
+        find(fn?: (obj: $care_app_request) => boolean): $care_app_request[];
+        item(id: string): $care_app_request;
+    }
+    class $care_app_request extends $mol_object2 {
+        id(): string;
+        domain(): $care_app_domain;
+        state(): $mol_state_shared;
+        name_full(next?: string): string;
+        phone(next?: string): string;
+        description(next?: string): string;
+        subway(next?: string): string;
+        things(next?: string): string;
+        children(next?: boolean): boolean;
+        elderly(next?: boolean): boolean;
+        urgently(next?: boolean): boolean;
+        moment(next?: $mol_time_moment): $mol_time_moment | null;
+    }
+}
+
+declare namespace $ {
+    class $care_app_request_search extends $mol_list {
+        request(id: any): $care_app_request;
+        request_service(): $care_app_request_service;
+        title(): string;
+        flags(): {
+            children: string;
+            elderly: string;
+            urgently: string;
+        };
+        rows(): readonly any[];
+        Filter(): $$.$mol_list;
+        query(next?: any): string;
+        suggests(): readonly string[];
+        Search(): $$.$mol_search;
+        description(id: any): string;
+        Description(id: any): $care_labeler;
+        flag_children(id: any): string;
+        Children(id: any): $mol_view;
+        flag_elderly(id: any): string;
+        Elderly(id: any): $mol_view;
+        flag_urgently(id: any): string;
+        Urgently(id: any): $mol_view;
+        flags_content(id: any): readonly any[];
+        Flags(id: any): $care_labeler;
+        request_date(id: any): string;
+        Date(id: any): $mol_view;
+        request_id(id: any): string;
+        Link(id: any): $$.$mol_link;
+        Action(id: any): $mol_view;
+        Request_row(id: any): $$.$mol_list;
+        rows_filtered(): readonly any[];
+        Request_list(): $$.$mol_list;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $.$$ {
+    class $care_app_request_search extends $.$care_app_request_search {
+        domain(): $care_app_domain;
+        rows_filtered(): $mol_list[];
+        description(id: string): string;
+        flags_content(id: string): $mol_view[];
+        flag_children(id: string): string;
+        flag_elderly(id: string): string;
+        flag_urgently(id: string): string;
+        request_id(id: string): string;
+        request_date(id: string): string;
+        request_text(obj: $care_app_request): string;
+        request_search(obj: $care_app_request): boolean;
+    }
+}
+
+declare namespace $ {
     class $care_app_search extends $mol_page {
         job_service(): $care_app_job_service;
+        request_service(): $care_app_request_service;
         domain(): $care_app_domain;
         tools(): readonly any[];
         title(): string;
@@ -4690,6 +4773,7 @@ declare namespace $ {
         Close_page_icon(): $mol_icon_cross;
         Close_page(): $$.$mol_link;
         Job_search(): $$.$care_app_job_search;
+        Request_search(): $$.$care_app_request_search;
         Tabs(): $$.$mol_deck;
     }
 }
@@ -4704,6 +4788,103 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    class $care_app_request_add extends $mol_page {
+        request_service(): $care_app_request_service;
+        title(): string;
+        tools(): readonly any[];
+        completed(next?: any): boolean;
+        body(): readonly any[];
+        Close_page_icon(): $mol_icon_cross;
+        Close_page(): $$.$mol_link;
+        Completed(): $$.$mol_paragraph;
+        name(next?: any): string;
+        Name_control(): $$.$mol_string;
+        Name(): $care_labeler;
+        name_sur(next?: any): string;
+        Name_sur_control(): $$.$mol_string;
+        Name_sur(): $care_labeler;
+        phone(next?: any): string;
+        Phone_control(): $$.$mol_string;
+        Phone(): $care_labeler;
+        description(next?: any): string;
+        Description_control(): $$.$mol_textarea;
+        Description(): $care_labeler;
+        things(next?: any): string;
+        Things_control(): $$.$mol_textarea;
+        Things(): $care_labeler;
+        subway(next?: any): string;
+        Subway_control(): $$.$mol_textarea;
+        Subway(): $care_labeler;
+        chidlren(next?: any): boolean;
+        Children_control(): $mol_check_box;
+        elderly(next?: any): boolean;
+        Elderly_control(): $mol_check_box;
+        urgently(next?: any): boolean;
+        Urgently_control(): $mol_check_box;
+        submit(next?: any): any;
+        Submit(): $mol_button_major;
+        Form(): $$.$mol_form;
+        body_sub(): readonly any[];
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $.$$ {
+    class $care_app_request_add extends $.$care_app_request_add {
+        submit(): void;
+        body_sub(): $mol_form[] | $mol_paragraph[];
+        auto(): void;
+    }
+}
+
+declare namespace $ {
+    class $care_app_request_page extends $mol_page {
+        name_full(): string;
+        phone(): string;
+        description(): string;
+        subway(): string;
+        things(): string;
+        children(): boolean;
+        elderly(): boolean;
+        urgently(): boolean;
+        moment(): $mol_time_moment | null;
+        request(): $care_app_request;
+        tools(): readonly any[];
+        title(): string;
+        yes(): string;
+        no(): string;
+        body(): readonly any[];
+        Close_page_icon(): $mol_icon_cross;
+        Close_page(): $$.$mol_link;
+        Name(): $care_labeler;
+        Phone(): $care_labeler;
+        Description(): $care_labeler;
+        Things(): $care_labeler;
+        Subway(): $care_labeler;
+        chidlren_string(): string;
+        Children(): $care_labeler;
+        elderly_string(): string;
+        Elderly(): $care_labeler;
+        urgently_string(): string;
+        Urgently(): $care_labeler;
+        List(): $$.$mol_list;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $.$$ {
+    class $care_app_request_page extends $.$care_app_request_page {
+        chidlren_string(): string;
+        elderly_string(): string;
+        urgently_string(): string;
+    }
+}
+
+declare namespace $ {
     class $care_app extends $mol_book2 {
         attr(): {
             mol_theme: string;
@@ -4714,6 +4895,7 @@ declare namespace $ {
         project_service(): $care_app_project_service;
         job_service(): $care_app_job_service;
         person_service(): $care_app_person_service;
+        request_service(): $care_app_request_service;
         domain(): $care_app_domain;
         pages(): readonly any[];
         Sign_up_page(): $$.$care_app_sign_up;
@@ -4738,6 +4920,9 @@ declare namespace $ {
         Search_filter(): any;
         Search_page(): $$.$care_app_search;
         Search_filter_page(): $$.$care_app_search_filter;
+        Request_add_page(): $$.$care_app_request_add;
+        request_opened(): $care_app_request;
+        Request_page(): $$.$care_app_request_page;
     }
 }
 
@@ -4754,7 +4939,8 @@ declare namespace $.$$ {
         project_opened(): $care_app_project;
         job_opened(): $care_app_job;
         person_opened(): $care_app_person;
-        pages(): ($care_app_sign_up | $care_app_sign_in)[] | ($care_app_org_list | $care_app_org_page | $care_app_org_add | $care_app_project_add | $care_app_project_page | $care_app_job_add | $care_app_job_page | $care_app_person_edit | $care_app_person_page | $care_app_person_activity | $care_app_search_filter | $care_app_search | $care_app_nav)[];
+        request_opened(): $care_app_request;
+        pages(): ($care_app_sign_up | $care_app_sign_in | $care_app_request_add)[] | ($care_app_org_list | $care_app_org_page | $care_app_org_add | $care_app_project_add | $care_app_project_page | $care_app_job_add | $care_app_job_page | $care_app_person_edit | $care_app_person_page | $care_app_person_activity | $care_app_search_filter | $care_app_search | $care_app_request_page | $care_app_nav)[];
         sign_out(): void;
     }
 }
