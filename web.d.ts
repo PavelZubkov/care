@@ -2314,18 +2314,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    class $mol_icon_logout extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_logout_variant extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
     class $care_app_index extends $mol_object2 {
         domain(): $care_app_domain;
         state(): $mol_state_shared;
@@ -2574,6 +2562,24 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_icon_magnify extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_logout extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_logout_variant extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
     class $mol_icon_account extends $mol_icon {
         path(): string;
     }
@@ -2618,16 +2624,16 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    class $mol_icon_magnify extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
     class $care_app_nav extends $mol_page {
         user_id(): string;
         user(): $care_app_person;
+        tools(): readonly any[];
         body(): readonly any[];
+        Search_open_icon(): $mol_icon_magnify;
+        Search_open(): $$.$mol_link;
+        sign_out(next?: any): any;
+        Sign_out_icon(): $mol_icon_logout_variant;
+        Sign_out(): $mol_button_minor;
         Person_icon(): $mol_icon_account;
         person_label(): string;
         Person_link(): $$.$mol_link;
@@ -4121,129 +4127,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    class $mol_nav extends $mol_plugin {
-        cycle(val?: any): boolean;
-        mod_ctrl(): boolean;
-        mod_shift(): boolean;
-        mod_alt(): boolean;
-        keys_x(val?: any): readonly any[];
-        keys_y(val?: any): readonly any[];
-        current_x(val?: any): any;
-        current_y(val?: any): any;
-        event_up(event?: any): any;
-        event_down(event?: any): any;
-        event_left(event?: any): any;
-        event_right(event?: any): any;
-        event(): {
-            keydown: (event?: any) => any;
-        };
-        event_key(event?: any): any;
-    }
-}
-
-declare namespace $.$$ {
-    class $mol_nav extends $.$mol_nav {
-        event_key(event?: KeyboardEvent): undefined;
-        event_up(event?: KeyboardEvent): undefined;
-        event_down(event?: KeyboardEvent): undefined;
-        event_left(event?: KeyboardEvent): undefined;
-        event_right(event?: KeyboardEvent): undefined;
-        index_y(): number | null;
-        index_x(): number | null;
-    }
-}
-
-declare namespace $ {
-    class $mol_search extends $mol_pop {
-        query(val?: any): string;
-        suggests(): readonly string[];
-        plugins(): readonly $mol_plugin[];
-        showed(val?: any): boolean;
-        align_hor(): string;
-        Anchor(): $mol_view;
-        bubble_content(): readonly $mol_view_content[];
-        Suggest(id: any): $mol_button_minor;
-        clear(val?: any): any;
-        Hotkey(): $$.$mol_hotkey;
-        nav_components(): readonly $mol_view[];
-        nav_focused(component?: any): any;
-        Nav(): $$.$mol_nav;
-        suggests_showed(val?: any): boolean;
-        hint(): string;
-        submit(event?: any): any;
-        enabled(): boolean;
-        Query(): $$.$mol_string;
-        Clear_icon(): $mol_icon_cross;
-        Clear(): $mol_button_minor;
-        anchor_content(): readonly any[];
-        menu_items(): readonly $mol_view[];
-        Menu(): $$.$mol_list;
-        suggest_select(id: any, event?: any): any;
-        suggest_label(id: any): string;
-        Suggest_label(id: any): $$.$mol_dimmer;
-        suggest_content(id: any): readonly $mol_view_content[];
-    }
-}
-
-declare namespace $ {
-    function $mol_fiber_defer<Value = void>(calculate: () => Value): $mol_wire_task<{}, [], Value>;
-    function $mol_fiber_root<Calculate extends (this: This, ...args: any[]) => Result, Result = void, This = void>(calculate: Calculate): Calculate;
-    function $mol_fiber_sync<Args extends any[], Value = void, This = void>(request: (this: This, ...args: Args) => PromiseLike<Value>): (...args: Args) => Value;
-    function $mol_fiber_warp(): Promise<void>;
-    class $mol_fiber_solid extends $mol_wrapper {
-        static func<This, Args extends any[], Result>(task: (this: This, ...args: Args) => Result): (this: This, ...args: Args) => Result;
-    }
-    class $mol_fiber {
-        static method: typeof $mol_wire_method;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $.$$ {
-    class $mol_search extends $.$mol_search {
-        anchor_content(): ($mol_string | $mol_button_minor)[];
-        suggests_showed(next?: boolean): boolean;
-        suggest_selected(next?: string): void;
-        nav_components(): ($mol_string | $mol_button_minor)[];
-        nav_focused(component?: $mol_view): $mol_view | $mol_string | null;
-        suggest_label(key: string): string;
-        menu_items(): $mol_button_minor[];
-        suggest_select(id: string, event?: MouseEvent): void;
-        clear(event?: Event): void;
-    }
-}
-
-declare namespace $ {
-    class $care_app_job_search extends $mol_page {
-        job_service(): $care_app_job_service;
-        title(): string;
-        body(): readonly any[];
-        query(next?: any): string;
-        suggests(): readonly string[];
-        Search(): $$.$mol_search;
-        job_name(id: any): string;
-        Job_name(id: any): $$.$mol_dimmer;
-        job_id(id: any): string;
-        Job_row(id: any): $$.$mol_link;
-        rows_filtered(): readonly any[];
-        Job_list(): $$.$mol_list;
-        Body_list(): $$.$mol_list;
-    }
-}
-
-declare namespace $.$$ {
-    class $care_app_job_search extends $.$care_app_job_search {
-        domain(): $care_app_domain;
-        rows_filtered(): $mol_link[];
-        job_id(id: string): string;
-        job_name(id: string): string;
-        job_search(obj: $care_app_job): boolean;
-    }
-}
-
-declare namespace $ {
     class $mol_icon_tick extends $mol_icon {
         path(): string;
     }
@@ -4586,6 +4469,241 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    class $mol_icon_tune extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_nav extends $mol_plugin {
+        cycle(val?: any): boolean;
+        mod_ctrl(): boolean;
+        mod_shift(): boolean;
+        mod_alt(): boolean;
+        keys_x(val?: any): readonly any[];
+        keys_y(val?: any): readonly any[];
+        current_x(val?: any): any;
+        current_y(val?: any): any;
+        event_up(event?: any): any;
+        event_down(event?: any): any;
+        event_left(event?: any): any;
+        event_right(event?: any): any;
+        event(): {
+            keydown: (event?: any) => any;
+        };
+        event_key(event?: any): any;
+    }
+}
+
+declare namespace $.$$ {
+    class $mol_nav extends $.$mol_nav {
+        event_key(event?: KeyboardEvent): undefined;
+        event_up(event?: KeyboardEvent): undefined;
+        event_down(event?: KeyboardEvent): undefined;
+        event_left(event?: KeyboardEvent): undefined;
+        event_right(event?: KeyboardEvent): undefined;
+        index_y(): number | null;
+        index_x(): number | null;
+    }
+}
+
+declare namespace $ {
+    class $mol_search extends $mol_pop {
+        query(val?: any): string;
+        suggests(): readonly string[];
+        plugins(): readonly $mol_plugin[];
+        showed(val?: any): boolean;
+        align_hor(): string;
+        Anchor(): $mol_view;
+        bubble_content(): readonly $mol_view_content[];
+        Suggest(id: any): $mol_button_minor;
+        clear(val?: any): any;
+        Hotkey(): $$.$mol_hotkey;
+        nav_components(): readonly $mol_view[];
+        nav_focused(component?: any): any;
+        Nav(): $$.$mol_nav;
+        suggests_showed(val?: any): boolean;
+        hint(): string;
+        submit(event?: any): any;
+        enabled(): boolean;
+        Query(): $$.$mol_string;
+        Clear_icon(): $mol_icon_cross;
+        Clear(): $mol_button_minor;
+        anchor_content(): readonly any[];
+        menu_items(): readonly $mol_view[];
+        Menu(): $$.$mol_list;
+        suggest_select(id: any, event?: any): any;
+        suggest_label(id: any): string;
+        Suggest_label(id: any): $$.$mol_dimmer;
+        suggest_content(id: any): readonly $mol_view_content[];
+    }
+}
+
+declare namespace $ {
+    function $mol_fiber_defer<Value = void>(calculate: () => Value): $mol_wire_task<{}, [], Value>;
+    function $mol_fiber_root<Calculate extends (this: This, ...args: any[]) => Result, Result = void, This = void>(calculate: Calculate): Calculate;
+    function $mol_fiber_sync<Args extends any[], Value = void, This = void>(request: (this: This, ...args: Args) => PromiseLike<Value>): (...args: Args) => Value;
+    function $mol_fiber_warp(): Promise<void>;
+    class $mol_fiber_solid extends $mol_wrapper {
+        static func<This, Args extends any[], Result>(task: (this: This, ...args: Args) => Result): (this: This, ...args: Args) => Result;
+    }
+    class $mol_fiber {
+        static method: typeof $mol_wire_method;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+    class $mol_search extends $.$mol_search {
+        anchor_content(): ($mol_string | $mol_button_minor)[];
+        suggests_showed(next?: boolean): boolean;
+        suggest_selected(next?: string): void;
+        nav_components(): ($mol_string | $mol_button_minor)[];
+        nav_focused(component?: $mol_view): $mol_view | $mol_string | null;
+        suggest_label(key: string): string;
+        menu_items(): $mol_button_minor[];
+        suggest_select(id: string, event?: MouseEvent): void;
+        clear(event?: Event): void;
+    }
+}
+
+declare namespace $ {
+    class $care_app_search_filter extends $mol_page {
+        title(): string;
+        tools(): readonly any[];
+        body(): readonly any[];
+        Close_page_icon(): $mol_icon_cross;
+        Close_page(): $$.$mol_link;
+        Filter(): $mol_view;
+        back(next?: any): any;
+        Back(): $mol_button_major;
+        List(): $$.$mol_list;
+    }
+    class $care_app_search_filter_dict extends $care_labeler {
+        dict(): {};
+        title(): string;
+        content(): readonly any[];
+        check_title(id: any): string;
+        checked(id: any, next?: any): boolean;
+        Check(id: any): $mol_check_box;
+        check_rows(): readonly any[];
+        Check_list(): $$.$mol_list;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $.$$ {
+    class $care_app_search_filter extends $.$care_app_search_filter {
+        back(): void;
+    }
+    class $care_app_search_filter_dict extends $.$care_app_search_filter_dict {
+        check_rows(): $mol_check_box[];
+        check_title(key: string): any;
+        checked(key: string, next?: boolean): boolean;
+        filter(value: any): boolean;
+    }
+}
+
+declare namespace $ {
+    class $care_app_job_search extends $mol_list {
+        job_service(): $care_app_job_service;
+        title(): string;
+        experience_dict(): {
+            no_matter: string;
+            no_expirience: string;
+            year1_3: string;
+            year3_6: string;
+            year6_plus: string;
+        };
+        format_dict(): {
+            remotely: string;
+            offline: string;
+            both: string;
+        };
+        duration_dict(): {
+            one_time: string;
+            month0: string;
+            month1_3: string;
+            month3_6: string;
+            month6_12: string;
+            month12_plus: string;
+            unlimited: string;
+        };
+        work_schedule_dict(): {
+            every_day: string;
+            shift: string;
+            flexible: string;
+        };
+        pay_dict(): {
+            no: string;
+            yes: string;
+        };
+        Job_add_page(): $$.$care_app_job_add;
+        rows(): readonly any[];
+        Filter(): $$.$mol_list;
+        query(next?: any): string;
+        suggests(): readonly string[];
+        Search(): $$.$mol_search;
+        job_name(id: any): string;
+        Job_name(id: any): $$.$mol_dimmer;
+        job_id(id: any): string;
+        Job_row(id: any): $$.$mol_link;
+        rows_filtered(): readonly any[];
+        Job_list(): $$.$mol_list;
+        Exp_filter(): $$.$care_app_search_filter_dict;
+        Format_filter(): $$.$care_app_search_filter_dict;
+        Duration_filter(): $$.$care_app_search_filter_dict;
+        Work_schedule_filter(): $$.$care_app_search_filter_dict;
+        Pay_filter(): $$.$care_app_search_filter_dict;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $.$$ {
+    class $care_app_job_search extends $.$care_app_job_search {
+        domain(): $care_app_domain;
+        rows_filtered(): $mol_link[];
+        job_id(id: string): string;
+        job_name(id: string): string;
+        job_text(obj: $care_app_job): string;
+        job_search(obj: $care_app_job): boolean;
+        job_filter(obj: $care_app_job): boolean;
+    }
+}
+
+declare namespace $ {
+    class $care_app_search extends $mol_page {
+        job_service(): $care_app_job_service;
+        domain(): $care_app_domain;
+        tools(): readonly any[];
+        title(): string;
+        body(): readonly any[];
+        Filter(): $mol_view;
+        Filter_open_icon(): $mol_icon_tune;
+        Filter_open(): $$.$mol_link;
+        Close_page_icon(): $mol_icon_cross;
+        Close_page(): $$.$mol_link;
+        Job_search(): $$.$care_app_job_search;
+        Tabs(): $$.$mol_deck;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $.$$ {
+    class $care_app_search extends $.$care_app_search {
+        Filter(): any;
+    }
+}
+
+declare namespace $ {
     class $care_app extends $mol_book2 {
         attr(): {
             mol_theme: string;
@@ -4601,8 +4719,6 @@ declare namespace $ {
         Sign_up_page(): $$.$care_app_sign_up;
         Sign_in_page(): $$.$care_app_sign_in;
         sign_out(next?: any): any;
-        Sign_out_icon(): $mol_icon_logout_variant;
-        Sign_out(): $mol_button_minor;
         Nav_page(): $care_app_nav;
         user(): $care_app_person;
         Org_list_page(): $$.$care_app_org_list;
@@ -4615,11 +4731,13 @@ declare namespace $ {
         job_opened(): $care_app_job;
         Job_page(): $$.$care_app_job_page;
         Job_add_page(): $$.$care_app_job_add;
-        Job_search_page(): $$.$care_app_job_search;
         person_opened(): $care_app_person;
         Person_page(): $$.$care_app_person_page;
         Person_edit_page(): $$.$care_app_person_edit;
         Person_activity_page(): $$.$care_app_person_activity;
+        Search_filter(): any;
+        Search_page(): $$.$care_app_search;
+        Search_filter_page(): $$.$care_app_search_filter;
     }
 }
 
@@ -4636,7 +4754,7 @@ declare namespace $.$$ {
         project_opened(): $care_app_project;
         job_opened(): $care_app_job;
         person_opened(): $care_app_person;
-        pages(): ($care_app_sign_up | $care_app_sign_in)[] | ($care_app_org_list | $care_app_org_page | $care_app_org_add | $care_app_project_add | $care_app_project_page | $care_app_job_add | $care_app_job_page | $care_app_job_search | $care_app_person_edit | $care_app_person_page | $care_app_person_activity | $care_app_nav)[];
+        pages(): ($care_app_sign_up | $care_app_sign_in)[] | ($care_app_org_list | $care_app_org_page | $care_app_org_add | $care_app_project_add | $care_app_project_page | $care_app_job_add | $care_app_job_page | $care_app_person_edit | $care_app_person_page | $care_app_person_activity | $care_app_search_filter | $care_app_search | $care_app_nav)[];
         sign_out(): void;
     }
 }

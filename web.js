@@ -7370,30 +7370,6 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    class $mol_icon_logout extends $mol_icon {
-        path() {
-            return "M16,17V14H9V10H16V7L21,12L16,17M14,2C15.1,2 16,2.9 16,4V6H14V4H5V20H14V18H16V20C16,21.1 15.1,22 14,22H5C3.9,22 3,21.1 3,20V4C3,2.9 3.9,2 5,2H14Z";
-        }
-    }
-    $.$mol_icon_logout = $mol_icon_logout;
-})($ || ($ = {}));
-//mol/icon/logout/-view.tree/logout.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_icon_logout_variant extends $mol_icon {
-        path() {
-            return "M14.08,15.59L16.67,13H7V11H16.67L14.08,8.41L15.5,7L20.5,12L15.5,17L14.08,15.59M19,3C20.1,3 21,3.9 21,5V9.67L19,7.67V5H5V19H19V16.33L21,14.33V19C21,20.1 20.1,21 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3H19Z";
-        }
-    }
-    $.$mol_icon_logout_variant = $mol_icon_logout_variant;
-})($ || ($ = {}));
-//mol/icon/logout/variant/-view.tree/variant.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
     class $care_app_index extends $mol_object2 {
         domain() {
             throw new Error('Not defined');
@@ -8347,6 +8323,42 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    class $mol_icon_magnify extends $mol_icon {
+        path() {
+            return "M9.5,3C13.09,3 16,5.91 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16C5.91,16 3,13.09 3,9.5C3,5.91 5.91,3 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z";
+        }
+    }
+    $.$mol_icon_magnify = $mol_icon_magnify;
+})($ || ($ = {}));
+//mol/icon/magnify/-view.tree/magnify.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_logout extends $mol_icon {
+        path() {
+            return "M16,17V14H9V10H16V7L21,12L16,17M14,2C15.1,2 16,2.9 16,4V6H14V4H5V20H14V18H16V20C16,21.1 15.1,22 14,22H5C3.9,22 3,21.1 3,20V4C3,2.9 3.9,2 5,2H14Z";
+        }
+    }
+    $.$mol_icon_logout = $mol_icon_logout;
+})($ || ($ = {}));
+//mol/icon/logout/-view.tree/logout.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_logout_variant extends $mol_icon {
+        path() {
+            return "M14.08,15.59L16.67,13H7V11H16.67L14.08,8.41L15.5,7L20.5,12L15.5,17L14.08,15.59M19,3C20.1,3 21,3.9 21,5V9.67L19,7.67V5H5V19H19V16.33L21,14.33V19C21,20.1 20.1,21 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3H19Z";
+        }
+    }
+    $.$mol_icon_logout_variant = $mol_icon_logout_variant;
+})($ || ($ = {}));
+//mol/icon/logout/variant/-view.tree/variant.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
     class $mol_icon_account extends $mol_icon {
         path() {
             return "M12,4C14.21,4 16,5.79 16,8C16,10.21 14.21,12 12,12C9.79,12 8,10.21 8,8C8,5.79 9.79,4 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z";
@@ -8435,18 +8447,6 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    class $mol_icon_magnify extends $mol_icon {
-        path() {
-            return "M9.5,3C13.09,3 16,5.91 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16C5.91,16 3,13.09 3,9.5C3,5.91 5.91,3 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z";
-        }
-    }
-    $.$mol_icon_magnify = $mol_icon_magnify;
-})($ || ($ = {}));
-//mol/icon/magnify/-view.tree/magnify.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
     class $care_app_nav extends $mol_page {
         user_id() {
             return this.user().id();
@@ -8455,6 +8455,12 @@ var $;
             const obj = new this.$.$care_app_person();
             return obj;
         }
+        tools() {
+            return [
+                this.Search_open(),
+                this.Sign_out()
+            ];
+        }
         body() {
             return [
                 this.Person(),
@@ -8462,6 +8468,38 @@ var $;
                 this.Org_list(),
                 this.Job_search()
             ];
+        }
+        Search_open_icon() {
+            const obj = new this.$.$mol_icon_magnify();
+            return obj;
+        }
+        Search_open() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                search: ""
+            });
+            obj.sub = () => [
+                this.Search_open_icon()
+            ];
+            return obj;
+        }
+        sign_out(next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        Sign_out_icon() {
+            const obj = new this.$.$mol_icon_logout_variant();
+            return obj;
+        }
+        Sign_out() {
+            const obj = new this.$.$mol_button_minor();
+            obj.hint = () => this.$.$mol_locale.text('$care_app_nav_Sign_out_hint');
+            obj.click = (next) => this.sign_out(next);
+            obj.sub = () => [
+                this.Sign_out_icon()
+            ];
+            return obj;
         }
         Person_icon() {
             const obj = new this.$.$mol_icon_account();
@@ -8561,6 +8599,21 @@ var $;
     __decorate([
         $mol_mem
     ], $care_app_nav.prototype, "user", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Search_open_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Search_open", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "sign_out", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Sign_out_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_nav.prototype, "Sign_out", null);
     __decorate([
         $mol_mem
     ], $care_app_nav.prototype, "Person_icon", null);
@@ -13608,7 +13661,7 @@ var $;
         }
         Duration_field() {
             const obj = new this.$.$mol_form_field();
-            obj.name = () => "Продолжительность вакансии";
+            obj.name = () => "Продолжительность трудоустройсва";
             obj.control = () => this.Duration_control();
             return obj;
         }
@@ -13632,7 +13685,7 @@ var $;
         }
         Work_shedule_field() {
             const obj = new this.$.$mol_form_field();
-            obj.name = () => "Название";
+            obj.name = () => "График";
             obj.control = () => this.Work_shedule_control();
             return obj;
         }
@@ -14450,668 +14503,6 @@ var $;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 //care/app/job/page/page.view.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_nav extends $mol_plugin {
-        cycle(val) {
-            if (val !== undefined)
-                return val;
-            return false;
-        }
-        mod_ctrl() {
-            return false;
-        }
-        mod_shift() {
-            return false;
-        }
-        mod_alt() {
-            return false;
-        }
-        keys_x(val) {
-            if (val !== undefined)
-                return val;
-            return [];
-        }
-        keys_y(val) {
-            if (val !== undefined)
-                return val;
-            return [];
-        }
-        current_x(val) {
-            if (val !== undefined)
-                return val;
-            return null;
-        }
-        current_y(val) {
-            if (val !== undefined)
-                return val;
-            return null;
-        }
-        event_up(event) {
-            if (event !== undefined)
-                return event;
-            return null;
-        }
-        event_down(event) {
-            if (event !== undefined)
-                return event;
-            return null;
-        }
-        event_left(event) {
-            if (event !== undefined)
-                return event;
-            return null;
-        }
-        event_right(event) {
-            if (event !== undefined)
-                return event;
-            return null;
-        }
-        event() {
-            return {
-                ...super.event(),
-                keydown: (event) => this.event_key(event)
-            };
-        }
-        event_key(event) {
-            if (event !== undefined)
-                return event;
-            return null;
-        }
-    }
-    __decorate([
-        $mol_mem
-    ], $mol_nav.prototype, "cycle", null);
-    __decorate([
-        $mol_mem
-    ], $mol_nav.prototype, "keys_x", null);
-    __decorate([
-        $mol_mem
-    ], $mol_nav.prototype, "keys_y", null);
-    __decorate([
-        $mol_mem
-    ], $mol_nav.prototype, "current_x", null);
-    __decorate([
-        $mol_mem
-    ], $mol_nav.prototype, "current_y", null);
-    __decorate([
-        $mol_mem
-    ], $mol_nav.prototype, "event_up", null);
-    __decorate([
-        $mol_mem
-    ], $mol_nav.prototype, "event_down", null);
-    __decorate([
-        $mol_mem
-    ], $mol_nav.prototype, "event_left", null);
-    __decorate([
-        $mol_mem
-    ], $mol_nav.prototype, "event_right", null);
-    __decorate([
-        $mol_mem
-    ], $mol_nav.prototype, "event_key", null);
-    $.$mol_nav = $mol_nav;
-})($ || ($ = {}));
-//mol/nav/-view.tree/nav.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_nav extends $.$mol_nav {
-            event_key(event) {
-                if (!event)
-                    return event;
-                if (event.defaultPrevented)
-                    return;
-                if (this.mod_ctrl() && !event.ctrlKey)
-                    return;
-                if (this.mod_shift() && !event.shiftKey)
-                    return;
-                if (this.mod_alt() && !event.altKey)
-                    return;
-                switch (event.keyCode) {
-                    case $mol_keyboard_code.up: return this.event_up(event);
-                    case $mol_keyboard_code.down: return this.event_down(event);
-                    case $mol_keyboard_code.left: return this.event_left(event);
-                    case $mol_keyboard_code.right: return this.event_right(event);
-                    case $mol_keyboard_code.pageUp: return this.event_up(event);
-                    case $mol_keyboard_code.pageDown: return this.event_down(event);
-                }
-            }
-            event_up(event) {
-                if (!event)
-                    return event;
-                const keys = this.keys_y();
-                if (keys.length < 1)
-                    return;
-                const index_y = this.index_y();
-                const index_old = index_y === null ? 0 : index_y;
-                const index_new = (index_old + keys.length - 1) % keys.length;
-                event.preventDefault();
-                if (index_old === 0 && !this.cycle())
-                    return;
-                this.current_y(this.keys_y()[index_new]);
-            }
-            event_down(event) {
-                if (!event)
-                    return event;
-                const keys = this.keys_y();
-                if (keys.length < 1)
-                    return;
-                const index_y = this.index_y();
-                const index_old = index_y === null ? keys.length - 1 : index_y;
-                const index_new = (index_old + 1) % keys.length;
-                event.preventDefault();
-                if (index_new === 0 && !this.cycle())
-                    return;
-                this.current_y(this.keys_y()[index_new]);
-            }
-            event_left(event) {
-                if (!event)
-                    return event;
-                const keys = this.keys_x();
-                if (keys.length < 1)
-                    return;
-                const index_x = this.index_x();
-                const index_old = index_x === null ? 0 : index_x;
-                const index_new = (index_old + keys.length - 1) % keys.length;
-                event.preventDefault();
-                if (index_old === 0 && !this.cycle())
-                    return;
-                this.current_x(this.keys_x()[index_new]);
-            }
-            event_right(event) {
-                if (!event)
-                    return event;
-                const keys = this.keys_x();
-                if (keys.length < 1)
-                    return;
-                const index_x = this.index_x();
-                const index_old = index_x === null ? keys.length - 1 : index_x;
-                const index_new = (index_old + 1) % keys.length;
-                event.preventDefault();
-                if (index_new === 0 && !this.cycle())
-                    return;
-                this.current_x(this.keys_x()[index_new]);
-            }
-            index_y() {
-                let index = this.keys_y().indexOf(this.current_y());
-                if (index < 0)
-                    return null;
-                return index;
-            }
-            index_x() {
-                let index = this.keys_x().indexOf(this.current_x());
-                if (index < 0)
-                    return null;
-                return index;
-            }
-        }
-        $$.$mol_nav = $mol_nav;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-//mol/nav/nav.view.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_search extends $mol_pop {
-        query(val) {
-            if (val !== undefined)
-                return val;
-            return "";
-        }
-        suggests() {
-            return [];
-        }
-        plugins() {
-            return [
-                ...super.plugins(),
-                this.Hotkey(),
-                this.Nav()
-            ];
-        }
-        showed(val) {
-            return this.suggests_showed(val);
-        }
-        align_hor() {
-            return "right";
-        }
-        Anchor() {
-            const obj = new this.$.$mol_view();
-            obj.sub = () => this.anchor_content();
-            return obj;
-        }
-        bubble_content() {
-            return [
-                this.Menu()
-            ];
-        }
-        Suggest(id) {
-            const obj = new this.$.$mol_button_minor();
-            obj.click = (event) => this.suggest_select(id, event);
-            obj.sub = () => this.suggest_content(id);
-            return obj;
-        }
-        clear(val) {
-            if (val !== undefined)
-                return val;
-            return null;
-        }
-        Hotkey() {
-            const obj = new this.$.$mol_hotkey();
-            obj.key = () => ({
-                escape: (val) => this.clear(val)
-            });
-            return obj;
-        }
-        nav_components() {
-            return [];
-        }
-        nav_focused(component) {
-            if (component !== undefined)
-                return component;
-            return null;
-        }
-        Nav() {
-            const obj = new this.$.$mol_nav();
-            obj.keys_y = () => this.nav_components();
-            obj.current_y = (component) => this.nav_focused(component);
-            return obj;
-        }
-        suggests_showed(val) {
-            if (val !== undefined)
-                return val;
-            return false;
-        }
-        hint() {
-            return this.$.$mol_locale.text('$mol_search_hint');
-        }
-        submit(event) {
-            if (event !== undefined)
-                return event;
-            return null;
-        }
-        enabled() {
-            return true;
-        }
-        Query() {
-            const obj = new this.$.$mol_string();
-            obj.value = (val) => this.query(val);
-            obj.hint = () => this.hint();
-            obj.submit = (event) => this.submit(event);
-            obj.enabled = () => this.enabled();
-            return obj;
-        }
-        Clear_icon() {
-            const obj = new this.$.$mol_icon_cross();
-            return obj;
-        }
-        Clear() {
-            const obj = new this.$.$mol_button_minor();
-            obj.hint = () => this.$.$mol_locale.text('$mol_search_Clear_hint');
-            obj.click = (event) => this.clear(event);
-            obj.sub = () => [
-                this.Clear_icon()
-            ];
-            return obj;
-        }
-        anchor_content() {
-            return [
-                this.Query(),
-                this.Clear()
-            ];
-        }
-        menu_items() {
-            return [];
-        }
-        Menu() {
-            const obj = new this.$.$mol_list();
-            obj.rows = () => this.menu_items();
-            return obj;
-        }
-        suggest_select(id, event) {
-            if (event !== undefined)
-                return event;
-            return null;
-        }
-        suggest_label(id) {
-            return "";
-        }
-        Suggest_label(id) {
-            const obj = new this.$.$mol_dimmer();
-            obj.haystack = () => this.suggest_label(id);
-            obj.needle = () => this.query();
-            return obj;
-        }
-        suggest_content(id) {
-            return [
-                this.Suggest_label(id)
-            ];
-        }
-    }
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "query", null);
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "Anchor", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_search.prototype, "Suggest", null);
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "clear", null);
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "Hotkey", null);
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "nav_focused", null);
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "Nav", null);
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "suggests_showed", null);
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "submit", null);
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "Query", null);
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "Clear_icon", null);
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "Clear", null);
-    __decorate([
-        $mol_mem
-    ], $mol_search.prototype, "Menu", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_search.prototype, "suggest_select", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_search.prototype, "Suggest_label", null);
-    $.$mol_search = $mol_search;
-})($ || ($ = {}));
-//mol/search/-view.tree/search.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_fiber_defer(calculate) {
-        const host = {};
-        const fiber = new $mol_wire_task(calculate.name, calculate, host, []);
-        fiber.plan();
-        return fiber;
-    }
-    $.$mol_fiber_defer = $mol_fiber_defer;
-    function $mol_fiber_root(calculate) {
-        const wrapper = function (...args) {
-            const fiber = new $mol_wire_task(this + '.' + calculate.name, calculate, this, args);
-            return fiber.async();
-        };
-        wrapper[Symbol.toStringTag] = calculate.name;
-        return wrapper;
-    }
-    $.$mol_fiber_root = $mol_fiber_root;
-    function $mol_fiber_sync(request) {
-        throw new Error('Use $mol_wire_sync instead');
-    }
-    $.$mol_fiber_sync = $mol_fiber_sync;
-    async function $mol_fiber_warp() {
-        $mol_wire_fiber.sync();
-    }
-    $.$mol_fiber_warp = $mol_fiber_warp;
-    class $mol_fiber_solid extends $mol_wrapper {
-        static func(task) {
-            return task;
-        }
-    }
-    $.$mol_fiber_solid = $mol_fiber_solid;
-    class $mol_fiber {
-        static method = $mol_action;
-    }
-    $.$mol_fiber = $mol_fiber;
-})($ || ($ = {}));
-//mol/fiber/fiber.ts
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/search/search.view.css", "[mol_search] {\n\talign-self: flex-start;\n\tflex: auto;\n}\n\n[mol_search_anchor] {\n\tflex: 1 1 auto;\n}\n\n[mol_search_query] {\n\tflex-grow: 1;\n}\n\n[mol_search_menu] {\n\tmin-height: .75rem;\n\tdisplay: flex;\n}\n\n[mol_search_suggest] {\n\ttext-align: left;\n}\n\n[mol_search_suggest_label_high] {\n\tcolor: var(--mol_theme_shade);\n\ttext-shadow: none;\n}\n");
-})($ || ($ = {}));
-//mol/search/-css/search.view.css.ts
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_search extends $.$mol_search {
-            anchor_content() {
-                return [
-                    this.Query(),
-                    ...this.query() ? [this.Clear()] : [],
-                ];
-            }
-            suggests_showed(next = true) {
-                this.query();
-                if (!this.focused())
-                    return false;
-                return next;
-            }
-            suggest_selected(next) {
-                if (next === undefined)
-                    return;
-                this.query(next);
-                $mol_fiber_defer(() => {
-                    this.Query().focused(true);
-                });
-            }
-            nav_components() {
-                return [
-                    this.Query(),
-                    ...this.menu_items(),
-                ];
-            }
-            nav_focused(component) {
-                if (!this.focused())
-                    return null;
-                if (component == null) {
-                    for (let comp of this.nav_components()) {
-                        if (comp && comp.focused())
-                            return comp;
-                    }
-                    return null;
-                }
-                if (this.suggests_showed()) {
-                    this.ensure_visible(component, "center");
-                    component.focused(true);
-                }
-                return component;
-            }
-            suggest_label(key) {
-                return key;
-            }
-            menu_items() {
-                return this.suggests().map((suggest) => this.Suggest(suggest));
-            }
-            suggest_select(id, event) {
-                this.query(id);
-                this.Query().selection([id.length, id.length]);
-                this.Query().focused(true);
-            }
-            clear(event) {
-                this.query('');
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $mol_search.prototype, "anchor_content", null);
-        __decorate([
-            $mol_mem
-        ], $mol_search.prototype, "suggests_showed", null);
-        __decorate([
-            $mol_mem
-        ], $mol_search.prototype, "nav_focused", null);
-        __decorate([
-            $mol_mem
-        ], $mol_search.prototype, "menu_items", null);
-        $$.$mol_search = $mol_search;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-//mol/search/search.view.ts
-;
-"use strict";
-var $;
-(function ($) {
-    class $care_app_job_search extends $mol_page {
-        job_service() {
-            const obj = new this.$.$care_app_job_service();
-            return obj;
-        }
-        title() {
-            return "Поиск вакансий";
-        }
-        body() {
-            return [
-                this.Body_list()
-            ];
-        }
-        query(next) {
-            if (next !== undefined)
-                return next;
-            return "";
-        }
-        suggests() {
-            return [];
-        }
-        Search() {
-            const obj = new this.$.$mol_search();
-            obj.query = (next) => this.query(next);
-            obj.suggests = () => this.suggests();
-            return obj;
-        }
-        job_name(id) {
-            return "";
-        }
-        Job_name(id) {
-            const obj = new this.$.$mol_dimmer();
-            obj.needle = () => this.query();
-            obj.haystack = () => this.job_name(id);
-            return obj;
-        }
-        job_id(id) {
-            return "";
-        }
-        Job_row(id) {
-            const obj = new this.$.$mol_link();
-            obj.sub = () => [
-                this.Job_name(id)
-            ];
-            obj.arg = () => ({
-                job: this.job_id(id)
-            });
-            return obj;
-        }
-        rows_filtered() {
-            return [
-                this.Job_row("0")
-            ];
-        }
-        Job_list() {
-            const obj = new this.$.$mol_list();
-            obj.rows = () => this.rows_filtered();
-            return obj;
-        }
-        Body_list() {
-            const obj = new this.$.$mol_list();
-            obj.rows = () => [
-                this.Search(),
-                this.Job_list()
-            ];
-            return obj;
-        }
-    }
-    __decorate([
-        $mol_mem
-    ], $care_app_job_search.prototype, "job_service", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_job_search.prototype, "query", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_job_search.prototype, "Search", null);
-    __decorate([
-        $mol_mem_key
-    ], $care_app_job_search.prototype, "Job_name", null);
-    __decorate([
-        $mol_mem_key
-    ], $care_app_job_search.prototype, "Job_row", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_job_search.prototype, "Job_list", null);
-    __decorate([
-        $mol_mem
-    ], $care_app_job_search.prototype, "Body_list", null);
-    $.$care_app_job_search = $care_app_job_search;
-})($ || ($ = {}));
-//care/app/job/search/-view.tree/search.view.tree.ts
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $care_app_job_search extends $.$care_app_job_search {
-            domain() {
-                return this.job_service().domain();
-            }
-            rows_filtered() {
-                const list = this.job_service().find(obj => this.job_search(obj));
-                return list.map(obj => this.Job_row(obj.id()));
-            }
-            job_id(id) {
-                return id;
-            }
-            job_name(id) {
-                return this.domain().job().item(id).name();
-            }
-            job_search(obj) {
-                const fileds = [
-                    obj.name(),
-                    obj.functions(),
-                    obj.requests(),
-                    obj.provided(),
-                    obj.experience(),
-                    obj.format(),
-                    obj.duration(),
-                    obj.work_schedule(),
-                    obj.pay(),
-                    obj.project().name(),
-                    obj.project().org().name(),
-                ].join(' ').toLowerCase();
-                const index = fileds.indexOf(this.query().toLocaleLowerCase()) >= 0;
-                return index;
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $care_app_job_search.prototype, "rows_filtered", null);
-        __decorate([
-            $mol_mem_key
-        ], $care_app_job_search.prototype, "job_search", null);
-        $$.$care_app_job_search = $care_app_job_search;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-//care/app/job/search/search.view.css.ts
 ;
 "use strict";
 var $;
@@ -16956,6 +16347,1092 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    class $mol_icon_tune extends $mol_icon {
+        path() {
+            return "M3,17V19H9V17H3M3,5V7H13V5H3M13,21V19H21V17H13V15H11V21H13M7,9V11H3V13H7V15H9V9H7M21,13V11H11V13H21M15,9H17V7H21V5H17V3H15V9Z";
+        }
+    }
+    $.$mol_icon_tune = $mol_icon_tune;
+})($ || ($ = {}));
+//mol/icon/tune/-view.tree/tune.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_nav extends $mol_plugin {
+        cycle(val) {
+            if (val !== undefined)
+                return val;
+            return false;
+        }
+        mod_ctrl() {
+            return false;
+        }
+        mod_shift() {
+            return false;
+        }
+        mod_alt() {
+            return false;
+        }
+        keys_x(val) {
+            if (val !== undefined)
+                return val;
+            return [];
+        }
+        keys_y(val) {
+            if (val !== undefined)
+                return val;
+            return [];
+        }
+        current_x(val) {
+            if (val !== undefined)
+                return val;
+            return null;
+        }
+        current_y(val) {
+            if (val !== undefined)
+                return val;
+            return null;
+        }
+        event_up(event) {
+            if (event !== undefined)
+                return event;
+            return null;
+        }
+        event_down(event) {
+            if (event !== undefined)
+                return event;
+            return null;
+        }
+        event_left(event) {
+            if (event !== undefined)
+                return event;
+            return null;
+        }
+        event_right(event) {
+            if (event !== undefined)
+                return event;
+            return null;
+        }
+        event() {
+            return {
+                ...super.event(),
+                keydown: (event) => this.event_key(event)
+            };
+        }
+        event_key(event) {
+            if (event !== undefined)
+                return event;
+            return null;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $mol_nav.prototype, "cycle", null);
+    __decorate([
+        $mol_mem
+    ], $mol_nav.prototype, "keys_x", null);
+    __decorate([
+        $mol_mem
+    ], $mol_nav.prototype, "keys_y", null);
+    __decorate([
+        $mol_mem
+    ], $mol_nav.prototype, "current_x", null);
+    __decorate([
+        $mol_mem
+    ], $mol_nav.prototype, "current_y", null);
+    __decorate([
+        $mol_mem
+    ], $mol_nav.prototype, "event_up", null);
+    __decorate([
+        $mol_mem
+    ], $mol_nav.prototype, "event_down", null);
+    __decorate([
+        $mol_mem
+    ], $mol_nav.prototype, "event_left", null);
+    __decorate([
+        $mol_mem
+    ], $mol_nav.prototype, "event_right", null);
+    __decorate([
+        $mol_mem
+    ], $mol_nav.prototype, "event_key", null);
+    $.$mol_nav = $mol_nav;
+})($ || ($ = {}));
+//mol/nav/-view.tree/nav.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_nav extends $.$mol_nav {
+            event_key(event) {
+                if (!event)
+                    return event;
+                if (event.defaultPrevented)
+                    return;
+                if (this.mod_ctrl() && !event.ctrlKey)
+                    return;
+                if (this.mod_shift() && !event.shiftKey)
+                    return;
+                if (this.mod_alt() && !event.altKey)
+                    return;
+                switch (event.keyCode) {
+                    case $mol_keyboard_code.up: return this.event_up(event);
+                    case $mol_keyboard_code.down: return this.event_down(event);
+                    case $mol_keyboard_code.left: return this.event_left(event);
+                    case $mol_keyboard_code.right: return this.event_right(event);
+                    case $mol_keyboard_code.pageUp: return this.event_up(event);
+                    case $mol_keyboard_code.pageDown: return this.event_down(event);
+                }
+            }
+            event_up(event) {
+                if (!event)
+                    return event;
+                const keys = this.keys_y();
+                if (keys.length < 1)
+                    return;
+                const index_y = this.index_y();
+                const index_old = index_y === null ? 0 : index_y;
+                const index_new = (index_old + keys.length - 1) % keys.length;
+                event.preventDefault();
+                if (index_old === 0 && !this.cycle())
+                    return;
+                this.current_y(this.keys_y()[index_new]);
+            }
+            event_down(event) {
+                if (!event)
+                    return event;
+                const keys = this.keys_y();
+                if (keys.length < 1)
+                    return;
+                const index_y = this.index_y();
+                const index_old = index_y === null ? keys.length - 1 : index_y;
+                const index_new = (index_old + 1) % keys.length;
+                event.preventDefault();
+                if (index_new === 0 && !this.cycle())
+                    return;
+                this.current_y(this.keys_y()[index_new]);
+            }
+            event_left(event) {
+                if (!event)
+                    return event;
+                const keys = this.keys_x();
+                if (keys.length < 1)
+                    return;
+                const index_x = this.index_x();
+                const index_old = index_x === null ? 0 : index_x;
+                const index_new = (index_old + keys.length - 1) % keys.length;
+                event.preventDefault();
+                if (index_old === 0 && !this.cycle())
+                    return;
+                this.current_x(this.keys_x()[index_new]);
+            }
+            event_right(event) {
+                if (!event)
+                    return event;
+                const keys = this.keys_x();
+                if (keys.length < 1)
+                    return;
+                const index_x = this.index_x();
+                const index_old = index_x === null ? keys.length - 1 : index_x;
+                const index_new = (index_old + 1) % keys.length;
+                event.preventDefault();
+                if (index_new === 0 && !this.cycle())
+                    return;
+                this.current_x(this.keys_x()[index_new]);
+            }
+            index_y() {
+                let index = this.keys_y().indexOf(this.current_y());
+                if (index < 0)
+                    return null;
+                return index;
+            }
+            index_x() {
+                let index = this.keys_x().indexOf(this.current_x());
+                if (index < 0)
+                    return null;
+                return index;
+            }
+        }
+        $$.$mol_nav = $mol_nav;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//mol/nav/nav.view.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_search extends $mol_pop {
+        query(val) {
+            if (val !== undefined)
+                return val;
+            return "";
+        }
+        suggests() {
+            return [];
+        }
+        plugins() {
+            return [
+                ...super.plugins(),
+                this.Hotkey(),
+                this.Nav()
+            ];
+        }
+        showed(val) {
+            return this.suggests_showed(val);
+        }
+        align_hor() {
+            return "right";
+        }
+        Anchor() {
+            const obj = new this.$.$mol_view();
+            obj.sub = () => this.anchor_content();
+            return obj;
+        }
+        bubble_content() {
+            return [
+                this.Menu()
+            ];
+        }
+        Suggest(id) {
+            const obj = new this.$.$mol_button_minor();
+            obj.click = (event) => this.suggest_select(id, event);
+            obj.sub = () => this.suggest_content(id);
+            return obj;
+        }
+        clear(val) {
+            if (val !== undefined)
+                return val;
+            return null;
+        }
+        Hotkey() {
+            const obj = new this.$.$mol_hotkey();
+            obj.key = () => ({
+                escape: (val) => this.clear(val)
+            });
+            return obj;
+        }
+        nav_components() {
+            return [];
+        }
+        nav_focused(component) {
+            if (component !== undefined)
+                return component;
+            return null;
+        }
+        Nav() {
+            const obj = new this.$.$mol_nav();
+            obj.keys_y = () => this.nav_components();
+            obj.current_y = (component) => this.nav_focused(component);
+            return obj;
+        }
+        suggests_showed(val) {
+            if (val !== undefined)
+                return val;
+            return false;
+        }
+        hint() {
+            return this.$.$mol_locale.text('$mol_search_hint');
+        }
+        submit(event) {
+            if (event !== undefined)
+                return event;
+            return null;
+        }
+        enabled() {
+            return true;
+        }
+        Query() {
+            const obj = new this.$.$mol_string();
+            obj.value = (val) => this.query(val);
+            obj.hint = () => this.hint();
+            obj.submit = (event) => this.submit(event);
+            obj.enabled = () => this.enabled();
+            return obj;
+        }
+        Clear_icon() {
+            const obj = new this.$.$mol_icon_cross();
+            return obj;
+        }
+        Clear() {
+            const obj = new this.$.$mol_button_minor();
+            obj.hint = () => this.$.$mol_locale.text('$mol_search_Clear_hint');
+            obj.click = (event) => this.clear(event);
+            obj.sub = () => [
+                this.Clear_icon()
+            ];
+            return obj;
+        }
+        anchor_content() {
+            return [
+                this.Query(),
+                this.Clear()
+            ];
+        }
+        menu_items() {
+            return [];
+        }
+        Menu() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => this.menu_items();
+            return obj;
+        }
+        suggest_select(id, event) {
+            if (event !== undefined)
+                return event;
+            return null;
+        }
+        suggest_label(id) {
+            return "";
+        }
+        Suggest_label(id) {
+            const obj = new this.$.$mol_dimmer();
+            obj.haystack = () => this.suggest_label(id);
+            obj.needle = () => this.query();
+            return obj;
+        }
+        suggest_content(id) {
+            return [
+                this.Suggest_label(id)
+            ];
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "query", null);
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "Anchor", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_search.prototype, "Suggest", null);
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "clear", null);
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "Hotkey", null);
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "nav_focused", null);
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "Nav", null);
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "suggests_showed", null);
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "submit", null);
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "Query", null);
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "Clear_icon", null);
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "Clear", null);
+    __decorate([
+        $mol_mem
+    ], $mol_search.prototype, "Menu", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_search.prototype, "suggest_select", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_search.prototype, "Suggest_label", null);
+    $.$mol_search = $mol_search;
+})($ || ($ = {}));
+//mol/search/-view.tree/search.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_fiber_defer(calculate) {
+        const host = {};
+        const fiber = new $mol_wire_task(calculate.name, calculate, host, []);
+        fiber.plan();
+        return fiber;
+    }
+    $.$mol_fiber_defer = $mol_fiber_defer;
+    function $mol_fiber_root(calculate) {
+        const wrapper = function (...args) {
+            const fiber = new $mol_wire_task(this + '.' + calculate.name, calculate, this, args);
+            return fiber.async();
+        };
+        wrapper[Symbol.toStringTag] = calculate.name;
+        return wrapper;
+    }
+    $.$mol_fiber_root = $mol_fiber_root;
+    function $mol_fiber_sync(request) {
+        throw new Error('Use $mol_wire_sync instead');
+    }
+    $.$mol_fiber_sync = $mol_fiber_sync;
+    async function $mol_fiber_warp() {
+        $mol_wire_fiber.sync();
+    }
+    $.$mol_fiber_warp = $mol_fiber_warp;
+    class $mol_fiber_solid extends $mol_wrapper {
+        static func(task) {
+            return task;
+        }
+    }
+    $.$mol_fiber_solid = $mol_fiber_solid;
+    class $mol_fiber {
+        static method = $mol_action;
+    }
+    $.$mol_fiber = $mol_fiber;
+})($ || ($ = {}));
+//mol/fiber/fiber.ts
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/search/search.view.css", "[mol_search] {\n\talign-self: flex-start;\n\tflex: auto;\n}\n\n[mol_search_anchor] {\n\tflex: 1 1 auto;\n}\n\n[mol_search_query] {\n\tflex-grow: 1;\n}\n\n[mol_search_menu] {\n\tmin-height: .75rem;\n\tdisplay: flex;\n}\n\n[mol_search_suggest] {\n\ttext-align: left;\n}\n\n[mol_search_suggest_label_high] {\n\tcolor: var(--mol_theme_shade);\n\ttext-shadow: none;\n}\n");
+})($ || ($ = {}));
+//mol/search/-css/search.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_search extends $.$mol_search {
+            anchor_content() {
+                return [
+                    this.Query(),
+                    ...this.query() ? [this.Clear()] : [],
+                ];
+            }
+            suggests_showed(next = true) {
+                this.query();
+                if (!this.focused())
+                    return false;
+                return next;
+            }
+            suggest_selected(next) {
+                if (next === undefined)
+                    return;
+                this.query(next);
+                $mol_fiber_defer(() => {
+                    this.Query().focused(true);
+                });
+            }
+            nav_components() {
+                return [
+                    this.Query(),
+                    ...this.menu_items(),
+                ];
+            }
+            nav_focused(component) {
+                if (!this.focused())
+                    return null;
+                if (component == null) {
+                    for (let comp of this.nav_components()) {
+                        if (comp && comp.focused())
+                            return comp;
+                    }
+                    return null;
+                }
+                if (this.suggests_showed()) {
+                    this.ensure_visible(component, "center");
+                    component.focused(true);
+                }
+                return component;
+            }
+            suggest_label(key) {
+                return key;
+            }
+            menu_items() {
+                return this.suggests().map((suggest) => this.Suggest(suggest));
+            }
+            suggest_select(id, event) {
+                this.query(id);
+                this.Query().selection([id.length, id.length]);
+                this.Query().focused(true);
+            }
+            clear(event) {
+                this.query('');
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_search.prototype, "anchor_content", null);
+        __decorate([
+            $mol_mem
+        ], $mol_search.prototype, "suggests_showed", null);
+        __decorate([
+            $mol_mem
+        ], $mol_search.prototype, "nav_focused", null);
+        __decorate([
+            $mol_mem
+        ], $mol_search.prototype, "menu_items", null);
+        $$.$mol_search = $mol_search;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//mol/search/search.view.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $care_app_search_filter extends $mol_page {
+        title() {
+            return "Фильтры";
+        }
+        tools() {
+            return [
+                this.Close_page()
+            ];
+        }
+        body() {
+            return [
+                this.List()
+            ];
+        }
+        Close_page_icon() {
+            const obj = new this.$.$mol_icon_cross();
+            return obj;
+        }
+        Close_page() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                search_filter: null
+            });
+            obj.sub = () => [
+                this.Close_page_icon()
+            ];
+            return obj;
+        }
+        Filter() {
+            const obj = new this.$.$mol_view();
+            return obj;
+        }
+        back(next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        Back() {
+            const obj = new this.$.$mol_button_major();
+            obj.title = () => "К поиску";
+            obj.click = (next) => this.back(next);
+            return obj;
+        }
+        List() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => [
+                this.Filter(),
+                this.Back()
+            ];
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $care_app_search_filter.prototype, "Close_page_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search_filter.prototype, "Close_page", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search_filter.prototype, "Filter", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search_filter.prototype, "back", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search_filter.prototype, "Back", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search_filter.prototype, "List", null);
+    $.$care_app_search_filter = $care_app_search_filter;
+    class $care_app_search_filter_dict extends $care_labeler {
+        dict() {
+            return {};
+        }
+        title() {
+            return "Имя фильтра";
+        }
+        content() {
+            return [
+                this.Check_list()
+            ];
+        }
+        check_title(id) {
+            return "";
+        }
+        checked(id, next) {
+            if (next !== undefined)
+                return next;
+            return false;
+        }
+        Check(id) {
+            const obj = new this.$.$mol_check_box();
+            obj.title = () => this.check_title(id);
+            obj.checked = (next) => this.checked(id, next);
+            return obj;
+        }
+        check_rows() {
+            return [
+                this.Check("0")
+            ];
+        }
+        Check_list() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => this.check_rows();
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem_key
+    ], $care_app_search_filter_dict.prototype, "checked", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_search_filter_dict.prototype, "Check", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search_filter_dict.prototype, "Check_list", null);
+    $.$care_app_search_filter_dict = $care_app_search_filter_dict;
+})($ || ($ = {}));
+//care/app/search/filter/-view.tree/filter.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($.$care_app_search_filter, {
+            Body: {
+                padding: $mol_gap.block,
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/search/filter/filter.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $care_app_search_filter extends $.$care_app_search_filter {
+            back() {
+                this.$.$mol_state_arg.value('search_filter', null);
+            }
+        }
+        $$.$care_app_search_filter = $care_app_search_filter;
+        class $care_app_search_filter_dict extends $.$care_app_search_filter_dict {
+            check_rows() {
+                return Object.keys(this.dict()).map(key => this.Check(key));
+            }
+            check_title(key) {
+                return this.dict()[key];
+            }
+            checked(key, next) {
+                return next ?? false;
+            }
+            filter(value) {
+                const keys = Object.keys(this.dict());
+                let some_checked = false;
+                const result = keys.some(key => {
+                    const flag = this.checked(key);
+                    if (flag === true)
+                        some_checked = true;
+                    return flag && key === value;
+                });
+                return some_checked ? result : true;
+            }
+        }
+        __decorate([
+            $mol_mem_key
+        ], $care_app_search_filter_dict.prototype, "checked", null);
+        $$.$care_app_search_filter_dict = $care_app_search_filter_dict;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/search/filter/filter.view.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $care_app_job_search extends $mol_list {
+        job_service() {
+            const obj = new this.$.$care_app_job_service();
+            return obj;
+        }
+        title() {
+            return "Вакансии";
+        }
+        experience_dict() {
+            return this.Job_add_page().experience_dict();
+        }
+        format_dict() {
+            return this.Job_add_page().format_dict();
+        }
+        duration_dict() {
+            return this.Job_add_page().duration_dict();
+        }
+        work_schedule_dict() {
+            return this.Job_add_page().work_schedule_dict();
+        }
+        pay_dict() {
+            return this.Job_add_page().pay_dict();
+        }
+        Job_add_page() {
+            const obj = new this.$.$care_app_job_add();
+            return obj;
+        }
+        rows() {
+            return [
+                this.Search(),
+                this.Job_list()
+            ];
+        }
+        Filter() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => [
+                this.Exp_filter(),
+                this.Format_filter(),
+                this.Duration_filter(),
+                this.Work_schedule_filter(),
+                this.Pay_filter()
+            ];
+            return obj;
+        }
+        query(next) {
+            if (next !== undefined)
+                return next;
+            return "";
+        }
+        suggests() {
+            return [];
+        }
+        Search() {
+            const obj = new this.$.$mol_search();
+            obj.query = (next) => this.query(next);
+            obj.suggests = () => this.suggests();
+            return obj;
+        }
+        job_name(id) {
+            return "";
+        }
+        Job_name(id) {
+            const obj = new this.$.$mol_dimmer();
+            obj.needle = () => this.query();
+            obj.haystack = () => this.job_name(id);
+            return obj;
+        }
+        job_id(id) {
+            return "";
+        }
+        Job_row(id) {
+            const obj = new this.$.$mol_link();
+            obj.sub = () => [
+                this.Job_name(id)
+            ];
+            obj.arg = () => ({
+                job: this.job_id(id)
+            });
+            return obj;
+        }
+        rows_filtered() {
+            return [
+                this.Job_row("0")
+            ];
+        }
+        Job_list() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => this.rows_filtered();
+            return obj;
+        }
+        Exp_filter() {
+            const obj = new this.$.$care_app_search_filter_dict();
+            obj.dict = () => this.experience_dict();
+            obj.title = () => "Опыт работы";
+            return obj;
+        }
+        Format_filter() {
+            const obj = new this.$.$care_app_search_filter_dict();
+            obj.dict = () => this.format_dict();
+            obj.title = () => "Формат";
+            return obj;
+        }
+        Duration_filter() {
+            const obj = new this.$.$care_app_search_filter_dict();
+            obj.dict = () => this.duration_dict();
+            obj.title = () => "Продолжительность трудоустройства";
+            return obj;
+        }
+        Work_schedule_filter() {
+            const obj = new this.$.$care_app_search_filter_dict();
+            obj.dict = () => this.work_schedule_dict();
+            obj.title = () => "График";
+            return obj;
+        }
+        Pay_filter() {
+            const obj = new this.$.$care_app_search_filter_dict();
+            obj.dict = () => this.pay_dict();
+            obj.title = () => "Оплата";
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $care_app_job_search.prototype, "job_service", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_search.prototype, "Job_add_page", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_search.prototype, "Filter", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_search.prototype, "query", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_search.prototype, "Search", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_job_search.prototype, "Job_name", null);
+    __decorate([
+        $mol_mem_key
+    ], $care_app_job_search.prototype, "Job_row", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_search.prototype, "Job_list", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_search.prototype, "Exp_filter", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_search.prototype, "Format_filter", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_search.prototype, "Duration_filter", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_search.prototype, "Work_schedule_filter", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_job_search.prototype, "Pay_filter", null);
+    $.$care_app_job_search = $care_app_job_search;
+})($ || ($ = {}));
+//care/app/job/search/-view.tree/search.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { per } = $mol_style_unit;
+        $mol_style_define($.$care_app_job_search, {
+            Search: {
+                width: per(100),
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/job/search/search.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $care_app_job_search extends $.$care_app_job_search {
+            domain() {
+                return this.job_service().domain();
+            }
+            rows_filtered() {
+                const filter = this.job_service().find(obj => this.job_filter(obj));
+                const search = filter.filter(obj => this.job_search(obj));
+                return search.map(obj => this.Job_row(obj.id()));
+            }
+            job_id(id) {
+                return id;
+            }
+            job_name(id) {
+                return this.domain().job().item(id).name();
+            }
+            job_text(obj) {
+                const text = [
+                    obj.name(),
+                    obj.functions(),
+                    obj.requests(),
+                    obj.provided(),
+                    obj.experience(),
+                    obj.format(),
+                    obj.duration(),
+                    obj.work_schedule(),
+                    obj.pay(),
+                    obj.project().name(),
+                    obj.project().org().name(),
+                ].join(' ').toLowerCase();
+                return text;
+            }
+            job_search(obj) {
+                const index = this.job_text(obj).indexOf(this.query().toLocaleLowerCase()) >= 0;
+                return index;
+            }
+            job_filter(obj) {
+                const flags = [
+                    this.Exp_filter().filter(obj.experience()),
+                    this.Pay_filter().filter(obj.pay()),
+                    this.Duration_filter().filter(obj.duration()),
+                    this.Work_schedule_filter().filter(obj.work_schedule()),
+                    this.Format_filter().filter(obj.format()),
+                ];
+                const result = flags.every(val => val === true);
+                return result;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $care_app_job_search.prototype, "rows_filtered", null);
+        __decorate([
+            $mol_mem_key
+        ], $care_app_job_search.prototype, "job_text", null);
+        __decorate([
+            $mol_mem_key
+        ], $care_app_job_search.prototype, "job_search", null);
+        __decorate([
+            $mol_mem_key
+        ], $care_app_job_search.prototype, "job_filter", null);
+        $$.$care_app_job_search = $care_app_job_search;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/job/search/search.view.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $care_app_search extends $mol_page {
+        job_service() {
+            return this.domain().job();
+        }
+        domain() {
+            const obj = new this.$.$care_app_domain();
+            return obj;
+        }
+        tools() {
+            return [
+                this.Filter_open(),
+                this.Close_page()
+            ];
+        }
+        title() {
+            return "Поиск";
+        }
+        body() {
+            return [
+                this.Tabs()
+            ];
+        }
+        Filter() {
+            const obj = new this.$.$mol_view();
+            return obj;
+        }
+        Filter_open_icon() {
+            const obj = new this.$.$mol_icon_tune();
+            return obj;
+        }
+        Filter_open() {
+            const obj = new this.$.$mol_link();
+            obj.hint = () => "Фильтры";
+            obj.arg = () => ({
+                search_filter: ""
+            });
+            obj.sub = () => [
+                this.Filter_open_icon()
+            ];
+            return obj;
+        }
+        Close_page_icon() {
+            const obj = new this.$.$mol_icon_cross();
+            return obj;
+        }
+        Close_page() {
+            const obj = new this.$.$mol_link();
+            obj.arg = () => ({
+                search: null
+            });
+            obj.sub = () => [
+                this.Close_page_icon()
+            ];
+            return obj;
+        }
+        Job_search() {
+            const obj = new this.$.$care_app_job_search();
+            obj.job_service = () => this.job_service();
+            return obj;
+        }
+        Tabs() {
+            const obj = new this.$.$mol_deck();
+            obj.items = () => [
+                this.Job_search()
+            ];
+            return obj;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $care_app_search.prototype, "domain", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search.prototype, "Filter", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search.prototype, "Filter_open_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search.prototype, "Filter_open", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search.prototype, "Close_page_icon", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search.prototype, "Close_page", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search.prototype, "Job_search", null);
+    __decorate([
+        $mol_mem
+    ], $care_app_search.prototype, "Tabs", null);
+    $.$care_app_search = $care_app_search;
+})($ || ($ = {}));
+//care/app/search/-view.tree/search.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($.$care_app_search, {
+            Body: {},
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/search/seach.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $care_app_search extends $.$care_app_search {
+            Filter() {
+                return this.Tabs().Content().Filter();
+            }
+        }
+        $$.$care_app_search = $care_app_search;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//care/app/search/search.view.ts
+;
+"use strict";
+var $;
+(function ($) {
     class $care_app extends $mol_book2 {
         attr() {
             return {
@@ -16996,10 +17473,11 @@ var $;
                 this.Project_add_page(),
                 this.Job_page(),
                 this.Job_add_page(),
-                this.Job_search_page(),
                 this.Person_page(),
                 this.Person_edit_page(),
-                this.Person_activity_page()
+                this.Person_activity_page(),
+                this.Search_page(),
+                this.Search_filter_page()
             ];
         }
         Sign_up_page() {
@@ -17015,26 +17493,11 @@ var $;
                 return next;
             return null;
         }
-        Sign_out_icon() {
-            const obj = new this.$.$mol_icon_logout_variant();
-            return obj;
-        }
-        Sign_out() {
-            const obj = new this.$.$mol_button_minor();
-            obj.hint = () => this.$.$mol_locale.text('$care_app_Sign_out_hint');
-            obj.click = (next) => this.sign_out(next);
-            obj.sub = () => [
-                this.Sign_out_icon()
-            ];
-            return obj;
-        }
         Nav_page() {
             const obj = new this.$.$care_app_nav();
             obj.user = () => this.user();
-            obj.title = () => this.$.$mol_locale.text('$care_app_Nav_page_title');
-            obj.tools = () => [
-                this.Sign_out()
-            ];
+            obj.title = () => "Забота";
+            obj.sign_out = (next) => this.sign_out(next);
             return obj;
         }
         user() {
@@ -17090,11 +17553,6 @@ var $;
             obj.project = () => this.project_opened();
             return obj;
         }
-        Job_search_page() {
-            const obj = new this.$.$care_app_job_search();
-            obj.job_service = () => this.job_service();
-            return obj;
-        }
         person_opened() {
             const obj = new this.$.$care_app_person();
             return obj;
@@ -17114,6 +17572,19 @@ var $;
             obj.person = () => this.user();
             return obj;
         }
+        Search_filter() {
+            return this.Search_page().Filter();
+        }
+        Search_page() {
+            const obj = new this.$.$care_app_search();
+            obj.domain = () => this.domain();
+            return obj;
+        }
+        Search_filter_page() {
+            const obj = new this.$.$care_app_search_filter();
+            obj.Filter = () => this.Search_filter();
+            return obj;
+        }
     }
     __decorate([
         $mol_mem
@@ -17127,12 +17598,6 @@ var $;
     __decorate([
         $mol_mem
     ], $care_app.prototype, "sign_out", null);
-    __decorate([
-        $mol_mem
-    ], $care_app.prototype, "Sign_out_icon", null);
-    __decorate([
-        $mol_mem
-    ], $care_app.prototype, "Sign_out", null);
     __decorate([
         $mol_mem
     ], $care_app.prototype, "Nav_page", null);
@@ -17171,9 +17636,6 @@ var $;
     ], $care_app.prototype, "Job_add_page", null);
     __decorate([
         $mol_mem
-    ], $care_app.prototype, "Job_search_page", null);
-    __decorate([
-        $mol_mem
     ], $care_app.prototype, "person_opened", null);
     __decorate([
         $mol_mem
@@ -17184,6 +17646,12 @@ var $;
     __decorate([
         $mol_mem
     ], $care_app.prototype, "Person_activity_page", null);
+    __decorate([
+        $mol_mem
+    ], $care_app.prototype, "Search_page", null);
+    __decorate([
+        $mol_mem
+    ], $care_app.prototype, "Search_filter_page", null);
     $.$care_app = $care_app;
 })($ || ($ = {}));
 //care/app/-view.tree/app.view.tree.ts
@@ -17243,12 +17711,6 @@ var $;
                     shrink: 0,
                 },
             },
-            Job_search_page: {
-                flex: {
-                    basis: rem(22),
-                    shrink: 0,
-                },
-            },
             Person_page: {
                 flex: {
                     basis: rem(22),
@@ -17262,6 +17724,18 @@ var $;
                 },
             },
             Person_activity_page: {
+                flex: {
+                    basis: rem(22),
+                    shrink: 0,
+                },
+            },
+            Search_page: {
+                flex: {
+                    basis: rem(22),
+                    shrink: 0,
+                },
+            },
+            Search_filter_page: {
                 flex: {
                     basis: rem(22),
                     shrink: 0,
@@ -17309,13 +17783,14 @@ var $;
                     ...this.arg().person ? [this.Person_page()] : [],
                     ...this.arg().person_edit === '' ? [this.Person_edit_page()] : [],
                     ...this.arg().person_activity === '' ? [this.Person_activity_page()] : [],
+                    ...this.arg().search === '' ? [this.Search_page()] : [],
+                    ...this.arg().search_filter === '' ? [this.Search_filter_page()] : [],
                     ...this.arg().orgs === '' ? [this.Org_list_page()] : [],
                     ...this.arg().org ? [this.Org_page()] : [],
                     ...this.arg().org === '' ? [this.Org_add_page()] : [],
                     ...this.arg().project === '' && this.arg().org ? [this.Project_add_page()] : [],
                     ...this.arg().project ? [this.Project_page()] : [],
                     ...this.arg().project && this.arg().job === '' ? [this.Job_add_page()] : [],
-                    ...this.arg().job_search === '' ? [this.Job_search_page()] : [],
                     ...this.arg().job ? [this.Job_page()] : [],
                 ];
             }

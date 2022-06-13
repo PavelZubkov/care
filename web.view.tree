@@ -314,6 +314,8 @@ $care_app_sign_in $mol_page
 					arg * sign \up
 					sub / <= sign_in_link_label @ \Need account?
 
+$mol_icon_magnify $mol_icon path \M9.5,3C13.09,3 16,5.91 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16C5.91,16 3,13.09 3,9.5C3,5.91 5.91,3 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z
+
 $mol_icon_logout $mol_icon path \M16,17V14H9V10H16V7L21,12L16,17M14,2C15.1,2 16,2.9 16,4V6H14V4H5V20H14V18H16V20C16,21.1 15.1,22 14,22H5C3.9,22 3,21.1 3,20V4C3,2.9 3.9,2 5,2H14Z
 
 $mol_icon_logout_variant $mol_icon path \M14.08,15.59L16.67,13H7V11H16.67L14.08,8.41L15.5,7L20.5,12L15.5,17L14.08,15.59M19,3C20.1,3 21,3.9 21,5V9.67L19,7.67V5H5V19H19V16.33L21,14.33V19C21,20.1 20.1,21 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3H19Z
@@ -332,11 +334,17 @@ $mol_icon_office $mol_icon path \M3,18L7,16.75V7L14,5V19.5L3.5,18.25L14,22L20,20
 
 $mol_icon_office_building $mol_icon path \M5,3V21H11V17.5H13V21H19V3H5M7,5H9V7H7V5M11,5H13V7H11V5M15,5H17V7H15V5M7,9H9V11H7V9M11,9H13V11H11V9M15,9H17V11H15V9M7,13H9V15H7V13M11,13H13V15H11V13M15,13H17V15H15V13M7,17H9V19H7V17M15,17H17V19H15V17Z
 
-$mol_icon_magnify $mol_icon path \M9.5,3C13.09,3 16,5.91 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16C5.91,16 3,13.09 3,9.5C3,5.91 5.91,3 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z
-
 $care_app_nav $mol_page
 	user $care_app_person
 		id => user_id
+	tools /
+		<= Search_open $mol_link
+			arg * search \
+			sub / <= Search_open_icon $mol_icon_magnify
+		<= Sign_out $mol_button_minor
+			hint @ \Sign out
+			click? <=> sign_out? null
+			sub / <= Sign_out_icon $mol_icon_logout_variant
 	body /
 		<= Person $mol_bar
 			sub /
@@ -1034,7 +1042,7 @@ $care_app_job_add $mol_page
 							offline \Офлайн
 							both \Оба
 				<= Duration_field $mol_form_field
-					name \Продолжительность вакансии
+					name \Продолжительность трудоустройсва
 					control <= Duration_control $mol_switch
 						value? <=> duration? \one_time
 						options <= duration_dict *
@@ -1046,7 +1054,7 @@ $care_app_job_add $mol_page
 							month12_plus \Более 1 года
 							unlimited \Неограниченно
 				<= Work_shedule_field $mol_form_field
-					name \Название
+					name \График
 					control <= Work_shedule_control $mol_switch
 						value? <=> work_schedule? \every_day
 						options <= work_schedule_dict *
@@ -1163,79 +1171,6 @@ $care_app_job_page $mol_page
 					<= response_wait \На рассмотрении
 					<= response_apply \Вы приняты
 					<= response_decline \Вас не приняли
-
-$mol_nav $mol_plugin
-	cycle?val false
-	-
-	mod_ctrl false
-	mod_shift false
-	mod_alt false
-	-
-	keys_x?val /
-	keys_y?val /
-	-
-	current_x?val null
-	current_y?val null
-	-
-	event_up?event null
-	event_down?event null
-	event_left?event null
-	event_right?event null
-	event *
-		^
-		keydown?event <=> event_key?event null
-
-$mol_search $mol_pop
-	query?val \
-	suggests /string
-	plugins /$mol_plugin
-		^
-		<= Hotkey $mol_hotkey
-			key * escape?val <=> clear?val null
-		<= Nav $mol_nav
-			keys_y <= nav_components /$mol_view
-			current_y?component <=> nav_focused?component null
-	showed?val <=> suggests_showed?val false
-	align_hor \right
-	Anchor $mol_view
-		sub <= anchor_content /
-			<= Query $mol_string
-				value?val <=> query?val \
-				hint <= hint @ \Search...
-				submit?event <=> submit?event null
-				enabled <= enabled true
-			<= Clear $mol_button_minor
-				hint @ \Clear
-				click?event <=> clear?event null
-				sub /
-					<= Clear_icon $mol_icon_cross
-	bubble_content /$mol_view_content
-		<= Menu $mol_list
-			rows <= menu_items /$mol_view
-	Suggest* $mol_button_minor
-		click?event <=> suggest_select*?event null
-		sub <= suggest_content* /$mol_view_content
-			<= Suggest_label* $mol_dimmer
-				haystack <= suggest_label* \
-				needle <= query?val \
-
-$care_app_job_search $mol_page
-	job_service $care_app_job_service
-	title \Поиск вакансий
-	body /
-		<= Body_list $mol_list
-			rows /
-				<= Search $mol_search
-					query? <=> query? \
-					suggests <= suggests /string
-				<= Job_list $mol_list
-					rows <= rows_filtered /
-						<= Job_row*0 $mol_link
-							sub /
-								<= Job_name* $mol_dimmer
-									needle <= query
-									haystack <= job_name* \
-							arg * job <= job_id* \
 
 $mol_icon_tick $mol_icon path \M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z
 
@@ -1564,6 +1499,145 @@ $care_app_person_activity $mol_page
 								<= Response_status* $mol_paragraph
 									title <= response_status* \
 
+$mol_icon_tune $mol_icon path \M3,17V19H9V17H3M3,5V7H13V5H3M13,21V19H21V17H13V15H11V21H13M7,9V11H3V13H7V15H9V9H7M21,13V11H11V13H21M15,9H17V7H21V5H17V3H15V9Z
+
+$mol_nav $mol_plugin
+	cycle?val false
+	-
+	mod_ctrl false
+	mod_shift false
+	mod_alt false
+	-
+	keys_x?val /
+	keys_y?val /
+	-
+	current_x?val null
+	current_y?val null
+	-
+	event_up?event null
+	event_down?event null
+	event_left?event null
+	event_right?event null
+	event *
+		^
+		keydown?event <=> event_key?event null
+
+$mol_search $mol_pop
+	query?val \
+	suggests /string
+	plugins /$mol_plugin
+		^
+		<= Hotkey $mol_hotkey
+			key * escape?val <=> clear?val null
+		<= Nav $mol_nav
+			keys_y <= nav_components /$mol_view
+			current_y?component <=> nav_focused?component null
+	showed?val <=> suggests_showed?val false
+	align_hor \right
+	Anchor $mol_view
+		sub <= anchor_content /
+			<= Query $mol_string
+				value?val <=> query?val \
+				hint <= hint @ \Search...
+				submit?event <=> submit?event null
+				enabled <= enabled true
+			<= Clear $mol_button_minor
+				hint @ \Clear
+				click?event <=> clear?event null
+				sub /
+					<= Clear_icon $mol_icon_cross
+	bubble_content /$mol_view_content
+		<= Menu $mol_list
+			rows <= menu_items /$mol_view
+	Suggest* $mol_button_minor
+		click?event <=> suggest_select*?event null
+		sub <= suggest_content* /$mol_view_content
+			<= Suggest_label* $mol_dimmer
+				haystack <= suggest_label* \
+				needle <= query?val \
+
+$care_app_search_filter $mol_page
+	title \Фильтры
+	tools /
+		<= Close_page $mol_link
+			arg * search_filter null
+			sub / <= Close_page_icon $mol_icon_cross
+	body /
+		<= List $mol_list
+			rows /
+				<= Filter $mol_view
+				<= Back $mol_button_major
+					title \К поиску
+					click? <=> back? null
+	
+$care_app_search_filter_dict $care_labeler
+	dict *
+	title \Имя фильтра
+	content /
+		<= Check_list $mol_list
+			rows <= check_rows /
+				<= Check*0 $mol_check_box
+					title <= check_title* \
+					checked? <=> checked*? false
+
+$care_app_job_search $mol_list
+	job_service $care_app_job_service
+	title \Вакансии
+	Job_add_page $care_app_job_add
+		experience_dict => experience_dict
+		format_dict => format_dict
+		duration_dict => duration_dict
+		work_schedule_dict => work_schedule_dict
+		pay_dict => pay_dict
+	rows /
+		<= Search $mol_search
+			query? <=> query? \
+			suggests <= suggests /string
+		<= Job_list $mol_list
+			rows <= rows_filtered /
+				<= Job_row*0 $mol_link
+					sub /
+						<= Job_name* $mol_dimmer
+							needle <= query
+							haystack <= job_name* \
+					arg * job <= job_id* \
+	Filter $mol_list
+		rows /
+			<= Exp_filter $care_app_search_filter_dict
+				dict <= experience_dict
+				title \Опыт работы
+			<= Format_filter $care_app_search_filter_dict
+				dict <= format_dict
+				title \Формат
+			<= Duration_filter $care_app_search_filter_dict
+				dict <= duration_dict
+				title \Продолжительность трудоустройства
+			<= Work_schedule_filter $care_app_search_filter_dict
+				dict <= work_schedule_dict
+				title \График
+			<= Pay_filter $care_app_search_filter_dict
+				dict <= pay_dict
+				title \Оплата
+
+$care_app_search $mol_page
+	domain $care_app_domain
+		job => job_service
+	tools /
+		<= Filter_open $mol_link
+			hint \Фильтры
+			arg * search_filter \
+			sub / <= Filter_open_icon $mol_icon_tune
+		<= Close_page $mol_link
+			arg * search null
+			sub / <= Close_page_icon $mol_icon_cross
+	title \Поиск
+	body /
+		<= Tabs $mol_deck
+			items /
+				<= Job_search $care_app_job_search
+					job_service <= job_service
+	Filter $mol_view
+
 $care_app $mol_book2
 	attr * mol_theme \$mol_theme_light
 	domain $care_app_domain
@@ -1578,12 +1652,8 @@ $care_app $mol_book2
 		<= Sign_in_page $care_app_sign_in
 		<= Nav_page $care_app_nav
 			user <= user
-			title @ \Care
-			tools /
-				<= Sign_out $mol_button_minor
-					hint @ \Sign out
-					click? <=> sign_out? null
-					sub / <= Sign_out_icon $mol_icon_logout_variant
+			title \Забота
+			sign_out? <=> sign_out? null
 		<= Org_list_page $care_app_org_list
 			user <= user $care_app_person
 		<= Org_page $care_app_org_page
@@ -1600,11 +1670,15 @@ $care_app $mol_book2
 		<= Job_add_page $care_app_job_add
 			job_service <= job_service
 			project <= project_opened
-		<= Job_search_page $care_app_job_search
-			job_service <= job_service
 		<= Person_page $care_app_person_page
 			person <= person_opened $care_app_person
 		<= Person_edit_page $care_app_person_edit
 			person <= user
 		<= Person_activity_page $care_app_person_activity
 			person <= user
+		<= Search_page $care_app_search
+			domain <= domain
+			Filter => Search_filter
+		<= Search_filter_page $care_app_search_filter
+			Filter <= Search_filter
+
